@@ -1,0 +1,36 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConvocatoriasModule } from './convocatorias/convocatorias.module';
+import { EmpresasModule } from './empresas/empresas.module';
+import { EstudiantesModule } from './estudiantes/estudiantes.module';
+import { HomologacionesModule } from './homologaciones/homologaciones.module';
+import { PracticasModule } from './practicas/practicas.module';
+import { ReunionesModule } from './reuniones/reuniones.module';
+import { SolicitudesModule } from './solicitudes/solicitudes.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ConvocatoriasModule,
+    EmpresasModule,
+    EstudiantesModule,
+    HomologacionesModule,
+    PracticasModule,
+    ReunionesModule,
+    SolicitudesModule,
+    UsuariosModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
