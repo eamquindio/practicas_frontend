@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ConvocatoriasInscripcionComponent } from './convocatorias-inscripcion/convocatorias-inscripcion.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConvocatoriasInscripcionComponent
+  ],
   imports: [
     CommonModule
   ]
