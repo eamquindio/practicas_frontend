@@ -2,7 +2,7 @@ version: 2
 
 jobs:
   build_and_test:
-         working_directory: ~/project
+        working_directory: ~/project
         docker:
             - image: circleci/node:10
         steps:
@@ -111,4 +111,3 @@ workflows:
                 - master
           requires:
             - docker_push
-view rawcircleci-config.yml hosted with ❤ by GitHub
