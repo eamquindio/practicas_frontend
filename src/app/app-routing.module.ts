@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'practica/inicio', component: InicioPracticaComponent },
   { path: 'convocatorias', component: ConvocatoriasListarComponent },
   { path: 'convocatoria/cierre', component: CerrarConvocatoriaComponent },
-  { path: 'convocatoria', component: ConvocatoriasRegistrarComponent }
+  { path: 'convocatoria', component: ConvocatoriasRegistrarComponent },
   { path: 'registrarSolicitudEmpresa', component: SolicitudEmpRegistrarComponent}
 ];
 
