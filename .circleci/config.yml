@@ -106,8 +106,6 @@ workflows:
               only:
                 - develop
                 - master
-          requires:
-            - build_and_test
       - kubernetes_deploy:
           filters:
             branches:
