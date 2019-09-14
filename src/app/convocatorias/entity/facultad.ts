@@ -1,6 +1,4 @@
-export class Facultad{
-
-    public id:Number;
-    public nombre:string;
-
+export class Facultad {
+    public id: number;
+    public nombre: string;
 }
