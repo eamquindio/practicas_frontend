@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ConvocatoriasRegistrarComponent } from './convocatorias/convocatorias-registrar/convocatorias-registrar.component';
 import { SolicitudEstudianteComponent } from './solicitudes/solicitud-estudiante/solicitud-estudiante.component';
 import { InicioPracticaComponent } from './practicas/inicio-practica/inicio-practica.component';
 import { ConvocatoriasListarComponent } from 'src/app/convocatorias/convocatorias-listar/convocatorias-listar.component';
@@ -11,16 +12,15 @@ const routes: Routes = [
   { path: 'inscripcion', component: ConvocatoriasInscripcionComponent },
   { path: 'solicitud/estudiante', component: SolicitudEstudianteComponent },
   { path: 'modificar', component: ConvocatoriasModificarComponent },
-  { path: 'inicio-practica', component: InicioPracticaComponent },
-  { path: 'listar', component: ConvocatoriasListarComponent },
-  { path: 'inicio-practica', component: InicioPracticaComponent },
-  { path: 'listar', component: ConvocatoriasListarComponent },
-  { path: 'cierre-convocatoria', component: CerrarConvocatoriaComponent },
-  { path: 'cierre-convocatoria', component: CerrarConvocatoriaComponent }
+  { path: 'practica/inicio', component: InicioPracticaComponent },
+  { path: 'convocatorias', component: ConvocatoriasListarComponent },
+  { path: 'convocatoria/cierre', component: CerrarConvocatoriaComponent },
+  { path: 'convocatoria', component: ConvocatoriasRegistrarComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

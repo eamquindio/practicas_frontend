@@ -4,17 +4,24 @@ import { ConvocatoriasInscripcionComponent } from './convocatorias-inscripcion/c
 import { ConvocatoriasModificarComponent } from './convocatorias-modificar/convocatorias-modificar.component';
 import { ConvocatoriasListarComponent } from './convocatorias-listar/convocatorias-listar.component';
 import { CerrarConvocatoriaComponent } from './cerrar-convocatoria/cerrar-convocatoria.component';
+import { ConvocatoriasRegistrarComponent } from './convocatorias-registrar/convocatorias-registrar.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ConvocatoriasModificarComponent,
     ConvocatoriasInscripcionComponent,
     ConvocatoriasListarComponent,
-    CerrarConvocatoriaComponent
+    CerrarConvocatoriaComponent,
+    ConvocatoriasRegistrarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 
-export class ConvocatoriasModule { }
+export class ConvocatoriasModule {
+
+}
