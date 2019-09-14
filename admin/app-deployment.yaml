@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pasantiaseam-frontend
+  labels:
+    app: pasantias-frontend
+spec:
+  selector:
+    matchLabels:
+      app: pasantias-frontend
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: pasantias-frontend
+        tier: frontend
+    spec:
+      containers:
+        - image: gcr.io/pasantiaseam/frontend:v1
+          name: front-end
+          ports:
+            - containerPort: 3000
+              name: frontend-deploy
