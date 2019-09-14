@@ -32,9 +32,9 @@ export class ConvocatoriasListarComponent implements OnInit {
     ];
 
     this.ciclo = [
-      {id: 1, nombre:' Tecnico '},
-      {id: 2, nombre:' Tecnologico '},
-      {id: 3, nombre:' Profesional '}
+      {id: 1, nombre: ' Tecnico '},
+      {id: 2, nombre: ' Tecnologico '},
+      {id: 3, nombre: ' Profesional '}
     ];
 
   }
