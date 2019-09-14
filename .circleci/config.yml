@@ -47,9 +47,9 @@ jobs:
       - image: google/cloud-sdk
     environment:
       - PROJECT_NAME: ${CIRCLE_PROJECT_REPONAME}
-      - GOOGLE_PROJECT_ID: "${GOOGLE_PROJECT_ID}"
-      - GOOGLE_COMPUTE_ZONE: "${GOOGLE_COMPUTE_ZONE}"
-      - GOOGLE_CLUSTER_NAME: "${GCLOUD_CLUSTER}"
+      - GOOGLE_PROJECT_ID: ${GOOGLE_PROJECT_ID}
+      - GOOGLE_COMPUTE_ZONE: ${GOOGLE_COMPUTE_ZONE}
+      - GOOGLE_CLUSTER_NAME: ${GCLOUD_CLUSTER}
     steps:
       - checkout
       - run: 
