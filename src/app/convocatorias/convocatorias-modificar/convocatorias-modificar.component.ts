@@ -40,43 +40,43 @@ export class ConvocatoriasModificarComponent implements OnInit {
       {id: 3, nombre: 'Diseño y publicidad'}
     ];
     this.empresa =[
-      {id:1 ,nombre:'Safe'},
-      {id:2 ,nombre:'Yuxi'},
-      {id:3 ,nombre:'Heinsohn'}
+      {id: 1, nombre: 'Safe'},
+      {id: 2, nombre: 'Yuxi'},
+      {id: 3, nombre: 'Heinsohn'}
     ];
     this.ciclo = [
-      {id:1 ,nombre:'Tecnico'},
-      {id:2 ,nombre:'Tecnologo'}
+      {id: 1, nombre: 'Tecnico'},
+      {id: 2, nombre: 'Tecnologo'}
     ];
     this.tipoPractica = [
-      {id:1 ,nombre:'240 hrs'},
-      {id:2 ,nombre:'Objetivos'},
-      {id:3 ,nombre:'Contrato aprendizaje'},
-      {id:4 ,nombre:'Homologacion'}
+      {id: 1, nombre: '240 hrs'},
+      {id: 2, nombre: 'Objetivos'},
+      {id: 3, nombre: 'Contrato aprendizaje'},
+      {id: 4, nombre: 'Homologacion'}
     ];
     this.facultadIngeniera = [
-      {id:1, nombre:'Ingenieria de software'},
-      {id:2, nombre:'Ingenieria industrial'},
-      {id:3, nombre:'Ingenieria mecatronica'}
+      {id: 1, nombre: 'Ingenieria de software'},
+      {id: 2, nombre: 'Ingenieria industrial'},
+      {id: 3, nombre: 'Ingenieria mecatronica'}
     ];
     this.facultadAdministracion=[
-      {id:1, nombre:'Negocios internacionales'},
-      {id:2, nombre:'Administracion de empresas'}
+      {id: 1, nombre: 'Negocios internacionales'},
+      {id: 2, nombre: 'Administracion de empresas'}
     ];
     this.facultadDiseno=[
-      {id:1, nombre:'Diseño visual digital'},
-      {id:2, nombre:'Publicidad'}
+      {id: 1, nombre: 'Diseño visual digital'},
+      {id: 2, nombre: 'Publicidad'}
     ];
     this.sinFacultad=[
-      {id:1, nombre:'seleccione facultad'}
+      {id: 1, nombre: 'seleccione facultad'}
     ];
-  } 
+  }
 
   cargarProgrmas(facultad): void {
     if (facultad === 0) {
       this.facultadSelect = this.sinFacultad;
     }
-    if(facultad === 1) {
+    if (facultad === 1) {
       this.facultadSelect = this.facultadIngeniera;
     }
     if (facultad === 2) {
