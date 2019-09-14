@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ${CIRCLE_PROJECT_REPONAME}
+spec:
+  selector:
+    app: ${CIRCLE_PROJECT_REPONAME}
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: ${CIRCLE_PROJECT_REPONAME}
+  labels:
+    app: ${CIRCLE_PROJECT_REPONAME}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ${CIRCLE_PROJECT_REPONAME}
+  template:
+    metadata:
+      labels:
+        app: ${CIRCLE_PROJECT_REPONAME}
+    spec:
+      containers:
+      - name: ${CIRCLE_PROJECT_REPONAME}
+        image: gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
+        ports:
+        - name: http
+          containerPort: 3000
+          protocol: TCP

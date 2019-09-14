@@ -4,7 +4,7 @@ orbs:
   gcp-gke: circleci/gcp-gke@0.1.0
   gcr: circleci/gcp-gcr@0.0.2
 jobs:
-  build:
+  build_and_test:
         working_directory: ~/project
         docker:
             - image: circleci/node:10
@@ -42,45 +42,50 @@ jobs:
             - run:
                 name: Building
                 command: npm run build
-  Build-Push-Image-Docker:
-    description: Build and push image to Google Container Registry
-    machine: true
+  deploy_to_staging:
+    docker:
+      - image: google/cloud-sdk
+    environment:
+      - PROJECT_NAME: ${CIRCLE_PROJECT_REPONAME}
+      - GOOGLE_PROJECT_ID: "${GOOGLE_PROJECT_ID}"
+      - GOOGLE_COMPUTE_ZONE: "${GOOGLE_COMPUTE_ZONE}"
+      - GOOGLE_CLUSTER_NAME: "${GCLOUD_CLUSTER}"
     steps:
       - checkout
-      - gcr/gcr-auth
-      - gcr/build-image:
-          image: ${CIRCLE_PROJECT_REPONAME}
-          tag: "${CIRCLE_SHA1}" #Change version number e.g to 'v3' when updating application
-      - gcr/push-image:
-          image: ${CIRCLE_PROJECT_REPONAME}
-          tag: "${CIRCLE_SHA1}" #Change version number e.g to 'v3' when updating application
-    
-  deploy:
-    description: Deploy application to Google Kubernetes Engine
-    machine: true
-    steps:
-      # Install `gcloud` and `kubectl` if not already installed.
-      - gcp-gke/install
-      # Initialize the `gcloud` CLI.
-      - gcp-gke/init
-      # Update a deployment Docker image.
-      - gcp-gke/rollout-image:
-          deployment: ${GCLOUD_CLUSTER}
-          container: frontend
-          image: gcr.io/pasantiaseam/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
+      - run: 
+          name: Setup Google Cloud SDK
+          command: |
+            apt-get install -qq -y gettext
+            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+            gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
+      - setup_remote_docker
+      - run: 
+          name: Docker build and push
+          command: |
+            docker build \
+              --build-arg COMMIT_REF=${CIRCLE_SHA1} \
+              --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
+              -t ${CIRCLE_PROJECT_REPONAME} .
+            docker tag ${CIRCLE_PROJECT_REPONAME} gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
+            gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
+            docker push gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
+      - run: 
+          name: Deploy to Kubernetes
+          command: |
+            envsubst < ${HOME}/project/k8s.yml > ${HOME}/patched_k8s.yml
+            kubectl apply -f ${HOME}/deploy/patched_k8s.yml
+            kubectl rollout status deployment/${CIRCLE_PROJECT_REPONAME}
 workflows:
-  build_update_deploy:
+  version: 2
+  build_test_deploy:
     jobs:
-      - build
-      - Build-Push-Image-Docker:
+      - build_and_test
+      - deploy_to_staging:
           requires:
-            - build
-          filters:
-            branches:
-              only: cicd
-      - deploy:
-          requires:
-            - Build-Push-Image-Docker
+            - build_and_test
           filters:
             branches:
               only: cicd
