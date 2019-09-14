@@ -1,0 +1,121 @@
+<nav class="navbar navbar-ligth bg-ligth">
+  <a class="navbar-brand p-2">
+    <img src="../assets/imgs/LOGO-EAM-1.png" width="125" height="63" alt="">
+  </a>
+  <div class="form-inline">
+    <label for="">Nombre:</label>
+    <span class="ml-4">xxxxxx</span>
+    <label for="" class="ml-4">Codigo:</label>
+    <span class="ml-4">xxxxxx</span>
+    <button type="submit" class="btn btn-danger ml-4" data-toggle="modal" data-target="#exampleModal">
+      cerrar sesion
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">¿Seguro desea cerrar su sesion?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Estas a punto de salir
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container p-3">
+
+  <form action="">
+      <div class="row">
+          <div class="col-md-12 text-center p-4">
+            <span>MODIFICAR CONVOCATORIAS</span>
+          </div>
+          <div class="col-md-6">
+            <div class="from-group row">
+                <label for="" class="col-md-4 col-form-label">Fecha inicio</label>
+                <div class="col-md-8 mb-4">
+                    <input type="date" name="" id="" class="form-control" required>
+                </div>
+                <label for="" class="col-md-4 col-form-label">Empresa</label>
+                <div class="col-md-8 mb-4">
+                  <select class="form-control" required > 
+                    <option value="0">-Seleccione-</option>
+                    <option *ngFor="let emp of empresa" value="emp.id">
+                      {{emp.nombre}}
+                    </option>
+                  </select>
+                </div>
+      
+                <label for="" class="col-md-4 col-form-label">Facultad</label>
+                <div class="col-md-8 mb-4">
+                    <select class="form-control" required (change)="cargarProg($event.target.value)"> 
+                      <option value="0">-Seleccione-</option>
+                      <option *ngFor="let facul of facultad" value="{{facul.id}}">
+                        {{facul.nombre}}
+                      </option>
+                    </select>
+                  </div>
+      
+      
+                <label for="" class="col-md-4 col-form-label">Ciclo</label>
+                <div class="col-md-8 mb-4">
+                  <select name="" id="" class="form-control" required>
+                      <option value="0">-Seleccione-</option>
+                      <option *ngFor="let ciclo of ciclo" value="ciclo.id">
+                        {{ciclo.nombre}}
+                      </option>
+                  </select>
+                </div>
+            </div>
+      
+          </div>
+          <div class="col-md-6">
+            <div class="from-group row">
+              <label for="" class="col-md-4 col-form-label">Fecha Fin</label>
+              <div class="col-md-8 mb-4">
+                  <input type="date" name="" id="" class="form-control" required>
+              </div>
+  
+              <label for="" class="col-md-4 col-form-label">Programa</label>
+            <div class="col-md-8 mb-4">
+              <select name="" id="programa" class="form-control" required>
+                  <option value="0">-Seleccione-</option>
+                  <option *ngFor="let seleccion of facultadSelect" value="{{seleccion.id}}">
+                    {{seleccion.nombre}}
+                  </option>
+              </select>
+            </div>
+  
+            <label for="" class="col-md-4 col-form-label">Tipo practica</label>
+            <div class="col-md-8 mb-4">
+              <select name="" id="" class="form-control" required>
+                  <option value="0">-Seleccione-</option>
+                  <option *ngFor="let tipo of tipoPractica" value="tipo.id">
+                    {{tipo.nombre}}
+                  </option>
+              </select>
+            </div>
+  
+            <label for="" class="col-md-4 col-form-label">N° estudiantes</label>
+            <div class="col-md-8 mb-4">
+              <input type="number" name="" id="" min="0" required>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center p-4">
+          <button type="submit" class="btn btn-success ml-4">Guardar</button>
+          <button type="reset" class="btn btn-danger ml-4 form-inline">Cancelar</button>
+        </div>
+      </div>
+  </form>
+  
