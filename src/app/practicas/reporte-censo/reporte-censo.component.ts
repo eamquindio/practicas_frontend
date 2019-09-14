@@ -45,7 +45,7 @@ export class ReporteCensoComponent implements OnInit {
       {id:7, nombre:'7'},
       {id:8, nombre:'8'},
       {id:9, nombre:'9'}
-    ]
+    ];
   }
 
 }
