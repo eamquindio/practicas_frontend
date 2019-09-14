@@ -7,10 +7,9 @@ import { SolicitudEmpRegistrarComponent } from './solicitud-emp-registrar/solici
 
 
 @NgModule({
-  declarations: 
+  declarations:
   [SolicitudEstudianteComponent,
   SolicitudEmpRegistrarComponent],
-  
   imports: [
     CommonModule,
     ReactiveFormsModule,
