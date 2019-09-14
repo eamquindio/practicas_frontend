@@ -7,6 +7,7 @@ import { ConvocatoriasListarComponent } from 'src/app/convocatorias/convocatoria
 import { ConvocatoriasInscripcionComponent } from 'src/app/convocatorias/convocatorias-inscripcion/convocatorias-inscripcion.component';
 import { ConvocatoriasModificarComponent } from 'src/app/convocatorias/convocatorias-modificar/convocatorias-modificar.component';
 import { CerrarConvocatoriaComponent } from './convocatorias/cerrar-convocatoria/cerrar-convocatoria.component';
+import { SolicitudEmpRegistrarComponent } from './solicitudes/solicitud-emp-registrar/solicitud-emp-registrar.component';
 
 const routes: Routes = [
   { path: 'inscripcion', component: ConvocatoriasInscripcionComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'practica/inicio', component: InicioPracticaComponent },
   { path: 'convocatorias', component: ConvocatoriasListarComponent },
   { path: 'convocatoria/cierre', component: CerrarConvocatoriaComponent },
-  { path: 'convocatoria', component: ConvocatoriasRegistrarComponent }
+  { path: 'convocatoria', component: ConvocatoriasRegistrarComponent },
+  { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent}
 ];
 
 @NgModule({
