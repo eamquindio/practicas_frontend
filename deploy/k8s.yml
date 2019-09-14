@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: frontendpasantias
+  name: front-end
 spec:
   selector:
     app: frontendpasantias
@@ -14,18 +14,18 @@ spec:
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: frontendpasantias
+  name: ${CIRCLE_PROJECT_REPONAME}
   labels:
-    app: frontendpasantias
+    app: ${CIRCLE_PROJECT_REPONAME}
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: frontendpasantias
+      app: ${CIRCLE_PROJECT_REPONAME}
   template:
     metadata:
       labels:
-        app: frontendpasantias
+        app: ${CIRCLE_PROJECT_REPONAME}
     spec:
       containers:
       - name: frontendpasantias
