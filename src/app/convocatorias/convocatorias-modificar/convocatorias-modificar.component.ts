@@ -35,9 +35,9 @@ export class ConvocatoriasModificarComponent implements OnInit {
 
   cargar(): void {
     this.facultad = [
-      {id:1 ,nombre:'Ingenieria'},
-      {id:2 ,nombre:'Ciencias Administrativas'},
-      {id:3 ,nombre:'Diseño y publicidad'}
+      {id: 1, nombre: 'Ingenieria'},
+      {id: 2, nombre: 'Ciencias Administrativas'},
+      {id: 3, nombre: 'Diseño y publicidad'}
     ];
     this.empresa =[
       {id:1 ,nombre:'Safe'},
