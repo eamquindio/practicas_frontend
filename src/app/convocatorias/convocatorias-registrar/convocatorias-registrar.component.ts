@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-convocatorias-registrar',
@@ -17,12 +17,12 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
     return new FormGroup({
       fechaInicio: new FormControl('', Validators.required),
       fechaFin: new FormControl('', Validators.required),
-      numeroEstudiantes: new FormControl('', [Validators.required, Validators.pattern("^[0-9]+$")]),
+      numeroEstudiantes: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
       observaciones: new FormControl('', Validators.required),
       estado: new FormControl(),
       id_solicitud: new FormControl(),
       coordinador: new FormControl()
-    })
+    });
   }
 
   constructor() {
@@ -46,16 +46,16 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
       //this.servicio.create(this.escenarioForm.value);
       this.onResetForm();
     } else {
-      if (this.convocatoriaForm.get("fechaInicio").invalid) {
+      if (this.convocatoriaForm.get('fechaInicio').invalid) {
         this.campoFechaInicio = true;
       }
-      if (this.convocatoriaForm.get("fechaFin").invalid) {
+      if (this.convocatoriaForm.get('fechaFin').invalid) {
         this.campoFechaFin = true;
       }
-      if (this.convocatoriaForm.get("observaciones").invalid) {
+      if (this.convocatoriaForm.get('observaciones').invalid) {
         this.campoDescripcion = true;
       }
-      if (this.convocatoriaForm.get("numeroEstudiantes").invalid) {
+      if (this.convocatoriaForm.get('numeroEstudiantes').invalid) {
         this.campoNumero = true;
       }
 

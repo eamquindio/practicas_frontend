@@ -1,6 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConvocatoriasRegistrarComponent } from "./convocatorias/convocatorias-registrar/convocatorias-registrar/convocatorias-registrar.component";
+import { ConvocatoriasRegistrarComponent } from "./convocatorias/convocatorias-registrar/convocatorias-registrar.component";
 import { SolicitudEstudianteComponent } from './solicitudes/solicitud-estudiante/solicitud-estudiante.component';
 import { InicioPracticaComponent } from './practicas/inicio-practica/inicio-practica.component';
 import { ConvocatoriasListarComponent } from 'src/app/convocatorias/convocatorias-listar/convocatorias-listar.component';
@@ -22,6 +22,10 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+<<<<<<< HEAD
 
 export class AppRoutingModule { 
+=======
+export class AppRoutingModule {
+>>>>>>> Circleci correction
 }
