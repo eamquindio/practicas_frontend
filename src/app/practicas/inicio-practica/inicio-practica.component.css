@@ -1,0 +1,17 @@
+
+.card{
+    width: 1000px;
+    height: 500ccpx;
+    margin-left: 80px;
+    }
+    
+    #datos{
+        color: white;
+    }
+    #registrar{
+        margin-right: 5px;
+    }
+    #cancelar{
+        margin-left: 5px;
+    }
+    
