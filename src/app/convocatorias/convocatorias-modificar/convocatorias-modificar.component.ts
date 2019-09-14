@@ -39,7 +39,7 @@ export class ConvocatoriasModificarComponent implements OnInit {
       {id: 2, nombre: 'Ciencias Administrativas'},
       {id: 3, nombre: 'Diseño y publicidad'}
     ];
-    this.empresa =[
+    this.empresa = [
       {id: 1, nombre: 'Safe'},
       {id: 2, nombre: 'Yuxi'},
       {id: 3, nombre: 'Heinsohn'}
@@ -59,15 +59,15 @@ export class ConvocatoriasModificarComponent implements OnInit {
       {id: 2, nombre: 'Ingenieria industrial'},
       {id: 3, nombre: 'Ingenieria mecatronica'}
     ];
-    this.facultadAdministracion=[
+    this.facultadAdministracion = [
       {id: 1, nombre: 'Negocios internacionales'},
       {id: 2, nombre: 'Administracion de empresas'}
     ];
-    this.facultadDiseno=[
+    this.facultadDiseno = [
       {id: 1, nombre: 'Diseño visual digital'},
       {id: 2, nombre: 'Publicidad'}
     ];
-    this.sinFacultad=[
+    this.sinFacultad = [
       {id: 1, nombre: 'seleccione facultad'}
     ];
   }
