@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class ConvocatoriasInscripcionComponent implements OnInit {
 
   estudiante: any = {
-    nombre: "Pedro Andres Ruiz Wartski",
-    codigo: "2320162001",
+    nombre: 'Pedro Andres Ruiz Wartski',
+    codigo: '2320162001',
   };
 
   convocatoria: any = {
