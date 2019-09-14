@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './convocatorias-registrar.component.html',
   styleUrls: ['./convocatorias-registrar.component.css']
 })
+
 export class ConvocatoriasRegistrarComponent implements OnInit {
 
   convocatoriaForm: FormGroup;
