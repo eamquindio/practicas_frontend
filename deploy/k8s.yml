@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontendpasantias
+spec:
+  selector:
+    app: frontendpasantias
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: frontendpasantias
+  labels:
+    app: frontendpasantias
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontendpasantias
+  template:
+    metadata:
+      labels:
+        app: frontendpasantias
+    spec:
+      containers:
+      - name: frontendpasantias
+        image: gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
+        ports:
+        - name: http
+          containerPort: 3000
+          protocol: TCP

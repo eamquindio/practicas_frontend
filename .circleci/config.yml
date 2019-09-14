@@ -1,5 +1,4 @@
-version: 2
-
+version: 2.1
 jobs:
   build_and_test:
         working_directory: ~/project
@@ -39,78 +38,45 @@ jobs:
             - run:
                 name: Building
                 command: npm run build
-
-  docker_push:
-    # Build app container and push it to the GCR registry
-    # Note: we want to build and push an image with tags based on both
-    # the Git commit hash AND the branch name. This way, we can refer to
-    # images by commit (which is immutable) or branch name (which
-    # dynamically tracks the latest build for each branch).
+  deploy_to_staging:
     docker:
-      - image: bayesimpact/circleci
-    working_directory: ~/repo
+      - image: google/cloud-sdk
     steps:
       - checkout
+      - run: 
+          name: Setup Google Cloud SDK
+          command: |
+            apt-get install -qq -y gettext
+            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+            gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
       - setup_remote_docker
-      - run:
-          name: Authenticate with GCR
+      - run: 
+          name: Docker build and push
           command: |
-            echo "${GCR_DOCKER_REGISTRY_PASSWORD}" | docker login -u _json_key --password-stdin https://gcr.io
-      - run:
-          name: Build app image
+            docker build \
+              --build-arg COMMIT_REF=${CIRCLE_SHA1} \
+              --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
+              -t ${CIRCLE_PROJECT_REPONAME} .
+            docker tag ${CIRCLE_PROJECT_REPONAME} gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
+            gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
+            docker push gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
+      - run: 
+          name: Deploy to Kubernetes
           command: |
-            docker build --rm=false \
-            -t gcr.io/${GCR_PROJECT}/myapp:${CIRCLE_SHA1} \
-            -t gcr.io/${GCR_PROJECT}/myapp:${CIRCLE_BRANCH} \
-            -f ./Dockerfile .
-      - run:
-          name: Push app image
-          command: |
-            docker push gcr.io/${GCR_PROJECT}/myapp:${CIRCLE_SHA1}
-            docker push gcr.io/${GCR_PROJECT}/myapp:${CIRCLE_BRANCH}
-  kubernetes_deploy:
-    # Update the existing Kubernetes deployment to point to the new image
-    docker:
-      - image: google/cloud-sdk:alpine
-    working_directory: ~/repo
-    steps:
-      - run:
-          name: Deploy the current commit on this branch to the GKE cluster
-          command: |
-            gcloud components install kubectl
-            echo "${GKE_CD_SERVICE_ACCOUNT_KEY}" > .key.json
-            gcloud auth activate-service-account --key-file .key.json
-            gcloud config set compute/zone "${GKE_ZONE}"
-            gcloud config set project "${GKE_PROJECT}"
-            gcloud container clusters get-credentials "${GKE_CLUSTER}" --zone "${GKE_ZONE}"
-            kubectl set image deployment/${CIRCLE_BRANCH}-app ${CIRCLE_BRANCH}-app=gcr.io/${GCR_PROJECT}/myapp:${CIRCLE_SHA1}
+            envsubst < ${HOME}/project/deploy/k8s.yml > ${HOME}/patched_k8s.yml
+            kubectl apply -f ${HOME}/patched_k8s.yml
+            kubectl rollout status deployment/frontendpasantias
 workflows:
   version: 2
-  build_and_test:
+  build_test_deploy:
     jobs:
-      # note: skip tests on prod and staging branches.
-      # This assumes your workflow ensures that tests pass in the dev branch
-      # before the code is promoted to staging.
-      - build_and_test:
-          filters:
-            branches:
-              ignore:
-                - develop
-                - master
-  deploy:
-    jobs:
-      # note: this step only runs on prod and staging branches.
-      - docker_push:
-          filters:
-            branches:
-              only:
-                - develop
-                - master
-      - kubernetes_deploy:
-          filters:
-            branches:
-              only:
-                - develop
-                - master
+      - build_and_test
+      - deploy_to_staging:
           requires:
-            - docker_push
+            - build_and_test
+          filters:
+            branches:
+              only: develop
