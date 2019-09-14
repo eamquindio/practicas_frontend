@@ -1,34 +1,34 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ${CIRCLE_PROJECT_REPONAME}
+  name: frontendpasantias
 spec:
   selector:
-    app: ${CIRCLE_PROJECT_REPONAME}
+    app: frontendpasantias
   ports:
   - protocol: TCP
     port: 80
     targetPort: 3000
   type: LoadBalancer
 ---
-apiVersion: v1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: ${CIRCLE_PROJECT_REPONAME}
+  name: frontendpasantias
   labels:
-    app: ${CIRCLE_PROJECT_REPONAME}
+    app: frontendpasantias
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ${CIRCLE_PROJECT_REPONAME}
+      app: frontendpasantias
   template:
     metadata:
       labels:
-        app: ${CIRCLE_PROJECT_REPONAME}
+        app: frontendpasantias
     spec:
       containers:
-      - name: ${CIRCLE_PROJECT_REPONAME}
+      - name: frontendpasantias
         image: gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
         ports:
         - name: http
