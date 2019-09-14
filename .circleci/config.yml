@@ -75,6 +75,12 @@ workflows:
       - Build-Push-Image-Docker:
           requires:
             - build
+          filters:
+            branches:
+              only: cicd
       - deploy:
           requires:
             - Build-Push-Image-Docker
+          filters:
+            branches:
+              only: cicd
