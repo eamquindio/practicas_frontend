@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'listar', component: ConvocatoriasListarComponent },
   { path: 'inicio-practica', component: InicioPracticaComponent },
   { path: 'listar', component: ConvocatoriasListarComponent },
+  { path: 'cierre-convocatoria', component: CerrarConvocatoriaComponent },
   { path: 'cierre-convocatoria', component: CerrarConvocatoriaComponent }
 ];
 
