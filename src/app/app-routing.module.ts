@@ -9,9 +9,11 @@ import { ConvocatoriasModificarComponent } from 'src/app/convocatorias/convocato
 const routes: Routes = [
   { path : 'inscripcion', component : ConvocatoriasInscripcionComponent },
   { path : 'solicitud/estudiante', component : SolicitudEstudianteComponent },
-  { path : 'modificar', component: ConvocatoriasModificarComponent },
+  { path : 'modificar', component : ConvocatoriasModificarComponent },
   { path : 'inicio-practica', component : InicioPracticaComponent },
-  { path: 'listar', component: ConvocatoriasListarComponent }
+  { path : 'listar', component : ConvocatoriasListarComponent },
+  { path : 'inicio-practica', component : InicioPracticaComponent },
+  { path : 'listar', component : ConvocatoriasListarComponent }
 ];
 
 @NgModule({
