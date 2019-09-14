@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConvocatoriasRegistrarComponent } from "./convocatorias/convocatorias-registrar/convocatorias-registrar.component";
+import { ConvocatoriasRegistrarComponent } from './convocatorias/convocatorias-registrar/convocatorias-registrar.component';
 import { SolicitudEstudianteComponent } from './solicitudes/solicitud-estudiante/solicitud-estudiante.component';
 import { InicioPracticaComponent } from './practicas/inicio-practica/inicio-practica.component';
 import { ConvocatoriasListarComponent } from 'src/app/convocatorias/convocatorias-listar/convocatorias-listar.component';

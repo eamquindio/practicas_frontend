@@ -40,11 +40,10 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
 
   onSaveForm() {
     if (this.convocatoriaForm.valid) {
-      this.convocatoriaForm.get("id_solicitud").setValue("1");
-      this.convocatoriaForm.get("estado").setValue("ACTIVO");
-      this.convocatoriaForm.get("coordinador").setValue("1");
+      this.convocatoriaForm.get('id_solicitud').setValue('1');
+      this.convocatoriaForm.get('estado').setValue('ACTIVO');
+      this.convocatoriaForm.get('coordinador').setValue('1');
       console.log(this.convocatoriaForm.value);
-      //this.servicio.create(this.escenarioForm.value);
       this.onResetForm();
     } else {
       if (this.convocatoriaForm.get('fechaInicio').invalid) {

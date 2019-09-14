@@ -22,4 +22,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ]
 })
 
-export class ConvocatoriasModule { }
+export class ConvocatoriasModule {
+  
+}
