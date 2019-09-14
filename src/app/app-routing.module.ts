@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'convocatorias', component: ConvocatoriasListarComponent },
   { path: 'convocatoria/cierre', component: CerrarConvocatoriaComponent },
   { path: 'convocatoria', component: ConvocatoriasRegistrarComponent },
-  { path: 'registrarSolicitudEmpresa', component: SolicitudEmpRegistrarComponent}
+  { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent}
 ];
 
 @NgModule({
