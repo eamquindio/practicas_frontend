@@ -1,0 +1,97 @@
+<nav class="navbar navbar-ligth bg-ligth">
+  <a class="navbar-brand p-2">
+    <img src="../assets/LOGO-EAM-1.png" width="125" height="63" alt="">
+  </a>
+  <div class="form-inline">
+    <label for=""> Nombre: {{estudiante.nombre}} </label>
+    <label for="" class="ml-4"> Codigo: {{estudiante.codigo}} </label>
+    <button type="button" class="btn btn-light ml-4" data-toggle="modal" data-target="#exampleModal"> Cerrar sesion </button>
+  </div>
+</nav>
+<div class="container p-3">
+  <div class="row">
+    <div class="col-md-12 text-center p-4" id="titulo-div">
+      <span id="titulo"> INFORMACION CONVOCATORIA </span>
+    </div>
+    <div class="col-md-6">
+      <div class="from-group row">
+        <label class="col-md-4 col-form-label"> Fecha inicio: </label>
+        <div class="col-md-8 mb-4">
+          <label class="col-md-4 col-form-label"> {{convocatoria.fechaInicio}} </label>
+        </div>
+        <label class="col-md-4 col-form-label"> Empresa: </label>
+        <div class="col-md-8 mb-4">
+          <label class="col-md-4 col-form-label"> {{convocatoria.empresa}} </label>
+        </div>
+        <label class="col-md-4 col-form-label"> Facultad: </label>
+        <div class="col-md-8 mb-4">
+          <label class="col-md-4 col-form-label"> {{convocatoria.facultad}} </label>
+        </div>
+        <label class="col-md-4 col-form-label"> Ciclo: </label>
+        <div class="col-md-8 mb-4">
+          <label class="col-md-4 col-form-label"> {{convocatoria.ciclo}} </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="from-group row">
+        <label class="col-md-4 col-form-label"> Fecha Fin: </label>
+        <div class="col-md-8 mb-4">
+          <label class="col-md-4 col-form-label"> {{convocatoria.fechaFin}} </label>
+        </div>
+        <label class="col-md-4 col-form-label"> Tipo practica: </label>
+        <div class="col-md-8 mb-4">
+          <label class="col-md-4 col-form-label"> {{convocatoria.tipoPractica}} </label>
+        </div>
+        <label class="col-md-4 col-form-label"> Programa: </label>
+        <div class="col-md-8 mb-4">
+          <label class="col-md-4 col-form-label"> {{convocatoria.programa}} </label>
+        </div>
+        <label class="col-md-4 col-form-label"> N° estudiantes: </label>
+        <div class="col-md-8 mb-4">
+          <label class="col-md-4 col-form-label"> {{convocatoria.numeroEstudiantes}} </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 text-center p-4" id="botones-div">
+      <button type="button" class="btn btn-success ml-4 btn-lg" data-toggle="modal" data-target="#exampleModalCenter"> Inscribirse </button>
+      <button (click)="cacelar()" class="btn btn-danger ml-4 form-inline btn-lg"> Cancelar </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> CERRAR SESIÓN </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro que desea salir?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"> SALIR </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle"> INSCRIPCION A CONVOCATORIA </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Su inscripción en la convocatoria ha sido exitosa.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal"> ACEPTAR </button>
+      </div>
+    </div>
+  </div>
+</div>
