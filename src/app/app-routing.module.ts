@@ -14,6 +14,7 @@ import { Error403ForbiddenComponent } from './paginas-error/error403-forbidden/e
 import { Error404NotFoundComponent } from './paginas-error/error404-not-found/error404-not-found.component';
 import { Error500InternalServerComponent } from './paginas-error/error500-internal-server/error500-internal-server.component';
 import { LoginComponent } from './login/login/login.component';
+import { SolicitudHomologacionComponent } from './solicitudes/solicitud-homologacion/solicitud-homologacion.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'psicologia/citas/asignar', component: AsignarCitaComponent},
   { path: 'forbidden', component: Error403ForbiddenComponent},
   { path: 'not_found', component: Error404NotFoundComponent},
-  { path: 'internal_server', component: Error500InternalServerComponent}
+  { path: 'internal_server', component: Error500InternalServerComponent},
+  { path: 'solicitud/homologacion', component: SolicitudHomologacionComponent}
 ];
 
 @NgModule({
