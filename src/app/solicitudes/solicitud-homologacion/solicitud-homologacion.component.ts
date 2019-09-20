@@ -75,10 +75,10 @@ export class SolicitudHomologacionComponent implements OnInit {
       jefe: ['', Validators.required],
       emailempresa: ['', Validators.required],
       cargo: ['', Validators.required],
-      telcontacto: ['', Validators.required]     
+      telcontacto: ['', Validators.required] 
+
     });
   }
-
   cargar(): void{ 
     this.ciclo = [
       {id: 1, nombre: 'Tecnico'},
