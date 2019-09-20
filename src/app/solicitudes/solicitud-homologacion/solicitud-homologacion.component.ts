@@ -75,11 +75,11 @@ export class SolicitudHomologacionComponent implements OnInit {
       jefe: ['', Validators.required],
       emailempresa: ['', Validators.required],
       cargo: ['', Validators.required],
-      telcontacto: ['', Validators.required]    
+      telcontacto: ['', Validators.required]     
     });
   }
 
-  cargar(): void{
+  cargar(): void{ 
     this.ciclo = [
       {id: 1, nombre: 'Tecnico'},
       {id: 2, nombre: 'Tecnologo'}
@@ -89,7 +89,7 @@ export class SolicitudHomologacionComponent implements OnInit {
       {id: 1, nombre: 'C.C'},
       {id: 2, nombre: 'T.I'}
 
-    ]
+    ];
 
     this.programas = [
       {id: 1, nombre: 'Ingenieria de software'},
@@ -101,7 +101,6 @@ export class SolicitudHomologacionComponent implements OnInit {
       {id: 7, nombre: 'Publicidad'},
       {id: 8, nombre: 'Diseño visual digital'}
     ];
-  
   }
 
   onSubmit() {
