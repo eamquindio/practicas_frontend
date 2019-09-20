@@ -78,8 +78,8 @@ export class SolicitudHomologacionComponent implements OnInit {
       telcontacto: ['', Validators.required]
     });
   }
-  cargar(): void{ 
-    this.ciclo = [ 
+  cargar(): void{
+    this.ciclo = [
       {id: 1, nombre: 'Tecnico'},
       {id: 2, nombre: 'Tecnologo'}
     ];
