@@ -14,6 +14,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { PsicologiaModule } from './psicologia/psicologia.module';
 import { PaginasErrorModule } from './paginas-error/paginaserror.module';
 import { LoginModule } from './login/login.module';
+import { StaticPageModule } from './static-page/static-page.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LoginModule } from './login/login.module';
     PsicologiaModule,
     PaginasErrorModule,
     LoginModule
+    StaticPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
