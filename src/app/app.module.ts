@@ -12,6 +12,8 @@ import { ReunionesModule } from './reuniones/reuniones.module';
 import { SolicitudesModule } from './solicitudes/solicitudes.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { PsicologiaModule } from './psicologia/psicologia.module';
+import { PaginasErrorModule } from './paginas-error/paginaserror.module';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { PsicologiaModule } from './psicologia/psicologia.module';
     ReunionesModule,
     SolicitudesModule,
     UsuariosModule,
-    PsicologiaModule
+    PsicologiaModule,
+    PaginasErrorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
