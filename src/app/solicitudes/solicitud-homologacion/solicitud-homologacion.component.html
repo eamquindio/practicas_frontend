@@ -1,0 +1,318 @@
+<div class="container pt-5 pb-5">
+    <div class="card">
+        <div class="card-header bg-primary text-light font-weight-bold h5">
+            Solicitud de homologacion
+        </div>
+        <div class="card-body p-5 col-md-12">
+            <form [formGroup]="solicitudHomo" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Fecha</label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="fecha" type="date"
+                                [ngClass]="{ 'is-invalid': submited && f.fecha.errors }">
+                            <div *ngIf="submited && f.fecha.errors" class="invalid-feedback">
+                                <div *ngIf="f.fecha.errors.required">Debe ingresar la fecha de la solicitud de
+                                    homologacion</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <p class="text-right">Ciclo que solicita homologacion</p>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <select name="" id="" class="form-control" required>
+                                <option value="0">-Seleccione-</option>
+                                <option *ngFor="let ciclo of ciclo" value="ciclo.id">
+                                    {{ciclo.nombre}}
+                                </option>
+                            </select>
+                            <div *ngIf="(submited && f.ciclo.errors) || (sumited && f.ciclo.value === '')"
+                                class="invalid-feedback">
+                                <div *ngIf="f.ciclo.errors.required">Debe seleccionar un ciclo valido
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <p class="text-left">Programa Academico</p>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <select name="" id="" class="form-control" required>
+                                <option value="0">-Seleccione-</option>
+                                <option *ngFor="let programa of programas" value="programa.id">
+                                    {{programa.nombre}}
+                                </option>
+                            </select>
+                            <div *ngIf="(submited && f.programa.errors) || (sumited && f.programa.value === '')"
+                                class="invalid-feedback">
+                                <div *ngIf="f.programa.errors.required">Debe seleccionar un programa valido
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Nombre Estudiante</label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="nombreEstudiante" type="text"
+                                [ngClass]="{ 'is-invalid': submited && f.nombreEstudiante.errors }">
+                            <div *ngIf="submited && f.nombreEstudiante.errors" class="invalid-feedback">
+                                <div *ngIf="f.nombreEstudiante.errors.required">Debe ingresar el nombre estudiante
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <p class="text-left">Tipo ID</p>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <select name="" id="" class="form-control" required>
+                                <option value="0">-Seleccione-</option>
+                                <option *ngFor="let tipo of tipoId" value="tipo.id">
+                                    {{tipo.nombre}}
+                                </option>
+                            </select>
+                            <div *ngIf="(submited && f.tipo.errors) || (sumited && f.tipo.value === '')"
+                                class="invalid-feedback">
+                                <div *ngIf="f.tipo.errors.required">Debe seleccionar un tipo de identificacion
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Numero</label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="numero" type="tel"
+                                [ngClass]="{ 'is-invalid': submited && f.numero.errors }">
+                            <div *ngIf="submited && f.numero.errors" class="invalid-feedback">
+                                <div *ngIf="f.numero.errors.required">Debe ingresar el numero
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Codigo</label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="codigo" type="text"
+                                [ngClass]="{ 'is-invalid': submited && f.codigo.errors }">
+                            <div *ngIf="submited && f.codigo.errors" class="invalid-feedback">
+                                <div *ngIf="f.codigo.errors.required">Debe ingresar el codigo del estudiante
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="email" type="email"
+                                [ngClass]="{ 'is-invalid': submited && f.email.errors }">
+                            <div *ngIf="submited && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Debe ingresar el email del estudiante
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Telefono </label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="telefono" type="text"
+                                [ngClass]="{ 'is-invalid': submited && f.telefono.errors }">
+                            <div *ngIf="submited && f.telefono.errors" class="invalid-feedback">
+                                <div *ngIf="f.telefono.errors.required">Debe ingresar el telefono del estudiante
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Funciones desempeñadas del estudiante</label>
+                        </div>
+                        <div class="col-md-8 mb-4 ">
+                            <input class="form-control" formControlName="funciones" type="funciones"
+                                [ngClass]="{ 'is-invalid': submited && f.funciones.errors }">
+                            <div *ngIf="submited && f.funciones.errors" class="invalid-feedback">
+                                <div *ngIf="f.funciones.errors.required">Debe ingresar las funcionalidades del
+                                    estudiante
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Empresa</label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="empresa" type="empresa"
+                                [ngClass]="{ 'is-invalid': submited && f.empresa.errors }">
+                            <div *ngIf="submited && f.empresa.errors" class="invalid-feedback">
+                                <div *ngIf="f.empresa.errors.required">Debe ingresar el nombre de la empresa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Direccion </label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="direccion" type="text"
+                                [ngClass]="{ 'is-invalid': submited && f.direccion.errors }">
+                            <div *ngIf="submited && f.direccion.errors" class="invalid-feedback">
+                                <div *ngIf="f.direccion.errors.required">Debe ingresar la direccion de la empresa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <p>Departamento</p>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <select class="form-control" formControlName="departamento" (change)="cambiarCiudades()"
+                                [ngClass]="{ 'is-invalid': (submited && f.departamento.errors) || (sumited && f.departamento.value === '') }">
+                                <option value="">Seleccione un departamento</option>
+                                <option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
+                                    {{departamento.name}}</option>
+                            </select>
+                            <div *ngIf="(submited && f.departamento.errors) || (sumited && f.departamento.value === '')"
+                                class="invalid-feedback">
+                                <div *ngIf="f.departamento.errors.required">Debe seleccionar el departamento donde se
+                                    localiza la empresa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <p>Ciudad</p>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <select class="form-control" formControlName="ciudad"
+                                [ngClass]="{ 'is-invalid': (submited && f.ciudad.errors) || (sumited && f.ciudad.value === '') }">
+                                <option value="">Seleccione una ciudad</option>
+                                <option *ngFor="let ciudad of ciudades" value="{{ciudad.id}}">
+                                    {{ciudad.name}}</option>
+                            </select>
+                            <div *ngIf="(submited && f.ciudad.errors) || (sumited && f.ciudad.value === '')"
+                                class="invalid-feedback">
+                                <div *ngIf="f.ciudad.errors.required">Debe seleccionar la ciudad donde se localiza la
+                                    empresa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Telefono empresa </label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="telempresa" type="telempresa"
+                                [ngClass]="{ 'is-invalid': submited && f.telempresa.errors }">
+                            <div *ngIf="submited && f.telempresa.errors" class="invalid-feedback">
+                                <div *ngIf="f.telempresa.errors.required">Debe ingresar el telefono de la empresa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Jefe </label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="jefe" type="text"
+                                [ngClass]="{ 'is-invalid': submited && f.jefe.errors }">
+                            <div *ngIf="submited && f.jefe.errors" class="invalid-feedback">
+                                <div *ngIf="f.jefe.errors.required">Debe ingresar el nombre del jefe de la empresa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Cargo </label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="cargo" type="text"
+                                [ngClass]="{ 'is-invalid': submited && f.cargo.errors }">
+                            <div *ngIf="submited && f.cargo.errors" class="invalid-feedback">
+                                <div *ngIf="f.cargo.errors.required">Debe ingresar el telefono de la empresa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Email empresa </label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="emailempresa" type="text"
+                                [ngClass]="{ 'is-invalid': submited && f.emailempresa.errors }">
+                            <div *ngIf="submited && f.emailempresa.errors" class="invalid-feedback">
+                                <div *ngIf="f.emailempresa.errors.required">Debe ingresar el email de la empresa
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col row">
+                        <div class="col-md-4 col-form-label">
+                            <label>Telefono contacto</label>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <input class="form-control" formControlName="telcontacto"
+                                [ngClass]="{ 'is-invalid': submited && f.telcontacto.errors }">
+                            <div *ngIf="submited && f.telcontacto.errors" class="invalid-feedback">
+                                <div *ngIf="f.telcontacto.errors.required">Debe ingresar el telefono de contacto
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-success">Crear Solicitud</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
