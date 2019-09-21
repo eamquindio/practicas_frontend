@@ -1,0 +1,47 @@
+<div class="card">
+    <h5 class="card-header text-center">REPORTE DE CENSO DE ESTUDIANTES</h5>
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form>
+                        <div class="form-group row">
+                            <label for="facultadSelect" class="col-3 col-form-label">Facultad</label>
+                            <select class="custom-select col-9" id="facultadSelect">
+                                <option selected>Seleccione nombre de facultad</option>
+                                <option *ngFor = "let fac of facultad" value="fac.id">{{fac.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cicloSelect" class="col-3 col-form-label">Ciclo</label>
+                            <select class="custom-select col-9" id="cicloSelect">
+                                <option selected>Seleccione ciclo propedeutico</option>
+                                <option *ngFor = "let ci of ciclo" value="ci.id">{{ci.nombre}}</option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="form-group row">
+                            <label for="facultadSelect" class="col-3 col-form-label">Programa</label>
+                            <select class="custom-select col-9" id="facultadSelect">
+                                <option selected>Seleccione nombre de facultad</option>
+                                <option *ngFor = "let pro of programa" value="pro.id">{{pro.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cicloSelect" class="col-3 col-form-label">Semestre</label>
+                            <select class="custom-select col-9" id="cicloSelect">
+                                <option selected>Seleccione numero de semestre</option>
+                                <option *ngFor = "let sem of semestre" value="sem.id">{{sem.nombre}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a style="margin-left:450px; margin-right:450px; margin-bottom: 10px;" href="#" class="btn btn-primary">GENERAR REPORTE</a>
+</div>

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +11,7 @@ import { PracticasModule } from './practicas/practicas.module';
 import { ReunionesModule } from './reuniones/reuniones.module';
 import { SolicitudesModule } from './solicitudes/solicitudes.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { PsicologiaModule } from './psicologia/psicologia.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     PracticasModule,
     ReunionesModule,
     SolicitudesModule,
-    UsuariosModule
+    UsuariosModule,
+    PsicologiaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

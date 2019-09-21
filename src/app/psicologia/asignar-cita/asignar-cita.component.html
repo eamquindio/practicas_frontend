@@ -1,0 +1,72 @@
+<div class="modal fade" id="createAppointmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="title">ASIGNAR CITA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <h5 class="card-title text-center">¿Está seguro que desea cerrar la convocatoria?</h5> -->
+        <!-- <p class="card-text text-center">Programa</p>
+        <select class="custom-select">
+          <option selected>Seleccione..</option>
+          <option *ngFor="let pro of programa" value="pro.id">
+            {{pro.nombre}}
+          </option>
+        </select> -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Programa</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Seleccione un programa</option>
+            <option *ngFor="let pro of programa" value="pro.id">
+              {{pro.nombre}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Practica</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Seleccione una practica</option>
+            <option *ngFor="let pra of practica" value="pra.id">
+              {{pra.nombre}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Estudiante</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Seleccione un estudiante</option>
+            <option *ngFor="let estu of estudiante" value="estu.id">
+              {{estu.nombre}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Fecha</span>
+          </div>
+          <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Hora</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </div>
+      <div class="modal-footer align-self-center">
+        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
