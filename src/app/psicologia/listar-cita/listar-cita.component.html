@@ -12,44 +12,38 @@
               </div>
             </div>
   
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Hora</th>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Estudiante</th>
-                  <th scope="col">Programa</th>
-                  <th scope="col">Practica o convocatoria</th>
-                  <th scope="col">Estado</th>
+            <table class="table-bordered table">
+               <tr>
+                   <td>hora</td>
+                   <td>fecha</td>
+                   <td>esrtudiante</td>
+                   <td>programa</td>
+                   <td>praticaoconvocatoria</td>
+                   <td>estado</td>
+                   <td>opciones</td>
+
+               </tr>
+                
+
+                <tr *ngFor="let cita of citas">
+               
+                    <td>{{cita.hora}}</td>
+                    <td>{{cita.fecha}}</td>
+                    <td>{{cita.estudiante}}</td>
+                    <td>{{cita.programa}}</td>
+                    <td>{{cita.practicaoconvocatoria}}</td>
+                    <td>{{cita.estado}}</td>
+                
+
+                <td>
+              
+                 <button type="button" class="btn btn-secondary">editar</button>
+              
+                  
+                  </td>
+              
                 </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>10:00 </td>
-                  <td>22/09/2019</td>
-                  <td>Juan Perez</td>
-                  <td>Publicidad</td>
-                  <td>Practica 1</td>
-                  <td><a href="#">Editar</a></td>
-                </tr>
-                <tr>
-                  <td>12:00 </td>
-                  <td>22/09/2019</td>
-                  <td>Daniel Gonzales</td>
-                  <td>Ingenieria de software</td>
-                  <td>Practica 5</td>
-                  <td><a href="#">Editar</a></td>
-                </tr>
-                <tr>
-                  <td>11:00 </td>
-                  <td>25/09/2019</td>
-                  <td>Ivan Garcia</td>
-                  <td>Ingenieria industrial</td>
-                  <td>Practica 3</td>
-                  <td><a href="#">Editar</a></td>
-                </tr>
-              </tbody>
-            </table>
+              </table>
           </div>
         </div>
       </div>
