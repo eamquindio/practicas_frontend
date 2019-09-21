@@ -34,7 +34,7 @@ import { StaticPageModule } from './static-page/static-page.module';
     UsuariosModule,
     PsicologiaModule,
     PaginasErrorModule,
-    LoginModule
+    LoginModule,
     StaticPageModule
   ],
   providers: [],
