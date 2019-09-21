@@ -13,7 +13,7 @@ import { SolicitudesModule } from './solicitudes/solicitudes.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { PsicologiaModule } from './psicologia/psicologia.module';
 import { PaginasErrorModule } from './paginas-error/paginaserror.module';
-
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { PaginasErrorModule } from './paginas-error/paginaserror.module';
     SolicitudesModule,
     UsuariosModule,
     PsicologiaModule,
-    PaginasErrorModule
+    PaginasErrorModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
