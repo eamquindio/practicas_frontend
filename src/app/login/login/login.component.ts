@@ -8,6 +8,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  
+  imgProfile: string;
+  imgBody: string;
+  login: FormGroup;
   regex = '^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$';
   createFormGroup() {
     return new FormGroup({
@@ -15,10 +19,6 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.required)
     });
   }
-
-  imgProfile: string;
-  imgBody: string;
-  login: FormGroup;
 
   constructor() {
     this.imgProfile = './../../../assets/imgs/studentLogin.jpg';
