@@ -9,6 +9,7 @@ import { ConvocatoriasModificarComponent } from 'src/app/convocatorias/convocato
 import { CerrarConvocatoriaComponent } from './convocatorias/cerrar-convocatoria/cerrar-convocatoria.component';
 import { SolicitudEmpRegistrarComponent } from './solicitudes/solicitud-emp-registrar/solicitud-emp-registrar.component';
 import { ReporteCensoComponent } from './practicas/reporte-censo/reporte-censo.component';
+import { AsignarCitaComponent } from './psicologia/asignar-cita/asignar-cita.component';
 
 const routes: Routes = [
   { path: 'inscripcion', component: ConvocatoriasInscripcionComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'convocatoria/cierre', component: CerrarConvocatoriaComponent },
   { path: 'convocatoria', component: ConvocatoriasRegistrarComponent },
   { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent},
-  { path: 'reporte-censo', component: ReporteCensoComponent }
+  { path: 'reporte-censo', component: ReporteCensoComponent },
+  { path: 'psicologia/citas/asignar', component: AsignarCitaComponent}
 ];
 
 @NgModule({
