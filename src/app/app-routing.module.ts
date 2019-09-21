@@ -13,8 +13,10 @@ import { AsignarCitaComponent } from './psicologia/asignar-cita/asignar-cita.com
 import { Error403ForbiddenComponent } from './paginas-error/error403-forbidden/error403-forbidden.component';
 import { Error404NotFoundComponent } from './paginas-error/error404-not-found/error404-not-found.component';
 import { Error500InternalServerComponent } from './paginas-error/error500-internal-server/error500-internal-server.component';
+import { LoginComponent } from "./login/login/login.component";
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'inscripcion', component: ConvocatoriasInscripcionComponent },
   { path: 'solicitud/estudiante', component: SolicitudEstudianteComponent },
   { path: 'modificar', component: ConvocatoriasModificarComponent },
@@ -25,7 +27,6 @@ const routes: Routes = [
   { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent},
   { path: 'reporte-censo', component: ReporteCensoComponent },
   { path: 'psicologia/citas/asignar', component: AsignarCitaComponent},
-
   { path: 'forbidden', component: Error403ForbiddenComponent},
   { path: 'not_found', component: Error404NotFoundComponent},
   { path: 'internal_server', component: Error500InternalServerComponent}

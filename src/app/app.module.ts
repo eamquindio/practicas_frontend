@@ -11,9 +11,13 @@ import { PracticasModule } from './practicas/practicas.module';
 import { ReunionesModule } from './reuniones/reuniones.module';
 import { SolicitudesModule } from './solicitudes/solicitudes.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+<<<<<<< HEAD
 import { PsicologiaModule } from './psicologia/psicologia.module';
 import { PaginasErrorModule } from './paginas-error/paginaserror.module';
 
+=======
+import { LoginModule } from "./login/login.module";
+>>>>>>> [resolve #26] view login
 
 @NgModule({
   declarations: [
@@ -31,8 +35,12 @@ import { PaginasErrorModule } from './paginas-error/paginaserror.module';
     ReunionesModule,
     SolicitudesModule,
     UsuariosModule,
+<<<<<<< HEAD
     PsicologiaModule,
     PaginasErrorModule
+=======
+    LoginModule
+>>>>>>> [resolve #26] view login
   ],
   providers: [],
   bootstrap: [AppComponent]

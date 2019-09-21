@@ -14,8 +14,10 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
   campoFechaFin: boolean;
   campoDescripcion: boolean;
   campoNumero: boolean;
+  campoTitulo: boolean;
   createFormGroup() {
     return new FormGroup({
+      titulo: new FormControl('', Validators.required),
       fechaInicio: new FormControl('', Validators.required),
       fechaFin: new FormControl('', Validators.required),
       numeroEstudiantes: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
@@ -32,6 +34,7 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
     this.campoFechaFin = false;
     this.campoDescripcion = false;
     this.campoNumero = false;
+    this.campoTitulo = false;
   }
 
   ngOnInit() {
@@ -58,6 +61,9 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
       if (this.convocatoriaForm.get('numeroEstudiantes').invalid) {
         this.campoNumero = true;
       }
+      if (this.convocatoriaForm.get('titulo').invalid) {
+        this.campoTitulo = true;
+      }
 
     }
   }
@@ -79,6 +85,9 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
         break;
       case 'numero':
         this.campoNumero = false;
+        break;
+      case 'titulo':
+        this.campoTitulo = false;
         break;
     }
   }
