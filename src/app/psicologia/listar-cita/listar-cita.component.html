@@ -1,0 +1,59 @@
+<div class="card">
+    <h5 class="card-header text-center">CITAS</h5>
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Buscar por letra" aria-label="Buscar por letra"
+                aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+              </div>
+            </div>
+  
+            <table class="table-bordered table">
+               <tr>
+                   <td>hora</td>
+                   <td>fecha</td>
+                   <td>esrtudiante</td>
+                   <td>programa</td>
+                   <td>praticaoconvocatoria</td>
+                   <td>estado</td>
+                   <td>opciones</td>
+
+               </tr>
+                
+
+                <tr *ngFor="let cita of citas">
+               
+                    <td>{{cita.hora}}</td>
+                    <td>{{cita.fecha}}</td>
+                    <td>{{cita.estudiante}}</td>
+                    <td>{{cita.programa}}</td>
+                    <td>{{cita.practicaoconvocatoria}}</td>
+                    <td>{{cita.estado}}</td>
+                
+
+                <td>
+              
+                 <button type="button" class="btn btn-secondary">editar</button>
+              
+                  
+                  </td>
+              
+                </tr>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="place-content: center;">
+      <div class="btn-group mr-2 " role="group" aria-label="First group">
+        <button type="button" class="btn btn-secondary">1</button>
+        <button type="button" class="btn btn-secondary">2</button>
+        <button type="button" class="btn btn-secondary">3</button>
+        <button type="button" class="btn btn-secondary">4</button>
+      </div>
+    </div>
+  </div>
