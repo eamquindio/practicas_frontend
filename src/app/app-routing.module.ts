@@ -16,6 +16,7 @@ import { Error500InternalServerComponent } from './paginas-error/error500-intern
 import { LoginComponent } from './login/login/login.component';
 import { SolicitudHomologacionComponent } from './solicitudes/solicitud-homologacion/solicitud-homologacion.component';
 import { ListarCitaComponent } from './psicologia/listar-cita/listar-cita.component';
+import { RestablecerContraseniaComponent } from './usuarios/restablecer-contrasenia/restablecer-contrasenia.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -34,7 +35,10 @@ const routes: Routes = [
   { path: 'internal_server', component: Error500InternalServerComponent},
   { path: 'solicitud/homologacion', component: SolicitudHomologacionComponent},
   { path: 'internal_server', component: Error500InternalServerComponent},
-  { path: 'listar-citas', component: ListarCitaComponent }
+  { path: 'listar-citas', component: ListarCitaComponent },
+  { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent },
+  { path: 'reporte-censo', component: ReporteCensoComponent },
+  { path: 'restablecer-contrasenia', component: RestablecerContraseniaComponent },
 ];
 
 @NgModule({
