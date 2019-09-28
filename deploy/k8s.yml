@@ -1,15 +1,14 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: frontendpasantias
 spec:
   selector:
     app: frontendpasantias
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 3000
-  type: ClusterIP
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
