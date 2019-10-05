@@ -22,6 +22,8 @@ import { EvaluacionComponent } from './practicas/evaluacion/evaluacion.component
 import { SeguimientosComponent } from './practicas/seguimientos/seguimientos.component';
 import { CrearSeguimientoComponent } from './practicas/seguimientos/crear-seguimiento/crear-seguimiento.component';
 
+import { ListarSeguimientoComponent} from './practicas/listar-seguimiento/listar-seguimiento.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'inscripcion', component: ConvocatoriasInscripcionComponent },
@@ -42,6 +44,7 @@ const routes: Routes = [
   { path: 'listar-citas', component: ListarCitaComponent },
   { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent },
   { path: 'reporte-censo', component: ReporteCensoComponent },
+  { path: 'listar/seguimiento', component: ListarSeguimientoComponent},
   { path: 'restablecer-contrasenia', component: RestablecerContraseniaComponent },
   { path: 'autoevaluacion', component: AutoevaluacionComponent},
   { path: 'evaluacion', component: EvaluacionComponent},
