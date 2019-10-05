@@ -1,14 +1,15 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
   name: frontendpasantias
 spec:
   selector:
     app: frontendpasantias
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
