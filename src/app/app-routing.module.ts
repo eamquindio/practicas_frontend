@@ -21,6 +21,7 @@ import { AutoevaluacionComponent } from './practicas/autoevaluacion/autoevaluaci
 import { EvaluacionComponent } from './practicas/evaluacion/evaluacion.component';
 import { SeguimientosComponent } from './practicas/seguimientos/seguimientos.component';
 import { CrearSeguimientoComponent } from './practicas/seguimientos/crear-seguimiento/crear-seguimiento.component';
+import { ListarSeguimientoComponent } from './practicas/listar-seguimiento/listar-seguimiento.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -46,7 +47,8 @@ const routes: Routes = [
   { path: 'autoevaluacion', component: AutoevaluacionComponent},
   { path: 'evaluacion', component: EvaluacionComponent},
   { path: 'seguimiento', component: SeguimientosComponent },
-  { path: 'crear-seguimiento', component: CrearSeguimientoComponent }
+  { path: 'crear-seguimiento', component: CrearSeguimientoComponent },
+  { path: 'listar/seguimiento', component: ListarSeguimientoComponent }
 
 ];
 

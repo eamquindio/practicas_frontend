@@ -11,11 +11,12 @@ import { NoPracticaComponent } from './inicio-practica/no-practica/no-practica.c
 import { SolicitudComponent } from './inicio-practica/solicitud/solicitud.component';
 import { CrearSeguimientoComponent } from '../practicas/seguimientos/crear-seguimiento/crear-seguimiento.component';
 import { SeguimientosComponent } from '../practicas/seguimientos/seguimientos.component';
+import { ListarSeguimientoComponent } from './listar-seguimiento/listar-seguimiento.component';
 
 
 @NgModule({
   declarations: [InicioPracticaComponent, ReporteCensoComponent, AutoevaluacionComponent, EvaluacionComponent
-   , ConvocatoriaComponent, FiltrarCedulaPipe, SeguimientosComponent, CrearSeguimientoComponent, NoPracticaComponent, SolicitudComponent],
+   , ConvocatoriaComponent, FiltrarCedulaPipe, SeguimientosComponent, CrearSeguimientoComponent, NoPracticaComponent, SolicitudComponent, ListarSeguimientoComponent],
   imports: [
     CommonModule,
     FormsModule

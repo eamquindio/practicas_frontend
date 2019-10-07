@@ -1,0 +1,112 @@
+<nav class="text-center navbar navbar-ligth bg-ligth">
+    <a class="navbar-brand ">
+      <img src="../assets/imgs/LOGO-EAM-1.png" width="125" height="63" alt="">
+    </a>
+    <div class="form-inline">
+      <label for="">Usuario:</label>
+      <span class="ml-4">Docente de apoyo</span>
+      <label for="" class="ml-4">Codigo:</label>
+      <span class="ml-4">234565334</span>
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger ml-4" data-toggle="modal" data-target="#exampleModal">Cerrar
+          sesion</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cerrar sesion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ¿Desea cerrar sesion?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </nav>
+  
+  <div class="form-inline col-md-12 p-5">
+    <div class="dropdown text-center col-md-6">
+      <select class="form-control">
+        <option>Seleccione una opcion</option>
+        <option *ngFor="let car of carrera" value="car.id">{{car.nombre}}</option>
+      </select>
+    </div>
+  
+    <div class=" dropdown text-center col-md-5">
+      <label class="inputAddress"></label>
+    </div>
+  
+    <div class=" dropdown text-center col-md-6">
+      <select class="form-control">
+        <option>Seleccione una opcion</option>
+        <option *ngFor="let ci of ciclo" value="ci.id">{{ci.nombre}}</option>
+      </select>
+    </div>
+  
+  </div>
+  
+  <div class="col-lg-12">
+    <div class="table-responsive">
+      <table class="table table-sm table-hover ">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Estudiante</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Programa</th>
+            <th scope="col">ciclo</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Fecha inicio</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let titulos of [1,1,1,1,1,1,1] let i = index ">
+            <th> {{i + 1}}</th>
+            <td>Mauricio Ruiz</td>
+            <td>2320151015</td>
+            <td>Ingenieria de software</td>
+            <td>professional</td>
+            <td>Parquesoft</td>
+            <td>8/02/2019</td>
+            <td>En proceso</td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-primary ">Ver seguimiento</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Convocatoria</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+    <div class="col-md-12 text-center">
+      <button type="button" class="btn btn-outline-success">Crear seguimiento</button>
+    </div>
+  </div>
+  
