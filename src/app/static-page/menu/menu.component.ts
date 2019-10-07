@@ -53,7 +53,6 @@ export class MenuComponent implements OnInit {
         title: 'listar seguimiento',
         route: 'listar/seguimiento'
       }
-    
     ];
   }
 
