@@ -5,12 +5,15 @@ import { ReporteCensoComponent } from './reporte-censo/reporte-censo.component';
 import { FormsModule } from '@angular/forms';
 import { AutoevaluacionComponent } from './autoevaluacion/autoevaluacion.component';
 import { EvaluacionComponent } from './evaluacion/evaluacion.component';
-
-
+import { ConvocatoriaComponent } from './inicio-practica/convocatoria/convocatoria.component';
+import { FiltrarCedulaPipe } from '../pipes/filtrar-cedula.pipe';
+import { NoPracticaComponent } from './inicio-practica/no-practica/no-practica.component';
+import { SolicitudComponent } from './inicio-practica/solicitud/solicitud.component';
 
 
 @NgModule({
-  declarations: [InicioPracticaComponent, ReporteCensoComponent, AutoevaluacionComponent, EvaluacionComponent],
+  declarations: [InicioPracticaComponent, ReporteCensoComponent, AutoevaluacionComponent, EvaluacionComponent
+   , ConvocatoriaComponent, FiltrarCedulaPipe, NoPracticaComponent, SolicitudComponent],
   imports: [
     CommonModule,
     FormsModule

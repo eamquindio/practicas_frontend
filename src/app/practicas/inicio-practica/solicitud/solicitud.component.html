@@ -1,0 +1,68 @@
+<div class="card ">
+    <div class="container">
+        <form (ngSubmit)="registerPractice(formNew)" #formNew="ngForm" class="p-3">
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Solicitud:</label>
+                <div class="col-sm-10">
+                    <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="practice.cycle" class="custom-select">
+                        <option selected>Seleccione...</option>
+                        <option *ngFor="let request of requests">
+                            {{request.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Encargado: </label><br>
+                    <label> {{ practice.representative}}</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Empresa: </label>
+                    <br>
+                    <label> {{ practice.nit}}</label>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label>Tipo Practica: </label>
+                    <br>
+                    <label> {{ practice.typepra}}</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Ciclo: </label>
+                    <br>
+                    <label> {{ student.cicle}}</label>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label>Nombre: </label>
+                    <br>
+                    <label> {{ student.name}}</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Telefono: </label>
+                    <br>
+                    <label> {{ student.phone}}</label>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group col-md-12">
+                    <label>Cedula: </label>
+                    <br>
+                    <label> {{ student.identifier}}</label>
+                </div>
+            </div>
+            <button type="submit" id="registrar" class="btn btn-outline-primary">Registrar
+                inicio
+                practica</button>
+            <button type="submit" id="cancelar" class="btn btn-outline-danger">Cancelar</button>
+
+        </form>
+    </div>
+</div>
