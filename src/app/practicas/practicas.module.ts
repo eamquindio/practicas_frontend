@@ -16,7 +16,7 @@ import { ListarSeguimientoComponent } from './listar-seguimiento/listar-seguimie
 
 @NgModule({
   declarations: [InicioPracticaComponent, ReporteCensoComponent, AutoevaluacionComponent, EvaluacionComponent
-   , ConvocatoriaComponent, FiltrarCedulaPipe, SeguimientosComponent, CrearSeguimientoComponent, 
+   , ConvocatoriaComponent, FiltrarCedulaPipe, SeguimientosComponent, CrearSeguimientoComponent,
    NoPracticaComponent, SolicitudComponent, ListarSeguimientoComponent],
   imports: [
     CommonModule,
