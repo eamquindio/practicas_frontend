@@ -46,15 +46,17 @@ export class MenuComponent implements OnInit {
         route: 'solicitud/empresa'
       },
       {
-<<<<<<< 4b3c89df8b56fa96e9e4c12e289313559545f247
         title: 'Seguimiento estudiante',
         route: 'seguimiento'
-=======
+
+      },  
+      {
         title: 'Listar seguimiento',
         route: 'listar/seguimiento'
 
->>>>>>> Frontend listar seguimiento
       }
+       
+      
     ];
   }
 
