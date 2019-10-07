@@ -1,0 +1,245 @@
+<div class="container p-3">
+
+    <form action="">
+        <div class="row">
+            <div class="col-md-12 text-center p-4">
+                <span>FORMULARIO DE EVALUACIÓN</span>
+            </div>
+            <div class="col-md-6">
+                <div class="from-group row">
+                    <label for="" class="col-md-4 col-form-label">Fecha</label>
+                    <div class="col-md-8 mb-4">
+                        <input type="date" name="" id="" class="form-control" required>
+                    </div>
+
+                    <label for="" class="col-md-4 col-form-label">Programa academico</label>
+                    <div class="col-md-8 mb-4">
+                        <select name="" id="programa" class="form-control" required>
+                            <option value="0">-Seleccione-</option>
+                            <option *ngFor="let seleccion of facultadSelect" value="{{seleccion.id}}">
+                                {{seleccion.nombre}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <label for="" class="col-md-4 col-form-label">Empresa</label>
+                    <div class="col-md-8 mb-4">
+                        <select class="form-control" required>
+                            <option value="0">-Seleccione-</option>
+                            <option *ngFor="let emp of empresa" value="emp.id">
+                                {{emp.nombre}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <label for="" class="col-md-4 col-form-label">Telefono</label>
+                    <div class="col-md-8 mb-4">
+                        <input type="text" name="" id="" min="0" required>
+                    </div>
+
+                    <label for="" class="col-md-4 col-form-label">Evaluador</label>
+                    <div class="col-md-8 mb-4">
+                        <input type="text" name="" id="" min="0" required>
+                    </div>
+
+                    <label for="" class="col-md-4 col-form-label">Facultad</label>
+                    <div class="col-md-8 mb-4">
+                        <select class="form-control" required (change)="cargarProg($event.target.value)">
+                            <option value="0">-Seleccione-</option>
+                            <option *ngFor="let facul of facultad" value="{{facul.id}}">
+                                {{facul.nombre}}
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <label for="" class="col-md-4 col-form-label">Ciclo</label>
+                    <div class="col-md-8 mb-4">
+                        <select name="" id="" class="form-control" required>
+                            <option value="0">-Seleccione-</option>
+                            <option *ngFor="let ciclo of ciclo" value="ciclo.id">
+                                {{ciclo.nombre}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="from-group row">
+                    <label for="" class="col-md-4 col-form-label">Practica nivel</label>
+                    <div class="radio p-2">
+                        <label><input type="radio" name="optradio">Tecnologo</label>
+                    </div>
+                    <div class="radio p-2">
+                        <label><input type="radio" name="optradio">Nivel profesional</label>
+                    </div>
+
+                    <label for="" class="col-md-3 col-form-label">Direccion</label>
+                    <div class="col-md-8 mb-4">
+                        <input type="text" name="" id="" min="0" required>
+                    </div>
+
+                    <label for="" class="col-md-3 col-form-label">E-mail</label>
+                    <div class="col-md-8 mb-4">
+                        <input type="text" name="" id="" min="0" required>
+                    </div>
+
+                    <label for="" class="col-md-3 col-form-label">Cargo</label>
+                    <div class="col-md-8 mb-4">
+                        <input type="text" name="" id="" min="0" required>
+                    </div>
+                    <label for="" class="col-md-4 col-form-label">Modalidad</label>
+                    <div class="col-md-6">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="">240 hrs</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="">Contrato aprendizaje</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="">Objetivo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <label class="col-md-12 text-center">Califique deacuerdo al desempeño del estudiante durante el desarrollo
+                de su
+                practica</label>
+            <!-- Table  -->
+            <table class="table table-bordered">
+                <!-- Table head -->
+                <thead>
+                    <tr>
+                        <th>
+                            <!-- Material unchecked -->
+                            <div class="text-center">
+                                <label for="">Aspectos a evaluar</label>
+                            </div>
+                        </th>
+                        <th>Exelente</th>
+                        <th>Bueno</th>
+                        <th>Aceptable</th>
+                        <th>Deficiente</th>
+                    </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <!-- Material unchecked -->
+                            <div class="text-center">
+                                <Label>Conocimiento</Label>
+                            </div>
+                        </th>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <!-- Material unchecked -->
+                            <div class="text-center">
+                                <label>Capacidades</label>
+                            </div>
+                        </th>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <!-- Material unchecked -->
+                            <div class="text-center">
+                                <label>Comportamiento</label>
+                            </div>
+                        </th>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <!-- Material unchecked -->
+                            <div class="text-center">
+                                <label>actitudes y aptitudes</label>
+                            </div>
+                        </th>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <!-- Material unchecked -->
+                            <div class="text-center">
+                                <label>Imagen</label>
+                            </div>
+                        </th>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                        <td><input type="checkbox" id="tableMaterialCheck3"></td>
+                    </tr>
+                </tbody>
+                <!-- Table body -->
+            </table>
+            <!-- Table  -->
+            <label class="col-md-12 text-center">¿Qué tan satisfecho quedo con el trabajo del practicante?</label>
+            <div class="col-md-12 text-center">
+                <div class="radio p-2">
+                    <label><input type="radio" name="optradio">Muy satisfecho</label>
+                </div>
+                <div class="radio p-2">
+                    <label><input type="radio" name="optradio">Satisfecho</label>
+                </div>
+                <div class="radio p-2">
+                    <label><input type="radio" name="optradio">Poco satisfecho</label>
+                </div>
+                <div class="radio p-2">
+                    <label><input type="radio" name="optradio">Nada satisfecho</label>
+                </div>
+                <label for="" class="col-md-4">¿Por qué?</label>
+                <div class="col-md-12 text-center">
+                    <textarea type="text" name="" class="col-md-12" required></textarea>
+                </div>
+            </div>
+
+            <label class="col-md-12 text-center">¿Hay posibilidad de vinculación laboral?</label>
+            <div class="col-md-12 form-inline text-center">
+                <div class="radio p-2 col-md-6">
+                    <label><input type="radio" name="optradio">Si</label>
+                </div>
+                <div class="radio p-2 col-md-5">
+                    <label><input type="radio" name="optradio">No</label>
+                </div>
+            </div>
+            <label class="col-md-12 text-center">Qué comentarios o sugerencias tiene</label>
+            <div class="col-md-12 text-center">
+                <textarea type="text" name="" class="col-md-12" required></textarea>
+            </div>
+
+            <div class="col-md-12 form-inline text-center" style="margin-top: 100px">
+                <div class="p-4 col-md-6">
+                    <input type="text" class="signature" />
+                    <label>Evaluador(Empresa)</label>
+                </div>
+                <div class="p-4 col-md-6">
+                    <input type="text" class="signature" />
+                    <label>Coordinador o Docente de practica</label>
+                </div>
+            </div>
+
+            <div class="col-md-12 text-center p-4">
+                <button type="submit" class="btn btn-success ml-4">Descargar</button>
+                <button type="reset" class="btn btn-danger ml-4 form-inline">Volver</button>
+            </div>
+        </div>
+    </form>

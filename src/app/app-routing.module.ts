@@ -18,6 +18,7 @@ import { SolicitudHomologacionComponent } from './solicitudes/solicitud-homologa
 import { ListarCitaComponent } from './psicologia/listar-cita/listar-cita.component';
 import { RestablecerContraseniaComponent } from './usuarios/restablecer-contrasenia/restablecer-contrasenia.component';
 import { AutoevaluacionComponent } from './practicas/autoevaluacion/autoevaluacion.component';
+import { EvaluacionComponent } from './practicas/evaluacion/evaluacion.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'reporte-censo', component: ReporteCensoComponent },
   { path: 'restablecer-contrasenia', component: RestablecerContraseniaComponent },
   { path: 'autoevaluacion', component: AutoevaluacionComponent},
+  { path: 'evaluacion', component: EvaluacionComponent}
 ];
 
 @NgModule({
