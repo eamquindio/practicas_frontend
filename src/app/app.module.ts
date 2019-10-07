@@ -18,7 +18,7 @@ import { StaticPageModule } from './static-page/static-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
