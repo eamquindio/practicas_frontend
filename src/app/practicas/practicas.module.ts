@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { InicioPracticaComponent } from './inicio-practica/inicio-practica.component';
 import { ReporteCensoComponent } from './reporte-censo/reporte-censo.component';
 import { FormsModule } from '@angular/forms';
-<<<<<<< 5a7fda1b06495a00578affe69797a99b13b2770e
 import { AutoevaluacionComponent } from './autoevaluacion/autoevaluacion.component';
 import { EvaluacionComponent } from './evaluacion/evaluacion.component';
+<<<<<<< 64bec677c1d6a4b4617751d5afc0b497756494ae
 <<<<<<< f34226cd65e3977ad8470acf2a2ff9473a7d781d
 import { ConvocatoriaComponent } from './inicio-practica/convocatoria/convocatoria.component';
 import { FiltrarCedulaPipe } from '../pipes/filtrar-cedula.pipe';
@@ -23,20 +23,26 @@ import { SeguimientosComponent } from '../practicas/seguimientos/seguimientos.co
    , ConvocatoriaComponent, FiltrarCedulaPipe, NoPracticaComponent, SolicitudComponent],
 =======
 =======
+=======
+>>>>>>> Conflictos resueltos
 import { ListarSeguimientoComponent } from './listar-seguimiento/listar-seguimiento.component';
->>>>>>> Frontend listar seguimiento
 
 
 
 
 @NgModule({
-<<<<<<< 5a7fda1b06495a00578affe69797a99b13b2770e
   declarations: [InicioPracticaComponent, ReporteCensoComponent, AutoevaluacionComponent, EvaluacionComponent],
+<<<<<<< 64bec677c1d6a4b4617751d5afc0b497756494ae
 =======
   declarations: [InicioPracticaComponent, ReporteCensoComponent, ListarSeguimientoComponent],
 >>>>>>> Frontend listar seguimiento
 >>>>>>> Frontend listar seguimiento
+<<<<<<< 204599a8cacdd1a32339d348eb87b33d91f84d7c
 >>>>>>> Frontend listar seguimiento
+=======
+=======
+>>>>>>> Conflictos resueltos
+>>>>>>> Conflictos resueltos
   imports: [
     CommonModule,
     FormsModule
