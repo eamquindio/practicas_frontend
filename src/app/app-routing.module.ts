@@ -44,7 +44,7 @@ const routes: Routes = [
   { path: 'reporte-censo', component: ReporteCensoComponent },
   { path: 'restablecer-contrasenia', component: RestablecerContraseniaComponent },
   { path: 'autoevaluacion', component: AutoevaluacionComponent},
-  { path: 'evaluacion', component: EvaluacionComponent}
+  { path: 'evaluacion', component: EvaluacionComponent},
   { path: 'seguimiento', component: SeguimientosComponent },
   { path: 'crear-seguimiento', component: CrearSeguimientoComponent }
 
