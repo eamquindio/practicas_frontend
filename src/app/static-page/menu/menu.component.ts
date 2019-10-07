@@ -48,18 +48,14 @@ export class MenuComponent implements OnInit {
       {
         title: 'Seguimiento estudiante',
         route: 'seguimiento'
-
       },  
       {
         title: 'Listar seguimiento',
         route: 'listar/seguimiento'
 
       }
-       
-      
     ];
   }
-
   ngOnInit() {
   }
 
