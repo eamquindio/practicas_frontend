@@ -9,11 +9,13 @@ import { ConvocatoriaComponent } from './inicio-practica/convocatoria/convocator
 import { FiltrarCedulaPipe } from '../pipes/filtrar-cedula.pipe';
 import { NoPracticaComponent } from './inicio-practica/no-practica/no-practica.component';
 import { SolicitudComponent } from './inicio-practica/solicitud/solicitud.component';
+import { CrearSeguimientoComponent } from '../practicas/seguimientos/crear-seguimiento/crear-seguimiento.component';
+import { SeguimientosComponent } from '../practicas/seguimientos/seguimientos.component';
 
 
 @NgModule({
   declarations: [InicioPracticaComponent, ReporteCensoComponent, AutoevaluacionComponent, EvaluacionComponent
-   , ConvocatoriaComponent, FiltrarCedulaPipe, NoPracticaComponent, SolicitudComponent],
+   , ConvocatoriaComponent, FiltrarCedulaPipe, SeguimientosComponent, CrearSeguimientoComponent, NoPracticaComponent, SolicitudComponent],
   imports: [
     CommonModule,
     FormsModule

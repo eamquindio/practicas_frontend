@@ -35,7 +35,7 @@ import { StaticPageModule } from './static-page/static-page.module';
     PsicologiaModule,
     PaginasErrorModule,
     LoginModule,
-    StaticPageModule
+    StaticPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
