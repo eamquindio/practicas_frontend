@@ -44,6 +44,10 @@ export class MenuComponent implements OnInit {
       {
         title: 'Solicitud de empresa',
         route: 'solicitud/empresa'
+      },
+      {
+        title: 'Seguimiento estudiante',
+        route: 'seguimiento'
       }
     ];
   }

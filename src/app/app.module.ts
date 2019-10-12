@@ -18,7 +18,7 @@ import { StaticPageModule } from './static-page/static-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +35,7 @@ import { StaticPageModule } from './static-page/static-page.module';
     PsicologiaModule,
     PaginasErrorModule,
     LoginModule,
-    StaticPageModule
+    StaticPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

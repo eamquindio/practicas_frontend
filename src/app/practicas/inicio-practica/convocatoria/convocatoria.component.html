@@ -1,0 +1,57 @@
+<div class="card ">
+    <div class="container">
+        <form (ngSubmit)="registerPractice(formNew)" #formNew="ngForm" class="p-3">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Convocatoria:</label>
+                <div class="col-sm-10">
+                    <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="practice.cycle" class="custom-select">
+                        <option selected>Seleccione...</option>
+                        <option *ngFor="let convocatory of convocatories">
+                            {{convocatory.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Cedula:</label>
+                <div class="col-sm-10">
+                    <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="filterIdentifier" type="text" class="form-control" id="inputAddress" placeholder="Ingrese cedula a buscar...">
+                </div>
+            </div>
+
+
+            <table class="table table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Ciclo</th>
+                        <th scope="col">Programa</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Seleccionado</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let student of students | filtrarCedula: filterIdentifier">
+                    <tr>
+                        <td>{{student.name}}</td>
+                        <td>{{student.cicle}}</td>
+                        <td>{{student.program}}</td>
+                        <td>{{student.identifier}}</td>
+                        <td>{{student.age}}</td>
+                        <td>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="submit" id="registrar" class="btn btn-outline-primary">Registrar
+                inicio
+                practica</button>
+            <button type="submit" id="cancelar" class="btn btn-outline-danger">Cancelar</button>
+
+        </form>
+    </div>
+</div>
