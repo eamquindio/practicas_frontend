@@ -8,25 +8,25 @@ import { Observable } from 'rxjs';
 })
 export class PeticionesService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
 
 
   get(url): Observable<any> {
-    return this.http.get(url,{ observe: 'response' });
+    return this.http.get(url, { observe: 'response' });
   }
 
 
   post(url, data): Observable<any> {
-    return this.http.post(url, data,{ observe: 'response' });
+    return this.http.post(url, data, { observe: 'response' });
   }
 
   put(url, data): Observable<any> {
-    return this.http.put(url, data,{ observe: 'response' });
+    return this.http.put(url, data, { observe: 'response' });
   }
 
-  delete(url) : Observable<any>{
-    return this.http.delete(url,{ observe: 'response' });
+  delete(url): Observable<any> {
+    return this.http.delete(url, { observe: 'response' });
   }
 }
