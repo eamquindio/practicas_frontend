@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,20 +13,19 @@ export class PeticionesService {
   }
 
 
-  get(url): Observable<any> {
-    return this.http.get(url, { observe: 'response' });
+  get(url:string, headers?:HttpHeaders): Observable<any> {
+    return this.http.get(url, { observe: 'response', headers: headers });
   }
 
-
-  post(url, data): Observable<any> {
-    return this.http.post(url, data, { observe: 'response' });
+  post(url:string, data:any, headers?:HttpHeaders): Observable<any> {
+    return this.http.post(url, data, { observe: 'response', headers: headers });
   }
 
-  put(url, data): Observable<any> {
-    return this.http.put(url, data, { observe: 'response' });
+  put(url:string, data:any, headers?:HttpHeaders): Observable<any> {
+    return this.http.put(url, data, { observe: 'response', headers: headers });
   }
 
-  delete(url): Observable<any> {
-    return this.http.delete(url, { observe: 'response' });
+  delete(url:string, headers?:HttpHeaders): Observable<any> {
+    return this.http.delete(url, { observe: 'response', headers: headers });
   }
 }
