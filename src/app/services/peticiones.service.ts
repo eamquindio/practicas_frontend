@@ -12,7 +12,6 @@ export class PeticionesService {
 
   }
 
-
   get(url: string, headers?: HttpHeaders): Observable<any> {
     return this.http.get(url, { observe: 'response', headers });
   }
