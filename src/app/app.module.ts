@@ -16,12 +16,15 @@ import { PaginasErrorModule } from './paginas-error/paginaserror.module';
 import { LoginModule } from './login/login.module';
 import { StaticPageModule } from './static-page/static-page.module';
 
+import { HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ConvocatoriasModule,
