@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  MICROSERVICE_URL: 'http://34.70.190.6:80/api/'
 };
 
 /*

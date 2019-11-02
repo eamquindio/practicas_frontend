@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeticionesService {
 
-  url = 'http://34.70.190.6/api/';
+  url = environment.MICROSERVICE_URL;
 
   constructor(private http: HttpClient) {
 
@@ -19,6 +20,7 @@ export class PeticionesService {
   }
 
   post(uri: string, data: any, headers?: HttpHeaders): Observable<any> {
+    console.log(this.url + uri);
     return this.http.post(this.url + uri, data, { observe: 'response', headers });
   }
 
