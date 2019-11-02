@@ -124,7 +124,7 @@ export class ConvocatoriasModificarComponent implements OnInit {
     }
   }
   addCategory(formNew: NgForm) {
-    this.peticiones.put('http://34.70.190.6/api/convocatoria/convocatorias/' + this.annoucement.id,
+    this.peticiones.put('convocatoria/convocatorias/' + this.annoucement.id,
     this.annoucement).subscribe(data => {
       console.log(data);
     });
