@@ -40,7 +40,7 @@ export class EvaluacionComponent implements OnInit {
       this.evaluation.vinculacion_laboral = 'false';
     }
 
-    this.peticion.post('http://34.70.190.6/api/evaluacion/evaluation',
+    this.peticion.post('evaluacion/evaluation',
       this.evaluation).subscribe(data => {
         this.limpiarCampos();
       });
