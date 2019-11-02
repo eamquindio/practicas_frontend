@@ -39,21 +39,19 @@ export class ConvocatoriasModificarComponent implements OnInit {
     numero_estudiantes: 0,
     id_coordinador: 0
   };
-  constructor(private peticiones: PeticionesService){
-
-  }
-  cargarObjeto():void{
-    this.annoucement.id=1;
-    this.annoucement.fecha_inicio= '';
-    this.annoucement.fecha_final= '';
-    this.annoucement.id_empresa= 0;
-    this.annoucement.tipo_practica='-Seleccione-';
-    this.annoucement.id_facultad= 0;
-    this.annoucement.id_programa= 0;
-    this.annoucement.id_ciclo= 0;
-    this.annoucement.estado= '-Seleccione-';
-    this.annoucement.numero_estudiantes= 0;
-    this.annoucement.id_coordinador= 0;
+  constructor(private peticiones: PeticionesService) {}
+  cargarObjeto(): void {
+    this.annoucement.id = 1;
+    this.annoucement.fecha_inicio = '';
+    this.annoucement.fecha_final = '';
+    this.annoucement.id_empresa = 0;
+    this.annoucement.tipo_practica = '-Seleccione-';
+    this.annoucement.id_facultad = 0;
+    this.annoucement.id_programa = 0;
+    this.annoucement.id_ciclo = 0;
+    this.annoucement.estado = '-Seleccione-';
+    this.annoucement.numero_estudiantes = 0;
+    this.annoucement.id_coordinador = 0;
   }
   ngOnInit() {
     this.cargar();
@@ -126,8 +124,8 @@ export class ConvocatoriasModificarComponent implements OnInit {
     }
   }
   addCategory(formNew: NgForm) {
-    this.peticiones.put('http://34.70.190.6/api/convocatoria/convocatorias/'+this.annoucement.id,
-    this.annoucement).subscribe(data=>{
+    this.peticiones.put('http://34.70.190.6/api/convocatoria/convocatorias/' + this.annoucement.id,
+    this.annoucement).subscribe(data => {
       console.log(data);
     });
     this.cargarObjeto();
