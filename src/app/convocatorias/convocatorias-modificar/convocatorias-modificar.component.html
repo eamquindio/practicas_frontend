@@ -35,7 +35,7 @@
 </nav>
 <div class="container p-3">
 
-  <form action="">
+  <form (ngSubmit)="addCategory(formNew)" #formNew="ngForm">
       <div class="row">
           <div class="col-md-12 text-center p-4">
             <span>MODIFICAR CONVOCATORIAS</span>
@@ -44,13 +44,13 @@
             <div class="from-group row">
                 <label for="" class="col-md-4 col-form-label">Fecha inicio</label>
                 <div class="col-md-8 mb-4">
-                    <input type="date" name="" id="" class="form-control" required>
+                    <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.fecha_inicio" type="date" name="" id="" class="form-control" required>
                 </div>
                 <label for="" class="col-md-4 col-form-label">Empresa</label>
                 <div class="col-md-8 mb-4">
-                  <select class="form-control" required > 
+                  <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.id_empresa" class="form-control" required > 
                     <option value="0">-Seleccione-</option>
-                    <option *ngFor="let emp of empresa" value="emp.id">
+                    <option *ngFor="let emp of empresa" value="{{emp.id}}">
                       {{emp.nombre}}
                     </option>
                   </select>
@@ -58,20 +58,28 @@
       
                 <label for="" class="col-md-4 col-form-label">Facultad</label>
                 <div class="col-md-8 mb-4">
-                    <select class="form-control" required (change)="cargarProg($event.target.value)"> 
+                    <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.id_facultad"  class="form-control" required (change)="cargarProg($event.target.value)"> 
                       <option value="0">-Seleccione-</option>
                       <option *ngFor="let facul of facultad" value="{{facul.id}}">
                         {{facul.nombre}}
                       </option>
                     </select>
                   </div>
-      
+                  <label for="" class="col-md-4 col-form-label">Estado</label>
+                <div class="col-md-8 mb-4">
+                    <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.estado" class="form-control" required (change)="cargarProg($event.target.value)"> 
+                      <option>-Seleccione-</option>
+                      <option *ngFor="let esta of estado" value="{{esta.nombre}}">
+                        {{esta.nombre}}
+                      </option>
+                    </select>
+                  </div>
       
                 <label for="" class="col-md-4 col-form-label">Ciclo</label>
                 <div class="col-md-8 mb-4">
-                  <select name="" id="" class="form-control" required>
+                  <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.id_ciclo" name="" id="" class="form-control" required>
                       <option value="0">-Seleccione-</option>
-                      <option *ngFor="let ciclo of ciclo" value="ciclo.id">
+                      <option *ngFor="let ciclo of ciclo" value="{{ciclo.id}}">
                         {{ciclo.nombre}}
                       </option>
                   </select>
@@ -83,12 +91,12 @@
             <div class="from-group row">
               <label for="" class="col-md-4 col-form-label">Fecha Fin</label>
               <div class="col-md-8 mb-4">
-                  <input type="date" name="" id="" class="form-control" required>
+                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.fecha_final" type="date" name="" id="" class="form-control" required>
               </div>
   
               <label for="" class="col-md-4 col-form-label">Programa</label>
             <div class="col-md-8 mb-4">
-              <select name="" id="programa" class="form-control" required>
+              <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.id_programa" name="" id="programa" class="form-control" required>
                   <option value="0">-Seleccione-</option>
                   <option *ngFor="let seleccion of facultadSelect" value="{{seleccion.id}}">
                     {{seleccion.nombre}}
@@ -98,17 +106,27 @@
   
             <label for="" class="col-md-4 col-form-label">Tipo practica</label>
             <div class="col-md-8 mb-4">
-              <select name="" id="" class="form-control" required>
-                  <option value="0">-Seleccione-</option>
-                  <option *ngFor="let tipo of tipoPractica" value="tipo.id">
+              <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.tipo_practica" name="" id="" class="form-control" required>
+                  <option>-Seleccione-</option>
+                  <option *ngFor="let tipo of tipoPractica" value="{{tipo.nombre}}">
                     {{tipo.nombre}}
                   </option>
               </select>
             </div>
-  
+            
+            <label for="" class="col-md-4 col-form-label">Cordinador</label>
+            <div class="col-md-8 mb-4">
+              <select [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.id_coordinador" name="" id="" class="form-control" required>
+                  <option value="0">-Seleccione-</option>
+                  <option *ngFor="let tipo of coordinador" value="{{tipo.id}}">
+                    {{tipo.nombre}}
+                  </option>
+              </select>
+            </div>
+
             <label for="" class="col-md-4 col-form-label">N° estudiantes</label>
             <div class="col-md-8 mb-4">
-              <input type="number" name="" id="" min="0" required>
+              <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.numero_estudiantes" type="number" name="" id="" min="0" required>
             </div>
           </div>
         </div>
