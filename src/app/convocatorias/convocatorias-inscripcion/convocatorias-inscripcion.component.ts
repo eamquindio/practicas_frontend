@@ -15,6 +15,7 @@ export class ConvocatoriasInscripcionComponent implements OnInit {
   };
 
   convocatoria: any = {
+    id: 0,
     fechaInicio: '13/Mayo/2013',
     empresa: 'Empresa 1',
     facultad: 'Ingenieria',
@@ -31,7 +32,20 @@ export class ConvocatoriasInscripcionComponent implements OnInit {
     const idConvocatory = this.activeRoute.snapshot.params.id;
     console.log(idConvocatory);
     this.httpService.get(`convocatorias/${idConvocatory}`).subscribe(
-      data => console.log(data)
+      data => {
+        console.log(data.body);
+        const body = data.body;
+
+        this.convocatoria.id = body.id;
+        this.convocatoria.fechaInicio = body.fecha_inicio;
+        this.convocatoria.empresa = body.id_empresa.business_name;
+        this.convocatoria.facultad = body.id_facultad.name;
+        this.convocatoria.ciclo = body.id_ciclo;
+        this.convocatoria.fechaFin = body.fecha_final;
+        this.convocatoria.programa = body.id_programa.name;
+        this.convocatoria.tipoPractica = body.tipo_practica;
+        this.convocatoria.numeroEstudiantes = body.numero_estudiantes;
+      }
     );
   }
 
