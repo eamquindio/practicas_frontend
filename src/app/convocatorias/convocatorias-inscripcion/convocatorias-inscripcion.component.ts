@@ -25,7 +25,7 @@ export class ConvocatoriasInscripcionComponent implements OnInit {
     numeroEstudiantes: '5',
   };
 
-  constructor(private activeRoute: ActivatedRoute,private httpService : PeticionesService) { }
+  constructor(private activeRoute: ActivatedRoute, private httpService: PeticionesService) { }
 
   ngOnInit() {
     const idConvocatory = this.activeRoute.snapshot.params.id;
