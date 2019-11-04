@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PeticionesService } from 'src/app/services/peticiones.service';
 
 @Component({
   selector: 'app-convocatorias-inscripcion',
@@ -23,9 +25,14 @@ export class ConvocatoriasInscripcionComponent implements OnInit {
     numeroEstudiantes: '5',
   };
 
-  constructor() { }
+  constructor(private activeRoute: ActivatedRoute, private httpService : PeticionesService) { }
 
   ngOnInit() {
+    let idConvocatory = this.activeRoute.snapshot.params.id;
+    console.log(idConvocatory);
+    this.httpService.get(`convocatorias/${idConvocatory}`).subscribe(
+      data => console.log(data)
+    )
   }
 
 }
