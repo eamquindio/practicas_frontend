@@ -31,7 +31,7 @@ export class ConvocatoriasInscripcionComponent implements OnInit {
   ngOnInit() {
     const idConvocatory = this.activeRoute.snapshot.params.id;
     console.log(idConvocatory);
-    this.httpService.get(`convocatorias/${idConvocatory}`).subscribe(
+    this.httpService.get(`pasantiaseam/convocatorias/${idConvocatory}`).subscribe(
       data => {
         console.log(data.body);
         const body = data.body;
