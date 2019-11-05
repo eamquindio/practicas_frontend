@@ -1,241 +1,160 @@
 <nav class="text-center navbar navbar-ligth bg-ligth">
-    <a class="navbar-brand ">
-        <img src="../assets/EAM.png" width="125" height="63" alt="">
-    </a>
-
-</nav>
-<form class="container">
-
-    <div class="row">
-        <div class="col-2">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="nombreEmpresa" class="col-2 col-form-label">Nombre de la empresa</label>
-        <div class="col-2">
-            <input type="text" class="form-control" id="nombreEmpresa">
-        </div>
-
-        <label for="nit" class="col-sm-1 col-form-label">Nit</label>
-        <div class="col-2">
-            <input type="text" class="form-control" id="nit">
-        </div>
-
-    </div>
-
-
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Sector</legend>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sector" id="Sector" value="comercial" checked>
-                    <label class="form-check-label" for="Sector">
-                        Comercial
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sector" id="Sector2" value="servicios">
-                    <label class="form-check-label" for="Sector2">
-                        Servicios
-                    </label>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Tipo Persona</legend>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="persona" id="tipoPerson" value="natural" checked>
-                    <label class="form-check-label" for="tipoPerson">
-                        Natural
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="persona" id="tipoPerson2" value="natural">
-                    <label class="form-check-label" for="tipoPerson2">
-                        Juridica
-                    </label>
-                </div>
-            </div>
-        </div>
-
-    </fieldset>
-
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Tipo Sociedad</legend>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="tipoSociedad" value="SA"
-                        checked>
-                    <label class="form-check-label" for="tipoSociedad">
-                        SA
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="tipoSociedad2" value="option2">
-                    <label class="form-check-label" for="tipoSociedad2">
-                        Responsabilidad Limitada
-                    </label>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-
-    <div class="form-group row">
-        <label for="nombreApeSolicitud" class="col-sm-2 col-form-label">Nombre y apellido representante legal</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="nombreApeSolicitud">
-        </div>
-
-        <label for="personSolicitud" class="col-sm-2 col-form-label">Persona que hace la solicitud</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="personSolicitud">
-        </div>
-
-        <label for="cargoSolicitud" class="col-sm-2 col-form-label">Cargo quien realiza solicitud</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="cargoSolicitud">
-        </div>
-
-        <label for="dirEmpresa" class="col-sm-2 col-form-label">Direccion de la empresa</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="dirEmpresa">
-        </div>
-
-        <label for="telefenoFijo" class="col-sm-2 col-form-label">Telefono Fijo</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="telefenoFijo">
-        </div>
-
-        <label for="telefenoCelular" class="col-sm-2 col-form-label">Celular</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="telefenoCelular">
-        </div>
-
-        
-      
-        
-
-        <label for="correo" class="col-sm-2 col-form-label">Correo</label>
-        <div class="col-sm-9">
-            <input type="email" class="form-control" id="telefenoCelular">
-        </div>
-
-        <label class="col-sm-2 col-form-label" for="validationTextarea">Descripcion del negocio</label>
-        <div class="col-sm-9">
-            <textarea class="form-control valid" id="validationTextarea" placeholder="Campo obligatorio"
+	<a class="navbar-brand ">
+		<img src="../assets/EAM.png" width="125" height="63" alt="">
+		</a>
+	</nav>
+	<form  (ngSubmit)="registerRequest(formNew)" #formNew="ngForm" >
+		<div class="row">
+			<div class="col-2"></div>
+		</div>
+		<div class="form-group">
+			<label for="nombreEmpresa" class="col-2 col-form-label">Nombre de la empresa</label>
+			<div class="col-2">
+				<input [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.c_name" 
+             type="text" class="form-control" id="nombreEmpresa">
+				</div>
+				<label for="nit" class="col-sm-1 col-form-label">Nit</label>
+				<div class="col-2">
+					<input [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.Nit" type="text" class="form-control"  id="nit">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col row">
+						<div class="col-2 align-self-center">
+							<label class="text-right">Sector</label>
+						</div>
+						<div class="col align-items-start">
+							<select  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.sector">
+								<option type="number" value={{sector.id}} *ngFor= "let sector of sectores">{{sector.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<fieldset class="form-group">
+					<div class="row">
+						<legend class="col-form-label col-sm-2 pt-0">Tipo Persona</legend>
+						<div class="col align-items-start"  >
+							<select  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.person_type">
+								<option  value=2 *ngFor= "let tipo_persona of tipos_persona">{{tipo_persona.name}}</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="form-group">
+					<div class="row">
+						<legend class="col-form-label col-sm-2 pt-0">Tipo Sociedad</legend>
+						<div class="col align-items-start">
+							<select  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.partnership">
+								<option  value="{{tipo_sociedad.id}}" *ngFor= "let tipo_sociedad of tipos_sociedad">{{tipo_sociedad.name}}</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-group row">
+					<label for="nombreApeSolicitud" class="col-sm-2 col-form-label">Nombre y apellido representante legal</label>
+					<div class="col-sm-9">
+						<input  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.r_legal" type="text" class="form-control" id="nombreApeSolicitud">
+						</div>
+						<label for="personSolicitud" class="col-sm-2 col-form-label">Persona que hace la solicitud</label>
+						<div class="col-sm-9">
+							<input  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.name_who_req" type="text" class="form-control" id="personSolicitud">
+							</div>
+							<label for="cargoSolicitud" class="col-sm-2 col-form-label">Cargo quien realiza solicitud</label>
+							<div class="col-sm-9">
+								<input  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.charge_request" type="text" class="form-control" id="cargoSolicitud">
+								</div>
+								<label for="dirEmpresa" class="col-sm-2 col-form-label">Direccion de la empresa</label>
+								<div class="col-sm-9">
+									<input  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.c_address" type="text" class="form-control" id="dirEmpresa">
+									</div>
+									<label for="telefenoFijo" class="col-sm-2 col-form-label">Telefono Fijo</label>
+									<div class="col-sm-9">
+										<input  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.c_phone" type="text" class="form-control" id="telefenoFijo">
+										</div>
+										<label for="telefenoCelular" class="col-sm-2 col-form-label">Celular</label>
+										<div class="col-sm-9">
+											<input  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.movil" type="text" class="form-control" id="telefenoCelular">
+											</div>
+											<label for="correo" class="col-sm-2 col-form-label">Correo</label>
+											<div class="col-sm-9">
+												<input [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.c_mail" type="email" class="form-control" id="telefenoCelular">
+												</div>
+												<label class="col-sm-2 col-form-label" for="validationTextarea">Descripcion del negocio</label>
+												<div class="col-sm-9">
+													<textarea [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.description" class="form-control valid" id="validationTextarea" placeholder="Campo obligatorio"
                 required></textarea>
-            
-        </div>
-
-        <label class="col-sm-2 col-form-label" for="requerimientoDelVacante">Requerimiento del vacante</label>
-        <div class="col-sm-9">
-            <textarea class="form-control valid" id="requerimientoDelVacante" placeholder="Campo obligatorio"
+												</div>
+												<label class="col-sm-2 col-form-label" for="requerimientoDelVacante">Requerimiento del vacante</label>
+												<div class="col-sm-9">
+													<textarea [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.requirements" class="form-control valid" id="requerimientoDelVacante" placeholder="Campo obligatorio"
                 required></textarea>
-           
-        </div>
-
-        <label class="col-sm-2 col-form-label" for="requerimientoDelVacante">Observaciones</label>
-        <div class="col-sm-9">
-            <textarea class="form-control valid" id="requerimientoDelVacante" placeholder="Campo obligatorio"
+												</div>
+												<label class="col-sm-2 col-form-label" for="requerimientoDelVacante">Observaciones</label>
+												<div class="col-sm-9">
+													<textarea [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.observations" class="form-control valid" id="requerimientoDelVacante" placeholder="Campo obligatorio"
                 required></textarea>
-         </div>
-         
-
-         <div class="row">
-                <label class="col-1" for="inputState">Programa Academico</label>
-                <select id="inputState" class=" form-control">
-                  <option class="col-7" selected>Programa Academico</option>
-                  <option>Ingenieria de software</option>
-                </select>
-              </div>
-
-         </div>
-
-    <fieldset class="form-group">
-            <div class="row">
-            <legend class="col-8">Nivel De formacion</legend>
-        </div>
-        <div class="row">
-                <input class="col-4" type="radio" name="nivelFormacion" id="nivelFormac"
-                     value="Tecnico" checked>
-                    <label class="col-2" for="tipoPractica">
-                     Tecnico
-                    </label>
-        </div>
-        
-        <div class="row">
-                    <input class="col-4" type="radio" name="nivelFormacion2" id="nivelFormac2"
-                        value="Tecnologo">
-                    <label class="col-2" for="tipoPractica2">
-                        Tecnologo
-                    </label>
-                </div>
-            
-       
-    </fieldset>
-    
-    
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-8">Tipo Practica</legend>
-        </div>
-            
-        <div class="row">
-            
-                    <input class="col-4" type="radio" name="practica" id="tipoPractica" value="Obejtivo"
-                        checked>
-                    <label class="col-4" for="tipoPractica">
-                        Por Objetivo
-                    </label>
-        </div>      
-        <div class="row">     
-                    <input class="col-4" type="radio" name="pracica" id="tipoPractica2"
-                        value="Pasante 24">
-                    <label class="col-4" for="tipoPractica2">
-                        Pasante 24 Horas
-                    </label>
-        </div>     
-        <div class="row">     
-                    <input class="col-4" type="radio" name="pracica" id="tipoPractica3"
-                        value="Contracto Aprendizaje">
-                    <label class="col-4" for="tipoPractica3">
-                        Contracto Aprendizaje
-                    </label>
-        </div>        
-                      
-    </fieldset>
-    <div class="row"> 
-              <label class="col-2 col-form-check-label" for="defaultCheck1">
+												</div>
+												<div class="row">
+													<label class="col-3" for="inputState">Programa Academico</label>
+													<div class="col align-items-start">
+														<select  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.programer_id">
+															<option  value="{{programa.id}}" *ngFor="let programa of programas">{{programa
+                                        .name}}</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<fieldset class="form-group">
+												<div class="row">
+													<legend class="col-8">Nivel De formacion</legend>
+													<div class="col align-items-start">
+														<select  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.level">
+															<option  value="{{level.id}}" *ngFor="let level of levels">{{level
+                                    .name}}</option>
+														</select>
+													</div>
+												</div>
+											</fieldset>
+											<fieldset class="form-group">
+												<div class="row">
+													<legend class="col-8">Tipo Practica</legend>
+													<div class="col align-items-start">
+														<div class="radio" *ngFor="let tipo_practica of tipos_practica">
+															<label>
+																<input type="radio" value="{{tipo_practica.id}}"
+                        [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.prac_ty_id">{{tipo_practica
+                            .name}}
+																</label>
+															</div>
+														</div>
+													</div>
+												</fieldset>
+												<div class="row">
+													<label class="col-2 col-form-check-label" for="defaultCheck1">
                    Convenio con la universidad
                     </label>
-                    <div class="col-4">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    </div>
-                </div> 
-
-                <div class="row">
-                        <label class="col-3" for="CiudadDepto">Ciudad-Departamento</label>
-                           <select id="CiudadDepto" class="col-6 form-control">
-                          <option  selected>Ciudad-Departamento</option>
-                          <option>Armenia-Quindio</option>
-                        </select>
-                      </div>  
-
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-2">
-        </div>
-    </div>
-</form>
+													<div class="col-4">
+														<label>
+															<input [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.agreement_u" type="checkbox" name="optradio">
+															</label>
+														</div>
+													</div>
+													<div class="row">
+														<label class="col-3" for="CiudadDepto">Ciudad-Departamento</label>
+														<select [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.city"
+                        class="form-control">
+															<option>Seleccione una opcion</option>
+															<option>Armenia - Quindío</option>
+															<option>Pereira - Risaralda</option>
+															<option>Calarcá - Quindío</option>
+														</select>
+													</div>
+													<div class="form-group row">
+														<div class="col-sm-10">
+															<button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-2"></div>
+													</div>
+												</form>
