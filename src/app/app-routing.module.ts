@@ -48,7 +48,9 @@ const routes: Routes = [
   { path: 'evaluacion', component: EvaluacionComponent},
   { path: 'seguimiento', component: SeguimientosComponent },
   { path: 'crear-seguimiento', component: CrearSeguimientoComponent },
-  { path: 'listar/seguimiento', component: ListarSeguimientoComponent }
+  { path: 'listar/seguimiento', component: ListarSeguimientoComponent },
+  { path: 'psicologia/asignar', component: AsignarCitaComponent}
+
 
 ];
 

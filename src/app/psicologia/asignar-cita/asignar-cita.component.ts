@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PeticionesService } from './../../services/peticiones.service';
+import { NgForm } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-asignar-cita',
@@ -7,28 +10,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsignarCitaComponent implements OnInit {
 
-  programa: any;
-  practica: any;
-  estudiante: any;
-  constructor() { }
+  appointment: any = {
+    idCita: '',
+    fechaHora: '2017-03-03',
+    psicologoCedula: '1234',
+    estudianteId: '',
+    estado: '',
+    titulo: '',
+    descripcion: ''
+  };
+
+  constructor(private peticion: PeticionesService) { }
+
+  limpiar() {
+    this.appointment.this.idCita = '';
+    this.appointment.this.fechaHora = '2017-03-03';
+    this.appointment.this.psicologoCedula = '';
+    this.appointment.this.estudianteId = '';
+    this.appointment.this.estado = '';
+    this.appointment.this.titulo = '';
+    this.appointment.this.descripcion = '';
+
+  }
 
   ngOnInit() {
-    this.programa = [
-      {id: 1, nombre : ' Ingenieria de software '},
-      {id: 2, nombre : ' Administracion de negocios '},
-      {id: 3, nombre : ' Administacion de empresas '},
-      {id: 4, nombre : ' Ingenieria industrial '},
-      {id: 5, nombre : ' Ingenieria mecatronica '},
-      {id: 6, nombre : ' Contaduria publica '},
-      {id: 7, nombre : ' Publicidad '},
-      {id: 8, nombre : ' Diseño visual digital '},
-    ];
-    this.practica = [
+   /* this.peticion.get('/list',
+    this.appointment.estudianteId).subscribe(data => {
+      console.log('EPA' + data);
+    });
+    console.log('OJO ' + this.appointment.estudianteId);
+    */
+  }
 
-    ];
-    this.estudiante = [
-
-    ];
+  addAppointment(formNew: NgForm) {
+    this.peticion.post('psicoogia/appointment/',
+      this.appointment).subscribe(data => {
+        console.log('la data del post' + data);
+      });
+    console.log(this.appointment);
   }
 
 }
+
