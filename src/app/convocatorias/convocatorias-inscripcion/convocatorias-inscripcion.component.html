@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="col-md-12 text-center p-4" id="botones-div">
-      <button type="button" class="btn btn-success ml-4 btn-lg" data-toggle="modal" data-target="#exampleModalCenter"> Inscribirse </button>
+      <button type="button" class="btn btn-success ml-4 btn-lg" data-toggle="modal" data-target="#exampleModalCenter" (click)="signUp();"> Inscribirse </button>
       <button (click)="cacelar()" class="btn btn-danger ml-4 form-inline btn-lg"> Cancelar </button>
     </div>
   </div>
@@ -87,7 +87,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Su inscripción en la convocatoria ha sido exitosa.
+        {{mensaje}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal"> ACEPTAR </button>

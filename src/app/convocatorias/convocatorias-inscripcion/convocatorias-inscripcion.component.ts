@@ -9,13 +9,16 @@ import { PeticionesService } from 'src/app/services/peticiones.service';
 })
 export class ConvocatoriasInscripcionComponent implements OnInit {
 
+  mensaje = '';
+
   estudiante: any = {
+    id: 2,
     nombre: 'Pedro Andres Ruiz Wartski',
     codigo: '2320162001',
   };
 
   convocatoria: any = {
-    id: 0,
+    id: 1,
     fechaInicio: '13/Mayo/2013',
     empresa: 'Empresa 1',
     facultad: 'Ingenieria',
@@ -31,7 +34,7 @@ export class ConvocatoriasInscripcionComponent implements OnInit {
   ngOnInit() {
     const idConvocatory = this.activeRoute.snapshot.params.id;
     console.log(idConvocatory);
-    this.httpService.get(`convocatorias/${idConvocatory}`).subscribe(
+    this.httpService.get(`/convocatorias/${idConvocatory}`).subscribe(
       data => {
         console.log(data.body);
         const body = data.body;
@@ -45,6 +48,20 @@ export class ConvocatoriasInscripcionComponent implements OnInit {
         this.convocatoria.programa = body.id_programa.name;
         this.convocatoria.tipoPractica = body.tipo_practica;
         this.convocatoria.numeroEstudiantes = body.numero_estudiantes;
+      }
+    );
+  }
+
+  signUp() {
+    this.httpService.post(`/convocatorias/${this.convocatoria.id}/signup/`, {
+      id_estudiante: this.estudiante.id
+    }).subscribe(
+      data => {
+        if (data.status === 200) {
+          this.mensaje = 'Se ha inscrito correctamente a la convocatoria';
+        } else {
+          this.mensaje = 'No se ha podido inscribir a la convocatoria';
+        }
       }
     );
   }
