@@ -17,7 +17,7 @@ export class EvaluacionComponent implements OnInit {
   ('', ['Access-Control-Allow-Origin', 'Content-Type', 'http://localhost:4200']);*/
 
   evaluation: any = {
-    id: 1,
+    id: 3,
     id_practica_estudiante: 2,
     vinculacion_laboral: '',
     nombre_evaluador: '',
@@ -40,14 +40,14 @@ export class EvaluacionComponent implements OnInit {
       this.evaluation.vinculacion_laboral = 'false';
     }
 
-    this.peticion.post('evaluacion/evaluation',
+    this.peticion.post('/evaluation',
       this.evaluation).subscribe(data => {
         this.limpiarCampos();
       });
   }
 
   limpiarCampos() {
-    this.evaluation.this.evaluation.id = 1;
+    this.evaluation.id = 3;
     this.evaluation.id_practica_estudiante = 2;
     this.evaluation.vinculacion_laboral = '';
     this.evaluation.nombre_evaluador = '';
