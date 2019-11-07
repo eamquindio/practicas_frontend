@@ -11,20 +11,20 @@ import { HttpHeaders } from '@angular/common/http';
 export class AsignarCitaComponent implements OnInit {
 
   appointment: any = {
-    idCita: '',
-    fechaHora: '2017-03-03',
-    psicologoCedula: '1234',
+    idCita: '4',
+    fechaHora: '',
+    psicologoCedula: '',
     estudianteId: '',
     estado: '',
     titulo: '',
     descripcion: ''
   };
-
+  data: any;
   constructor(private peticion: PeticionesService) { }
 
   limpiar() {
-    this.appointment.this.idCita = '';
-    this.appointment.this.fechaHora = '2017-03-03';
+    this.appointment.this.idCita = '4';
+    this.appointment.this.fechaHora = '';
     this.appointment.this.psicologoCedula = '';
     this.appointment.this.estudianteId = '';
     this.appointment.this.estado = '';
@@ -34,21 +34,15 @@ export class AsignarCitaComponent implements OnInit {
   }
 
   ngOnInit() {
-   /* this.peticion.get('/list',
-    this.appointment.estudianteId).subscribe(data => {
-      console.log('EPA' + data);
-    });
-    console.log('OJO ' + this.appointment.estudianteId);
-    */
+
   }
 
   addAppointment(formNew: NgForm) {
-    this.peticion.post('psicoogia/appointment/',
+    this.peticion.post('/psicologia/appointment/',
       this.appointment).subscribe(data => {
-        console.log('la data del post' + data);
+        console.log(data);
       });
     console.log(this.appointment);
   }
 
 }
-

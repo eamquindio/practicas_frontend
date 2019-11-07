@@ -1,62 +1,55 @@
-
-
 <form (ngSubmit)="addAppointment(formNew)" #formNew="ngForm">
-    <div class="row">
-      <div class="col-md-12 text-center ">
-        <span>Asignar cita</span>
-      </div>
-      <div class="col-md-6">
-        <div class="from-group row">
-          <label class="col-md-4 col-form-label">Id</label>
-          <div class="col-md-8 mb-4">
-            <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.idCita" type="text"
-              class="form-control" required>
-          </div>
-          <label class="col-md-4 col-form-label">Fecha</label>
-          <div class="col-md-8 mb-4">
-            <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.fechaHora" type="text"
-              class="form-control" required>
-          </div>
-          <label class="col-md-4 col-form-label">Psicologo</label>
-          <div class="col-md-8 mb-4">
-            <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.psicologoCedula" type="text"
-              class="form-control" required>
-  
-          </div>
-  
-          <label class="col-md-4 col-form-label">Estudiante</label>
-          <div class="col-md-8 mb-4">
-            <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.estudianteId" type="text"
-              class="form-control" required>
-  
-          </div>
-          <label class="col-md-4 col-form-label">Estado</label>
-          <div class="col-md-8 mb-4">
-            <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.estado" type="text"
-              class="form-control" required>
-  
-          </div>
-  
-          <label class="col-md-4 col-form-label">Titulo</label>
-          <div class="col-md-8 mb-4">
-            <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.titulo" type="text"
-              class="form-control" required>
-  
-          </div>
-                <label class="col-md-4 col-form-label">Descripcion</label>
-                <div class="col-md-8 mb-4">
-                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.descripcion" type="text"
-                    class="form-control" required>
-                </div>
-            
-        </div>
-  
-      </div>
-      
-      <div class="col-md-12 text-center p-4">
-        <button type="submit" class="btn btn-success ml-4">Guardar</button>
-        <button type="reset" class="btn btn-danger ml-4 form-inline">Cancelar</button>
-      </div>
+  <div class="row">
+    <div class="col-md-12 text-center ">
+      <span>Asignar cita</span>
     </div>
-  </form>
-  
+    <div class="col-md-6">
+      <div class="from-group row">
+
+        <label class="col-md-4 col-form-label">Fecha</label>
+        <div class="col-md-8 mb-4">
+          <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.fechaHora" type="text"
+            placeholder="Año-Mes-Dia" class="form-control" required>
+        </div>
+        <label class="col-md-4 col-form-label">Psicologo</label>
+        <div class="col-md-8 mb-4">
+          <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.psicologoCedula" type="text"
+            class="form-control" required>
+
+        </div>
+
+        <label class="col-md-4 col-form-label">Estudiante</label>
+        <div class="col-md-8 mb-4">
+          <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.estudianteId" type="text"
+            class="form-control" required>
+
+        </div>
+        <label class="col-md-4 col-form-label">Estado</label>
+        <div class="col-md-8 mb-4">
+          <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.estado" type="text"
+            class="form-control" required>
+
+        </div>
+
+        <label class="col-md-4 col-form-label">Titulo</label>
+        <div class="col-md-8 mb-4">
+          <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.titulo" type="text"
+            class="form-control">
+
+        </div>
+        <label class="col-md-4 col-form-label">Descripcion</label>
+        <div class="col-md-8 mb-4">
+          <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.descripcion" type="text"
+            class="form-control">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-12 text-center p-4">
+      <button type="submit" class="btn btn-success ml-4">Guardar</button>
+      <button type="reset" class="btn btn-danger ml-4 form-inline">Cancelar</button>
+    </div>
+  </div>
+</form>
