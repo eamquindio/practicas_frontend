@@ -38,6 +38,10 @@ export class MenuComponent implements OnInit {
         route: 'convocatoria'
       },
       {
+        title: 'Psicologia',
+        route: 'psicologia/asignar'
+      },
+      {
         title: 'Solicitud de empresa',
         route: 'solicitud/empresa'
       },
