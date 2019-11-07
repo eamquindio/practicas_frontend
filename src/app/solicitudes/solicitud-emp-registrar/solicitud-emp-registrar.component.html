@@ -35,7 +35,7 @@
 						<legend class="col-form-label col-sm-2 pt-0">Tipo Persona</legend>
 						<div class="col align-items-start"  >
 							<select  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.person_type">
-								<option  value=2 *ngFor= "let tipo_persona of tipos_persona">{{tipo_persona.name}}</option>
+								<option  value=2 *ngFor= "let tipo_persona of tiposPersona">{{tipo_persona.name}}</option>
 							</select>
 						</div>
 					</div>
@@ -45,7 +45,7 @@
 						<legend class="col-form-label col-sm-2 pt-0">Tipo Sociedad</legend>
 						<div class="col align-items-start">
 							<select  [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.partnership">
-								<option  value="{{tipo_sociedad.id}}" *ngFor= "let tipo_sociedad of tipos_sociedad">{{tipo_sociedad.name}}</option>
+								<option  value="{{tipo_sociedad.id}}" *ngFor= "let tipo_sociedad of tiposSociedad">{{tipo_sociedad.name}}</option>
 							</select>
 						</div>
 					</div>
@@ -119,7 +119,7 @@
 												<div class="row">
 													<legend class="col-8">Tipo Practica</legend>
 													<div class="col align-items-start">
-														<div class="radio" *ngFor="let tipo_practica of tipos_practica">
+														<div class="radio" *ngFor="let tipo_practica of tiposPractica">
 															<label>
 																<input type="radio" value="{{tipo_practica.id}}"
                         [ngModelOptions]="{ standalone: true }" [(ngModel)]="solicitudEmpresa.prac_ty_id">{{tipo_practica

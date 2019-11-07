@@ -10,7 +10,7 @@ import { PeticionesService } from '../../services/peticiones.service';
 export class SolicitudEmpRegistrarComponent implements OnInit {
 
   solicitudEmpresa: any = {
-    id: 2, // id
+    id: 8, // id
     c_name: '' ,  // nombre empresa
     Nit:  '' , // nit
     sector: ''  ,  // sector
@@ -27,14 +27,13 @@ export class SolicitudEmpRegistrarComponent implements OnInit {
     agreement_u:  '',  // conv
     programer_id:  0, // programa academico
     city:  '',   // ciudad
-    //  city_id:  ['', Validators.required],
     person_type:  '',
     movil:  '',
     description: '',
     requirements:  '',
     observations:  '',
     level:  '',
-    headarea: '',
+    head_area: '',
     chief_charge: '',
     society_ty_id: 0,
     city_id: 0,
@@ -141,16 +140,6 @@ export class SolicitudEmpRegistrarComponent implements OnInit {
         name: 'Contaduría pública'
       }
     ];
-    this.ciudadesDepartamento = [
-      {
-        id: 0,
-        name: 'Armenia - Quindio'
-      },
-      {
-        id: 1,
-        name: 'Pereira - Risaralda'
-      }
-    ];
    }
 
   ngOnInit() {
@@ -164,7 +153,12 @@ if (this.solicitudEmpresa.agreement_u) {
   this.solicitudEmpresa.agreement_u = 'no';
 }
 
-this.peticionesService.post('pasantias/solicitudes/request_company',
+this.solicitudEmpresa.programer_id = Number(this.solicitudEmpresa.programer_id);
+this.solicitudEmpresa.prac_ty_id = Number(this.solicitudEmpresa.prac_ty_id);
+this.solicitudEmpresa.req_sta_id = Number(this.solicitudEmpresa.req_sta_id);
+console.log(JSON.stringify(this.solicitudEmpresa));
+
+this.peticionesService.post('/solicitudes/request_company',
       this.solicitudEmpresa).subscribe(data => {
         console.log(data);
       });
