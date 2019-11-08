@@ -18,10 +18,6 @@ export class MenuComponent implements OnInit {
         route: 'convocatorias'
       },
       {
-        title: 'Inscripción a convocatoria',
-        route: 'inscripcion'
-      },
-      {
         title: 'Solicitud de estudiante',
         route: 'solicitud/estudiante'
       },
@@ -40,6 +36,10 @@ export class MenuComponent implements OnInit {
       {
         title: 'Convocatoria',
         route: 'convocatoria'
+      },
+      {
+        title: 'Psicologia',
+        route: 'psicologia/asignar'
       },
       {
         title: 'Solicitud de empresa',

@@ -25,7 +25,7 @@ import { ListarSeguimientoComponent } from './practicas/listar-seguimiento/lista
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'inscripcion', component: ConvocatoriasInscripcionComponent },
+  { path: 'convocatoria/:id/inscripcion', component: ConvocatoriasInscripcionComponent },
   { path: 'solicitud/estudiante', component: SolicitudEstudianteComponent },
   { path: 'modificar', component: ConvocatoriasModificarComponent },
   { path: 'practica/inicio', component: InicioPracticaComponent },
@@ -48,7 +48,9 @@ const routes: Routes = [
   { path: 'evaluacion', component: EvaluacionComponent},
   { path: 'seguimiento', component: SeguimientosComponent },
   { path: 'crear-seguimiento', component: CrearSeguimientoComponent },
-  { path: 'listar/seguimiento', component: ListarSeguimientoComponent }
+  { path: 'listar/seguimiento', component: ListarSeguimientoComponent },
+  { path: 'psicologia/asignar', component: AsignarCitaComponent}
+
 
 ];
 
