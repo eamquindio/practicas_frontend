@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Ciclo } from 'src/app/convocatorias/entity/ciclo';
 import { Programa } from 'src/app/convocatorias/entity/programa';
+import { PeticionesService } from 'src/app/services/peticiones.service';
 
 @Component({
   selector: 'app-solicitud-homologacion',
@@ -13,19 +14,20 @@ export class SolicitudHomologacionComponent implements OnInit {
   solicitudHomo: FormGroup;
   submited = false;
 
-  ciclo: Ciclo[];
-  programas: Programa[];
-  tipoIdentificacion: any[];
-  departamentos: any[];
-  ciudades: any[];
-  tipoId: any[];
+  cycle: Ciclo[];
+  programs: Programa[];
+  departments: any[];
+  cities: any[];
+  type_id: any[];
 
-  constructor(private formBuilder: FormBuilder) {
-    this.departamentos = [
+  constructor(private formBuilder: FormBuilder, private peticion: PeticionesService) {
+
+
+    this.departments = [
       {
         id: 0,
         name: 'Quindio',
-        ciudades: [
+        cities: [
           {
             id: 0,
             name: 'Armenia'
@@ -39,7 +41,7 @@ export class SolicitudHomologacionComponent implements OnInit {
       {
         id: 1,
         name: 'Huila',
-        ciudades: [
+        cities: [
           {
             id: 0,
             name: 'Neiva'
@@ -53,44 +55,98 @@ export class SolicitudHomologacionComponent implements OnInit {
     ];
   }
 
+  homologation: any = {
+      id: 1,
+      date: '',
+      cycle: 'Seleccion opcion',
+      programer_id: 'Seleccion opcion',
+      student_name: '',
+      type_id: 'Seleccion opcion',
+      number_id: '',
+      code: '',
+      email: '',
+      phone: '',
+      function_company: '',
+      company: '',
+      address: '',
+      department: 'Seleccion opcion',
+      city: 'Seleccion opcion',
+      company_phone: '',
+      boss_company: '',
+      position: '',
+      email_company: '',
+      phone_contact: '',
+  };
+
   ngOnInit() {
     this.cargar();
 
     this.solicitudHomo = this.formBuilder.group({
-      fecha: ['', Validators.required],
-      ciclo: ['', Validators.required],
-      programa: ['', Validators.required],
-      tipo: ['', Validators.required],
-      nombreEstudiante: ['', Validators.required],
-      numero: ['', Validators.required],
-      codigo: ['', Validators.required],
+      date: ['', Validators.required],
+      cycle: ['', Validators.required],
+      programer_id: ['', Validators.required],
+      type_id: ['', Validators.required],
+      student_name: ['', Validators.required],
+      number_id: ['', Validators.required],
+      code: ['', Validators.required],
       email: ['', Validators.required],
-      telefono: ['', Validators.required],
-      funciones: ['', Validators.required],
-      empresa: ['', Validators.required],
-      direccion: ['', Validators.required],
-      departamento: ['', Validators.required],
-      ciudad: ['', Validators.required],
-      telempresa: ['', Validators.required],
-      jefe: ['', Validators.required],
-      emailempresa: ['', Validators.required],
-      cargo: ['', Validators.required],
-      telcontacto: ['', Validators.required]
+      phone: ['', Validators.required],
+      function_company: ['', Validators.required],
+      company: ['', Validators.required],
+      address: ['', Validators.required],
+      department: ['', Validators.required],
+      city: ['', Validators.required],
+      company_phone: ['', Validators.required],
+      boss_company: ['', Validators.required],
+      email_company: ['', Validators.required],
+      position: ['', Validators.required],
+      phone_contact: ['', Validators.required]
     });
   }
+
+  registerHomologation(formNew: NgForm) {
+    this.peticion.post('homologation',
+      this.homologation).subscribe(data => {
+        this.limpiarCampos();
+      });
+  }
+
+  limpiarCampos() {
+    this.homologation.this.id = 1;
+    this.homologation.this.id.date = '';
+    this.homologation.this.id.cycle = 'Seleccion opcion';
+    this.homologation.this.id.programer_id = 'Seleccion opcion';
+    this.homologation.this.id.student_name = '';
+    this.homologation.this.id.type_id = 'Seleccion opcion';
+    this.homologation.this.id.number_id = '';
+    this.homologation.this.id.code = '';
+    this.homologation.this.id.email = '';
+    this.homologation.this.id.phone = '';
+    this.homologation.this.id.function_company = '';
+    this.homologation.this.id.company = '';
+    this.homologation.this.id.address = '';
+    this.homologation.this.id.department = 'Seleccion opcion';
+    this.homologation.this.id.city = 'Seleccion opcion';
+    this.homologation.this.id.company_phone = '';
+    this.homologation.this.id.boss_company = '';
+    this.homologation.this.id.position = '';
+    this.homologation.this.id.email_company = '';
+    this.homologation.this.id.phone_contact = '';
+  }
+
   cargar(): void {
 
-    this.ciclo = [
+    this.cycle = [
       {id: 1, nombre: 'Tecnico'},
       {id: 2, nombre: 'Tecnologo'}
     ];
 
-    this.tipoId = [
+    this.type_id = [
       {id: 1, nombre: 'C.C'},
       {id: 2, nombre: 'T.I'}
     ];
 
-    this.programas = [
+    this.programs = [
       {id: 1, nombre: 'Ingenieria de software'},
       {id: 2, nombre: 'Ingenieria industrial'},
       {id: 3, nombre: 'Ingenieria mecatronica'},
@@ -115,17 +171,18 @@ export class SolicitudHomologacionComponent implements OnInit {
     console.log(this.solicitudHomo.value);
   }
 
+
   get f() { return this.solicitudHomo.controls; }
 
   cambiarCiudades() {
-    if (this.solicitudHomo.get('departamento').value.length !== 0) {
-      this.departamentos.forEach(element => {
-        if ((element.id + '') === this.solicitudHomo.get('departamento').value) {
-          this.ciudades = element.ciudades;
+    if (this.solicitudHomo.get('department').value.length !== 0) {
+      this.departments.forEach(element => {
+        if ((element.id + '') === this.solicitudHomo.get('department').value) {
+          this.cities = element.cities;
         }
       });
     } else {
-      this.ciudades = [];
+      this.cities = [];
     }
   }
 }
