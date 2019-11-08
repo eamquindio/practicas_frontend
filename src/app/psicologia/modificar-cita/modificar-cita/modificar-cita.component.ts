@@ -17,7 +17,7 @@ export class ModificarCitaComponent implements OnInit {
     estado: '',
     titulo: '',
     descripcion: '',
-   
+
   };
   constructor(private peticiones: PeticionesService) {}
 
@@ -28,15 +28,15 @@ export class ModificarCitaComponent implements OnInit {
     this.appointment.estudianteId = '';
     this.appointment.estado = '';
     this.appointment.titulo = '';
-    
+
   }
   ngOnInit() {
-    
+
   }
 
-  
 
-  
+
+
   updateAppointment(formNew: NgForm) {
     console.log(JSON.stringify(this.appointment));
     this.peticiones.put('/appointment/',
