@@ -1,107 +1,110 @@
-
 <nav class="text-center navbar navbar-ligth bg-ligth">
-    <a class="navbar-brand ">
-        <img src="../assets/imgs/LOGO-EAM-1.png" width="125" height="63" alt="">
-    </a>
-    <div class="form-inline">
-            <label for="">Nombre:</label>
-            <span class="ml-4">Gabriela Ramirez Valencia</span>
-            <label for="" class="ml-4">Codigo:</label>
-            <span class="ml-4">2320142012</span>
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger ml-4" data-toggle="modal" data-target="#exampleModal">Cerrar sesion</button>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Cerrar sesion</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          ¿Desea cerrar sesion?
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+  <a class="navbar-brand ">
+    <img src="../assets/imgs/LOGO-EAM-1.png" width="125" height="63" alt="">
+  </a>
+  <div class="form-inline">
+    <label for="">Nombre:</label>
+    <span class="ml-4">Mauricio </span>
+    <label for="" class="ml-4">Codigo:</label>
+    <span class="ml-4">23207633</span>
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger ml-4" data-toggle="modal" data-target="#exampleModal">Cerrar
+        sesion</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cerrar sesion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            
+            <div class="modal-body">
+              ¿Desea cerrar sesion?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+  </div>
 </nav>
 
 <div class="form-inline col-md-12 p-5">
   <div class="dropdown text-center col-md-6">
     <select class="form-control">
       <option>-Seleccione-</option>
-        <option *ngFor = "let car of carrera" value="car.id">{{car.nombre}}</option>
+      <option *ngFor="let car of carrera" value="car.id">{{car.nombre}}</option>
     </select>
   </div>
 
   <div class="dropdown text-center col-md-6 ">
-      <select class="form-control">
-        <option>-Seleccione-</option>
-          <option *ngFor = "let ci of ciclo" value="ci.id">{{ci.nombre}}</option>
-      </select>
+    <select class="form-control">
+      <option>-Seleccione-</option>
+      <option *ngFor="let ci of ciclo" value="ci.id">{{ci.nombre}}</option>
+    </select>
   </div>
 </div>
 
 <div class="col-lg-12">
-    <div class="table-responsive">
-        <table class="table table-sm table-hover ">
-            <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Programa</th>
-                  <th scope="col">Tipo de practica</th>
-                  <th scope="col">Fecha inicio</th>
-                  <th scope="col">Fecha fin</th>
-                  <th scope="col">Ciclo</th>
-                  <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let titulos of [1,1,1,1,1,1,1] let i = index ">
-                  <th> {{i + 1}}</th>
-                  <td>Ingenieria de software</td>
-                  <td>Objetivos</td>
-                  <td>12/05/2019</td>
-                  <td>23/10/2019</td>
-                  <td>Profesional</td>
-                <td>
-                  <div class="btn-group">
-                      <button class="btn btn-primary ">Ver</button>
-                      <button type="button" class="btn btn-danger ml-2" data-toggle="modal" data-target="#exampleModal">Cerrar</button>
-                        
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Convocatoria</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                ¿Desea cerrar la convocatoria?
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+  <div class="table-responsive">
+    <table class="table table-sm table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Programa</th>
+          <th scope="col">Tipo de practica</th>
+          <th scope="col">Fecha inicio</th>
+          <th scope="col">Fecha fin</th>
+          <th scope="col">Ciclo</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let convo of convocatorys">
+          <th> {{convo.id}}</th>
+          <td>{{convo.fecha_inicio}}</td>
+          <td>{{convo.fecha_final}}</td>
+          <td>{{convo.id_empresa}}</td>
+          <td>{{convo.titulo}}</td>
+          <td>{{observaciones}}</td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-primary ">Ver</button>
+              <button type="button" class="btn btn-danger ml-2" data-toggle="modal"
+                data-target="#exampleModal">Cerrar</button>
+
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Convocatoria</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ¿Desea cerrar la convocatoria?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+                    </div>
                   </div>
-                </td>
-                </tr>
-            </tbody>
-        </table>
-                  
-    </div>
-    <div class="col-md-12 text-center">
-      <button type="button" class="btn btn-outline-success">Crear convocatoria</button>
-    </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="button" class="btn btn-outline-success">Crear convocatoria</button>
+  </div>
 </div>
