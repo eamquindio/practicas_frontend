@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PeticionesService } from 'src/app/services/peticiones.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cerrar-convocatoria',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CerrarConvocatoriaComponent implements OnInit {
 
-  constructor() { }
+  cerrar: any = {
+    id: '1',
+    descripcion: ''
+  };
+
+  constructor(private peticion: PeticionesService) { }
 
   ngOnInit() {
+  }
+
+  cerrarConv(formNew: NgForm) {
+    console.log(this.cerrar);
   }
 
 }
