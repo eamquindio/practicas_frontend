@@ -18,7 +18,7 @@ export class SolicitudHomologacionComponent implements OnInit {
   programs: Programa[];
   departments: any[];
   cities: any[];
-  type_id: any[];
+  typeId: any[];
 
   constructor(private formBuilder: FormBuilder, private peticion: PeticionesService) {
 
@@ -102,7 +102,7 @@ export class SolicitudHomologacionComponent implements OnInit {
       {id: 2, nombre: 'Tecnologo'}
     ];
 
-    this.type_id = [
+    this.typeId = [
       {id: 1, nombre: 'C.C'},
       {id: 2, nombre: 'T.I'}
     ];
