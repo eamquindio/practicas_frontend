@@ -11,7 +11,7 @@
                             <label>Fecha</label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="date" type="date"
+                            <input class="form-control" formControlName="homologation.date" type="date"
                                 [ngClass]="{ 'is-invalid': submited && f.fecha.errors }">
                             <div *ngIf="submited && f.date.errors" class="invalid-feedback">
                                 <div *ngIf="f.date.errors.required">Debe ingresar la fecha de la solicitud de
@@ -24,7 +24,7 @@
                             <p class="text-right">Ciclo que solicita homologacion</p>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <select name="" id="" class="form-control" required>
+                            <select name="" id="" class="form-control" formControlName="homologation.cycle" required>
                                 <option value="0">-Seleccione-</option>
                                 <option *ngFor="let cycle of cycle" value="cycle.id">
                                     {{cycle.nombre}}
@@ -45,7 +45,7 @@
                             <p class="text-left">Programa Academico</p>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <select name="" id="" class="form-control" required>
+                            <select name="" id="" class="form-control" formControlName="homologation.programer_id" required>
                                 <option value="0">-Seleccione-</option>
                                 <option *ngFor="let programer_id of programs" value="programer_id.id">
                                     {{programer_id.nombre}}
@@ -64,7 +64,7 @@
                             <label>Nombre Estudiante</label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="student_name" type="text"
+                            <input class="form-control" formControlName="homologation.student_name" type="text"
                                 [ngClass]="{ 'is-invalid': submited && f.student_name.errors }">
                             <div *ngIf="submited && f.student_name.errors" class="invalid-feedback">
                                 <div *ngIf="f.student_name.errors.required">Debe ingresar el nombre estudiante
@@ -79,7 +79,7 @@
                             <p class="text-left">Tipo ID</p>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <select name="" id="" class="form-control" required>
+                            <select name="" id="" class="form-control" formControlName="homologation.type" required>
                                 <option value="0">-Seleccione-</option>
                                 <option *ngFor="let type of type_id" value="type.id">
                                     {{type.nombre}}
@@ -97,7 +97,7 @@
                             <label>Numero</label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="number_id" type="number"
+                            <input class="form-control" formControlName="number_id" formControlName="homologation.number_id" type="number"
                                 [ngClass]="{ 'is-invalid': submited && f.number_id.errors }">
                             <div *ngIf="submited && f.number_id.errors" class="invalid-feedback">
                                 <div *ngIf="f.number_id.errors.required">Debe ingresar el numero
@@ -111,7 +111,7 @@
                             <label>Codigo</label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="code" type="text"
+                            <input class="form-control" formControlName="homologation.code" type="number"
                                 [ngClass]="{ 'is-invalid': submited && f.code.errors }">
                             <div *ngIf="submited && f.code.errors" class="invalid-feedback">
                                 <div *ngIf="f.code.errors.required">Debe ingresar el codigo del estudiante
@@ -127,7 +127,7 @@
                             <label>Email</label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="email" type="email"
+                            <input class="form-control" formControlName="homologation.email" type="email"
                                 [ngClass]="{ 'is-invalid': submited && f.email.errors }">
                             <div *ngIf="submited && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">Debe ingresar el email del estudiante
@@ -141,7 +141,7 @@
                             <label>Telefono </label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="phone" type="text"
+                            <input class="form-control" formControlName="homologation.phone" type="number"
                                 [ngClass]="{ 'is-invalid': submited && f.phone.errors }">
                             <div *ngIf="submited && f.phone.errors" class="invalid-feedback">
                                 <div *ngIf="f.phone.errors.required">Debe ingresar el telefono del estudiante
@@ -156,7 +156,7 @@
                             <label>Funciones desempeñadas del estudiante</label>
                         </div>
                         <div class="col-md-8 mb-4 ">
-                            <input class="form-control" formControlName="function_company" type="text"
+                            <input class="form-control" formControlName="homologation.function_company" type="text"
                                 [ngClass]="{ 'is-invalid': submited && f.function_company.errors }">
                             <div *ngIf="submited && f.function_company.errors" class="invalid-feedback">
                                 <div *ngIf="f.function_company.errors.required">Debe ingresar las funcionalidades del
@@ -173,7 +173,7 @@
                             <label>Empresa</label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="company" type="text"
+                            <input class="form-control" formControlName="homologation.company" type="text"
                                 [ngClass]="{ 'is-invalid': submited && f.company.errors }">
                             <div *ngIf="submited && f.company.errors" class="invalid-feedback">
                                 <div *ngIf="f.company.errors.required">Debe ingresar el nombre de la empresa
@@ -187,7 +187,7 @@
                             <label>Direccion </label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="address" type="text"
+                            <input class="form-control" formControlName="homologation.address" type="text"
                                 [ngClass]="{ 'is-invalid': submited && f.address.errors }">
                             <div *ngIf="submited && f.address.errors" class="invalid-feedback">
                                 <div *ngIf="f.address.errors.required">Debe ingresar la direccion de la empresa
@@ -202,7 +202,7 @@
                             <p>Departamento</p>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <select class="form-control" formControlName="department" (change)="cambiarCiudades()"
+                            <select class="form-control" formControlName="homologation.department" (change)="cambiarCiudades()"
                                 [ngClass]="{ 'is-invalid': (submited && f.department.errors) || (sumited && f.department.value === '') }">
                                 <option value="">Seleccione un departamento</option>
                                 <option *ngFor="let department of departments" value="{{department.id}}">
@@ -242,7 +242,7 @@
                             <label>Telefono empresa </label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="company_phone" type="number"
+                            <input class="form-control" formControlName="homologation.company_phone" type="number"
                                 [ngClass]="{ 'is-invalid': submited && f.company_phone.errors }">
                             <div *ngIf="submited && f.company_phone.errors" class="invalid-feedback">
                                 <div *ngIf="f.company_phone.errors.required">Debe ingresar el telefono de la empresa
@@ -256,7 +256,7 @@
                             <label>Jefe </label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="boss_company" type="text"
+                            <input class="form-control" formControlName="homologation.boss_company" type="text"
                                 [ngClass]="{ 'is-invalid': submited && f.boss_company.errors }">
                             <div *ngIf="submited && f.boss_company.errors" class="invalid-feedback">
                                 <div *ngIf="f.boss_company.errors.required">Debe ingresar el nombre del jefe de la empresa
@@ -271,7 +271,7 @@
                             <label>Cargo </label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="position" type="text"
+                            <input class="form-control" formControlName="homologation.position" type="text"
                                 [ngClass]="{ 'is-invalid': submited && f.position.errors }">
                             <div *ngIf="submited && f.position.errors" class="invalid-feedback">
                                 <div *ngIf="f.position.errors.required">Debe ingresar el telefono de la empresa
@@ -285,7 +285,7 @@
                             <label>Email empresa </label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="email_company" type="email"
+                            <input class="form-control" formControlName="homologation.email_company" type="email"
                                 [ngClass]="{ 'is-invalid': submited && f.email_company.errors }">
                             <div *ngIf="submited && f.email_company.errors" class="invalid-feedback">
                                 <div *ngIf="f.email_company.errors.required">Debe ingresar el email de la empresa
@@ -298,7 +298,7 @@
                             <label>Telefono contacto</label>
                         </div>
                         <div class="col-md-8 mb-4">
-                            <input class="form-control" formControlName="phone_contact"
+                            <input class="form-control" formControlName="homologation.phone_contact"
                                 [ngClass]="{ 'is-invalid': submited && f.phone_contact.errors }" type="number">
                             <div *ngIf="submited && f.phone_contact.errors" class="invalid-feedback">
                                 <div *ngIf="f.phone_contact.errors.required">Debe ingresar el telefono de contacto

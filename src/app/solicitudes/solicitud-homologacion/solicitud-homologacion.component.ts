@@ -105,7 +105,8 @@ export class SolicitudHomologacionComponent implements OnInit {
   }
 
   registerHomologation(formNew: NgForm) {
-    this.peticion.post('homologation',
+    console.log(this.homologation);
+    this.peticion.post('/homologation',
       this.homologation).subscribe(data => {
         this.limpiarCampos();
       });
