@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PeticionesService } from 'src/app/services/peticiones.service';
 
 @Component({
   selector: 'app-convocatorias-registrar',
@@ -23,12 +24,20 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
       numeroEstudiantes: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
       observaciones: new FormControl('', Validators.required),
       estado: new FormControl(),
-      id_solicitud: new FormControl(),
-      coordinador: new FormControl()
+      coordinador: new FormControl(),
+      id_razon: new FormControl(),
+      id: new FormControl(),
+      id_empresa: new FormControl(),
+      tipo_practica: new FormControl(),
+      id_facultad: new FormControl(),
+      id_programa: new FormControl(),
+      id_ciclo: new FormControl(),
+
+
     });
   }
 
-  constructor() {
+  constructor(private peticion: PeticionesService) {
     this.convocatoriaForm = this.createFormGroup();
     this.campoFechaInicio = false;
     this.campoFechaFin = false;
@@ -43,11 +52,21 @@ export class ConvocatoriasRegistrarComponent implements OnInit {
 
   onSaveForm() {
     if (this.convocatoriaForm.valid) {
-      this.convocatoriaForm.get('id_solicitud').setValue('1');
+      this.convocatoriaForm.get('id_empresa').setValue('2');
+      this.convocatoriaForm.get('id_facultad').setValue('1');
+      this.convocatoriaForm.get('id_ciclo').setValue('1');
+      this.convocatoriaForm.get('id_programa').setValue('1');
+      this.convocatoriaForm.get('tipo_practica').setValue('2');
+      this.convocatoriaForm.get('id').setValue('1');
       this.convocatoriaForm.get('estado').setValue('ACTIVO');
       this.convocatoriaForm.get('coordinador').setValue('1');
+      this.convocatoriaForm.get('id_razon').setValue('1');
       console.log(this.convocatoriaForm.value);
-      this.onResetForm();
+      this.peticion.post('/convocatorias', this.convocatoriaForm.value).subscribe(data => {
+        console.log(data);
+        this.onResetForm();
+      });
+
     } else {
       if (this.convocatoriaForm.get('fechaInicio').invalid) {
         this.campoFechaInicio = true;
