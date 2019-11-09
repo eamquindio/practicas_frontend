@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PeticionesService } from '../../services/peticiones.service';
 
 @Component({
   selector: 'app-solicitud-estudiante',
@@ -17,8 +18,8 @@ export class SolicitudEstudianteComponent implements OnInit {
   departamentos: any[];
   ciudades: any[];
   tiposPractica: any[];
-
-  constructor(private formBuilder: FormBuilder) {
+  
+  constructor(private formBuilder: FormBuilder, private peticiones: PeticionesService) {
     this.sectores = [
       {
         id: 0,
@@ -117,8 +118,6 @@ export class SolicitudEstudianteComponent implements OnInit {
       sociedadComandita: ['', Validators.required],
       fechaRegCamaraComercio: ['', Validators.required],
       nombreRepLegal: ['', Validators.required],
-      personaEncargadaEstudiante: ['', Validators.required],
-      cargoPersonaEncargadaEstudiante: ['', Validators.required],
       direccionEmpresa: ['', Validators.required],
       telefonoFijo: ['', Validators.required],
       celular: ['', Validators.required],
@@ -139,9 +138,43 @@ export class SolicitudEstudianteComponent implements OnInit {
       return;
     }
 
-    alert('Solicitud creada');
+    console.log(this.solicitud);
 
+    let empresas : any= {};
+    let solicitud1 : any= {};
     console.log(this.solicitud.value);
+    empresas.business_name = this.solicitud.get('nombreEmpresa').value;
+    empresas.sector = this.solicitud.get('sector').value;
+    empresas.NIT = this.solicitud.get('nit').value;
+    empresas.person_type = this.solicitud.get('tipoPersona').value;
+    empresas.society_type = this.solicitud.get('tipoSociedad').value;
+    empresas.limited_partnership = this.solicitud.get('sociedadComandita').value;
+    empresas.registration_date_commerce_chamber = this.solicitud.get('fechaRegCamaraComercio').value;
+    empresas.representative = this.solicitud.get('nombreRepLegal').value;
+    empresas.address = this.solicitud.get('direccionEmpresa').value;
+    empresas.phone = this.solicitud.get('telefonoFijo').value;
+    empresas.cell_phone = this.solicitud.get('celular').value;
+    empresas.department_id = this.solicitud.get('departamento').value;
+    empresas.city_id = this.solicitud.get('ciudad').value;
+    empresas.mail = this.solicitud.get('correo').value;
+    empresas.business_description = this.solicitud.get('descripcionNegocio').value;
+    solicitud1.NIT = this.solicitud.get('nit').value;
+    solicitud1.how_meet_company = this.solicitud.get('comoConocioEmpresa').value;
+    solicitud1.practice_type_id = this.solicitud.get('tipoPractica').value;
+        
+    this.peticiones.post('/empresas/company',
+      empresas).subscribe(data => {
+        this.peticiones.post('/solicitudes/request_student',
+      solicitud1).subscribe(data => {
+        alert('Empresa creada');
+      });
+      });
+    
+      
+  }
+
+  clickAddTodo(){
+    
   }
 
   get f() { return this.solicitud.controls; }

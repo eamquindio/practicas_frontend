@@ -7,6 +7,19 @@
             <form [formGroup]="solicitud" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="form-group col row">
+                        <div class="col-1">
+                            <label for="nit" class="text-right">NIT</label>
+                        </div>
+                        <div class="col-11">
+                            <input formControlName="nit" type="text" class="form-control" id="nit"
+                                [ngClass]="{ 'is-invalid': submited && f.nit.errors }" placeholder="NIT de la empresa">
+                            <div *ngIf="submited && f.nit.errors" class="invalid-feedback">
+                                <div *ngIf="f.nit.errors.required">Debe ingresar el NIT de la empresa</div>
+                            </div>
+                            <button class="btn btn-primary" (click)="clickAddTodo()">Buscar empresa</button>
+                        </div>
+                    </div>
+                    <div class="form-group col row">
                         <div class="col-2 align-self-center">
                             <label for="nombre_empresa">Nombre de empresa</label>
                         </div>
@@ -18,19 +31,7 @@
                                 <div *ngIf="f.nombreEmpresa.errors.required">Debe ingresar el nombre de la empresa</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group col row">
-                        <div class="col-1">
-                            <label for="nit" class="text-right">NIT</label>
-                        </div>
-                        <div class="col-11">
-                            <input formControlName="nit" type="text" class="form-control" id="nit"
-                                [ngClass]="{ 'is-invalid': submited && f.nit.errors }" placeholder="NIT de la empresa">
-                            <div *ngIf="submited && f.nit.errors" class="invalid-feedback">
-                                <div *ngIf="f.nit.errors.required">Debe ingresar el NIT de la empresa</div>
-                            </div>
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
                 <div class="row">
                     <div class="form-group col row">
@@ -113,39 +114,6 @@
                             <div *ngIf="submited && f.nombreRepLegal.errors" class="invalid-feedback">
                                 <div *ngIf="f.nombreRepLegal.errors.required">Debe ingresar el nombre y el apellido del
                                     representante legal</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col row">
-                        <div class="col">
-                            <p class="text-right">Persona encargada del estudiante</p>
-                        </div>
-                        <div class="col">
-                            <input class="form-control" formControlName="personaEncargadaEstudiante" type="text"
-                                [ngClass]="{ 'is-invalid': submited && f.personaEncargadaEstudiante.errors }"
-                                placeholder="Persona encargada del estudiante">
-                            <div *ngIf="submited && f.personaEncargadaEstudiante.errors" class="invalid-feedback">
-                                <div *ngIf="f.personaEncargadaEstudiante.errors.required">Debe ingresar el nombre de la
-                                    persona encargada del estudiante</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col row">
-                        <div class="col">
-                            <p class="text-right">Cargo de quien vela por el estudiante</p>
-                        </div>
-                        <div class="col">
-                            <input class="form-control" formControlName="cargoPersonaEncargadaEstudiante" type="text"
-                                [ngClass]="{ 'is-invalid': submited && f.cargoPersonaEncargadaEstudiante.errors }"
-                                placeholder="Cargo de quien vela por el estudiante">
-                            <div *ngIf="submited && f.cargoPersonaEncargadaEstudiante.errors" class="invalid-feedback">
-                                <div *ngIf="f.cargoPersonaEncargadaEstudiante.errors.required">Debe ingresar el cargo de
-                                    la
-                                    persona encargada del estudiante</div>
                             </div>
                         </div>
                     </div>
