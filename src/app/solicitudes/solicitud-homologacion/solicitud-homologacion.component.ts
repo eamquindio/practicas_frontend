@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
 import { Ciclo } from 'src/app/convocatorias/entity/ciclo';
 import { Programa } from 'src/app/convocatorias/entity/programa';
 import { PeticionesService } from 'src/app/services/peticiones.service';
@@ -53,87 +53,49 @@ export class SolicitudHomologacionComponent implements OnInit {
         ]
       }
     ];
+    this.solicitudHomo = this.createFormGroup();
   }
 
-  homologation: any = {
-      id: 1,
-      date: '',
-      cycle: 'Seleccion opcion',
-      programer_id: 'Seleccion opcion',
-      student_name: '',
-      type_id: 'Seleccion opcion',
-      number_id: '',
-      code: '',
-      email: '',
-      phone: '',
-      function_company: '',
-      company: '',
-      address: '',
-      department: 'Seleccion opcion',
-      city: 'Seleccion opcion',
-      company_phone: '',
-      boss_company: '',
-      position: '',
-      email_company: '',
-      phone_contact: '',
-  };
+  createFormGroup() {
+    return new FormGroup({
+      id: new FormControl(''),
+      date: new FormControl('', Validators.required),
+      cycle: new FormControl('', Validators.required),
+      programer_id: new FormControl('', Validators.required),
+      type_id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+      student_name: new FormControl('', Validators.required),
+      number_id: new FormControl(),
+      code: new FormControl(),
+      email: new FormControl(),
+      phone: new FormControl(),
+      function_company: new FormControl(),
+      company: new FormControl(),
+      address: new FormControl(),
+      department: new FormControl(),
+      city: new FormControl(),
+      company_phone: new FormControl(),
+      boss_company: new FormControl(),
+      email_company: new FormControl(),
+      position: new FormControl(),
+      phone_contact: new FormControl(),
+    });
+  }
 
   ngOnInit() {
     this.cargar();
 
-    this.solicitudHomo = this.formBuilder.group({
-      date: ['', Validators.required],
-      cycle: ['', Validators.required],
-      programer_id: ['', Validators.required],
-      type_id: ['', Validators.required],
-      student_name: ['', Validators.required],
-      number_id: ['', Validators.required],
-      code: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
-      function_company: ['', Validators.required],
-      company: ['', Validators.required],
-      address: ['', Validators.required],
-      department: ['', Validators.required],
-      city: ['', Validators.required],
-      company_phone: ['', Validators.required],
-      boss_company: ['', Validators.required],
-      email_company: ['', Validators.required],
-      position: ['', Validators.required],
-      phone_contact: ['', Validators.required]
-    });
   }
 
   registerHomologation(formNew: NgForm) {
-    console.log(this.homologation);
+    this.solicitudHomo.get('id').setValue('4');
+    console.log(this.solicitudHomo.value);
     this.peticion.post('/homologation',
-      this.homologation).subscribe(data => {
-        this.limpiarCampos();
+      this.solicitudHomo.value).subscribe(data => {
+        console.log(data);
       });
   }
 
-  limpiarCampos() {
-    this.homologation.this.id = 1;
-    this.homologation.this.id.date = '';
-    this.homologation.this.id.cycle = 'Seleccion opcion';
-    this.homologation.this.id.programer_id = 'Seleccion opcion';
-    this.homologation.this.id.student_name = '';
-    this.homologation.this.id.type_id = 'Seleccion opcion';
-    this.homologation.this.id.number_id = '';
-    this.homologation.this.id.code = '';
-    this.homologation.this.id.email = '';
-    this.homologation.this.id.phone = '';
-    this.homologation.this.id.function_company = '';
-    this.homologation.this.id.company = '';
-    this.homologation.this.id.address = '';
-    this.homologation.this.id.department = 'Seleccion opcion';
-    this.homologation.this.id.city = 'Seleccion opcion';
-    this.homologation.this.id.company_phone = '';
-    this.homologation.this.id.boss_company = '';
-    this.homologation.this.id.position = '';
-    this.homologation.this.id.email_company = '';
-    this.homologation.this.id.phone_contact = '';
-  }
+
 
   cargar(): void {
 
