@@ -87,15 +87,13 @@ export class SolicitudHomologacionComponent implements OnInit {
   }
 
   registerHomologation(formNew: NgForm) {
-    this.solicitudHomo.get('id').setValue('4');
+    this.solicitudHomo.get('id').setValue('14');
     console.log(this.solicitudHomo.value);
     this.peticion.post('/homologation',
       this.solicitudHomo.value).subscribe(data => {
         console.log(data);
       });
   }
-
-
 
   cargar(): void {
 
@@ -133,7 +131,6 @@ export class SolicitudHomologacionComponent implements OnInit {
 
     console.log(this.solicitudHomo.value);
   }
-
 
   get f() { return this.solicitudHomo.controls; }
 
