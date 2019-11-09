@@ -22,6 +22,7 @@ import { EvaluacionComponent } from './practicas/evaluacion/evaluacion.component
 import { SeguimientosComponent } from './practicas/seguimientos/seguimientos.component';
 import { CrearSeguimientoComponent } from './practicas/seguimientos/crear-seguimiento/crear-seguimiento.component';
 import { ListarSeguimientoComponent } from './practicas/listar-seguimiento/listar-seguimiento.component';
+import { ModificarCitaComponent } from './psicologia/modificar-cita/modificar-cita/modificar-cita.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -49,7 +50,8 @@ const routes: Routes = [
   { path: 'seguimiento', component: SeguimientosComponent },
   { path: 'crear-seguimiento', component: CrearSeguimientoComponent },
   { path: 'listar/seguimiento', component: ListarSeguimientoComponent },
-  { path: 'psicologia/asignar', component: AsignarCitaComponent}
+  { path: 'psicologia/asignar', component: AsignarCitaComponent},
+  { path: 'psicologia/modificar', component: ModificarCitaComponent}
 
 
 ];
