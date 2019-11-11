@@ -124,7 +124,7 @@ export class ConvocatoriasModificarComponent implements OnInit {
     }
   }
   updateConvocatory(formNew: NgForm) {
-    this.peticiones.put('convocatoria/convocatorias/' + this.annoucement.id,
+    this.peticiones.put('/convocatorias/' + this.annoucement.id,
     this.annoucement).subscribe(data => {
       console.log(data);
     });
