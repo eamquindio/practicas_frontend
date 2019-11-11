@@ -84,6 +84,10 @@
                       </option>
                   </select>
                 </div>
+                <label for="" class="col-md-4 col-form-label">Titulo</label>
+                <div class="col-md-8 mb-4">
+                  <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.titulo" type="text" name="" id="" required>
+                </div>
             </div>
       
           </div>
@@ -127,6 +131,10 @@
             <label for="" class="col-md-4 col-form-label">N° estudiantes</label>
             <div class="col-md-8 mb-4">
               <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.numero_estudiantes" type="number" name="" id="" min="0" required>
+            </div>
+            <label for="" class="col-md-4 col-form-label"> observaciones</label>
+            <div class="col-md-8 mb-4">
+              <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="annoucement.observaciones" type="text" name="" id=""  required>
             </div>
           </div>
         </div>
