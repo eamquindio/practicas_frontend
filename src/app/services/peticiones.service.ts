@@ -11,29 +11,29 @@ export class PeticionesService {
 
   url = environment.MICROSERVICE_URL;
 
-  constructor(private http: HttpClient,private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   get(uri: string, headers?: HttpHeaders): Observable<any> {
-    if (this.authorizationToken()){
+    if (this.authorizationToken()) {
     return this.http.get(this.url + uri, { observe: 'response', headers });
     }
   }
 
   post(uri: string, data: any, headers?: HttpHeaders): Observable<any> {
-    if(this.authorizationToken()){
+    if (this.authorizationToken()) {
     return this.http.post(this.url + uri, data, { observe: 'response', headers });
     }
   }
 
   put(uri: string, data: any, headers?: HttpHeaders): Observable<any> {
-    if(this.authorizationToken()){
+    if (this.authorizationToken()) {
     return this.http.put(this.url + uri, data, { observe: 'response', headers });
     }
   }
 
   delete(uri: string, headers?: HttpHeaders): Observable<any> {
-    if(this.authorizationToken()){
+    if (this.authorizationToken()) {
     return this.http.delete(this.url + uri, { observe: 'response', headers });
     }
   }
