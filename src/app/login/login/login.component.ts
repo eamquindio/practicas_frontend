@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
       this.http.post(environment.SECURITY_URL + '/usuarios/login', this.login.value, { observe: 'response' }).subscribe(
-        elemento => {
+        (elemento: any) => {
           localStorage.setItem('jwt', elemento.body.id);
           localStorage.setItem('id', elemento.body.userId);
           localStorage.setItem('mail', this.login.value.email);
