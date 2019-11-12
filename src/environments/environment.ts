@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   MICROSERVICE_URL: 'http://34.70.190.6/api/pasantias',
-  SECURITY_URL: 'http://34.70.190.6/api/seguridad'
+  SECURITY_URL: 'http://35.222.100.118/api/seguridad'
 };
 
 /*
