@@ -19,13 +19,13 @@ export class GestionUsuariosService {
 
   }
 
-  getuser():Usuario{
+  getuser(): Usuario {
     return {
       idUser: localStorage.getItem('id'),
       mail: localStorage.getItem('mail'),
       rol: localStorage.getItem('rol'),
       token: localStorage.getItem('jwt')
     };
-  };
+  }
 }
 
