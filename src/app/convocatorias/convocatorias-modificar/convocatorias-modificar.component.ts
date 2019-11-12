@@ -31,6 +31,8 @@ export class ConvocatoriasModificarComponent implements OnInit {
     fecha_inicio: '',
     fecha_final: '',
     id_empresa: 0,
+    titulo: '',
+    observaciones: '',
     tipo_practica: '-Seleccione-',
     id_facultad: 0,
     id_programa: 0,
@@ -45,6 +47,8 @@ export class ConvocatoriasModificarComponent implements OnInit {
     this.annoucement.fecha_inicio = '';
     this.annoucement.fecha_final = '';
     this.annoucement.id_empresa = 0;
+    this.annoucement.titulo = '';
+    this.annoucement.observaciones = '';
     this.annoucement.tipo_practica = '-Seleccione-';
     this.annoucement.id_facultad = 0;
     this.annoucement.id_programa = 0;
@@ -124,7 +128,7 @@ export class ConvocatoriasModificarComponent implements OnInit {
     }
   }
   updateConvocatory(formNew: NgForm) {
-    this.peticiones.put('convocatoria/convocatorias/' + this.annoucement.id,
+    this.peticiones.put('/convocatorias/' + this.annoucement.id,
     this.annoucement).subscribe(data => {
       console.log(data);
     });

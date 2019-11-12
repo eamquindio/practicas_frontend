@@ -1,0 +1,87 @@
+<nav class="navbar navbar-ligth bg-ligth">
+    <a class="navbar-brand p-2">
+      <img src="../assets/imgs/LOGO-EAM-1.png" width="125" height="63" alt="">
+    </a>
+    <div class="form-inline">
+      <label for="">Nombre:</label>
+      <span class="ml-4">xxxxxx</span>
+      <label for="" class="ml-4">Codigo:</label>
+      <span class="ml-4">xxxxxx</span>
+      <button type="submit" class="btn btn-danger ml-4" data-toggle="modal" data-target="#exampleModal">
+        cerrar sesion
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿Seguro desea cerrar su sesion?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Estas a punto de salir
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container p-3">
+  
+    <form (ngSubmit)="updateAppointment(formNew)" #formNew="ngForm">
+        <div class="row">
+            <div class="col-md-12 text-center p-4">
+              <span>Modificar Cita</span>
+            </div>
+            <div class="col-md-6">
+              <div class="from-group row">
+                  <label for="" class="col-md-4 col-form-label">Fecha</label>
+                  <div class="col-md-8 mb-4">
+                      <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.fechaHora" type="date" name="" id="" class="form-control" >
+                  </div>
+                 
+              <label for="" class="col-md-4 col-form-label">Id cita</label>
+              <div class="col-md-8 mb-4">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.idCita" type="number" name="" id="" min="0" required>
+              </div>
+
+              <label for="" class="col-md-4 col-form-label">Codigo psicologo</label>
+              <div class="col-md-8 mb-4">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.psicologoCedula" type="number" name="" id="" min="0" >
+              </div>
+
+              <label for="" class="col-md-4 col-form-label">Codigo estudiante</label>
+              <div class="col-md-8 mb-4">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.estudianteId" type="number" name="" id="" min="0" >
+              </div>
+
+              <label for="" class="col-md-4 col-form-label">Estado</label>
+              <div class="col-md-8 mb-4">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.estado" type="text" name="" id="" min="0" >
+              </div>
+
+              <label for="" class="col-md-4 col-form-label">Titulo</label>
+              <div class="col-md-8 mb-4">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.titulo" type="text" name="" id="" min="0">
+              </div>
+
+              <label for="" class="col-md-4 col-form-label">Descripcion</label>
+              <div class="col-md-8 mb-4">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.descripcion" type="text" name="" id="" min="0" >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-center p-4">
+            <button type="submit" class="btn btn-success ml-4">Guardar</button>
+            <button type="reset" class="btn btn-danger ml-4 form-inline">Cancelar</button>
+          </div>
+        </div>
+    </form>
+    
