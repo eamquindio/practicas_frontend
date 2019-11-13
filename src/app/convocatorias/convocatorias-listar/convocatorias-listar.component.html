@@ -38,7 +38,7 @@
   <div class="dropdown text-center col-md-6">
     <select class="form-control">
       <option>-Seleccione-</option>
-      <option *ngFor="let car of carrera" value="car.id">{{car.nombre}}</option>
+      <option *ngFor="let car of carrera" value="car.id">{{car.name}}</option>
     </select>
   </div>
 
@@ -58,20 +58,20 @@
           <th scope="col">#</th>
           <th scope="col">Programa</th>
           <th scope="col">Tipo de practica</th>
-          <th scope="col">Fecha inicio</th>
-          <th scope="col">Fecha fin</th>
-          <th scope="col">Ciclo</th>
+          <th scope="col">Empresa</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Observaciones</th>
           <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let convo of convocatorys">
           <th> {{convo.id}}</th>
-          <td>{{convo.fecha_inicio}}</td>
-          <td>{{convo.fecha_final}}</td>
+          <td>{{convo.id_programa}}</td>
+          <td>{{convo.tipo_practica}}</td>
           <td>{{convo.id_empresa}}</td>
           <td>{{convo.titulo}}</td>
-          <td>{{observaciones}}</td>
+          <td>{{convo.observaciones}}</td>
           <td>
             <div class="btn-group">
               <button class="btn btn-primary ">Ver</button>
