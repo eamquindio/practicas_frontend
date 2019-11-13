@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeticionesService } from 'src/app/services/peticiones.service';
 
 @Component({
   selector: 'app-convocatorias-listar',
@@ -7,34 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConvocatoriasListarComponent implements OnInit {
 
-  carrera: any;
+  carrera: any = [];
   ciclo: any;
 
-  constructor() {
+  convocatorys: any = [];
 
-    }
+  constructor(private peticion: PeticionesService) {
+
+  }
 
   ngOnInit() {
     this.cargar();
+    this.llenarDatos();
+    this.llenarCarrera();
+  }
+
+  llenarDatos(): void {
+    this.peticion.get('/convocatorias').subscribe( data => {
+      this.convocatorys = data.body;
+    });
+  }
+
+  llenarCarrera(): void {
+    this.peticion.get('/programs').subscribe( data => {
+      console.log(data.body);
+      this.carrera = data.body;
+    });
   }
 
   cargar(): void {
-
-    this.carrera = [
-      {id: 1, nombre : ' Ingenieria de software '},
-      {id: 2, nombre : ' Administracion de negocios '},
-      {id: 3, nombre : ' Administacion de empresas '},
-      {id: 4, nombre : ' Ingenieria industrial '},
-      {id: 5, nombre : ' Ingenieria mecatronica '},
-      {id: 6, nombre : ' Contaduria publica '},
-      {id: 7, nombre : ' Publicidad '},
-      {id: 8, nombre : ' Diseño visual digital '},
-    ];
-
     this.ciclo = [
-      {id: 1, nombre: ' Tecnico '},
-      {id: 2, nombre: ' Tecnologico '},
-      {id: 3, nombre: ' Profesional '}
+      { id: 1, nombre: ' Tecnico ' },
+      { id: 2, nombre: ' Tecnologico ' },
+      { id: 3, nombre: ' Profesional ' }
     ];
 
   }
