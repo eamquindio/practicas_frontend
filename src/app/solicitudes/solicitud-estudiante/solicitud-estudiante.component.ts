@@ -143,6 +143,7 @@ export class SolicitudEstudianteComponent implements OnInit {
     let empresas : any= {};
     let solicitud1 : any= {};
     console.log(this.solicitud.value);
+    empresas.id = 4;
     empresas.business_name = this.solicitud.get('nombreEmpresa').value;
     empresas.sector = this.solicitud.get('sector').value;
     empresas.NIT = this.solicitud.get('nit').value;
@@ -158,6 +159,7 @@ export class SolicitudEstudianteComponent implements OnInit {
     empresas.city_id = this.solicitud.get('ciudad').value;
     empresas.mail = this.solicitud.get('correo').value;
     empresas.business_description = this.solicitud.get('descripcionNegocio').value;
+    solicitud1.id = 4;
     solicitud1.NIT = this.solicitud.get('nit').value;
     solicitud1.how_meet_company = this.solicitud.get('comoConocioEmpresa').value;
     solicitud1.practice_type_id = this.solicitud.get('tipoPractica').value;
@@ -174,7 +176,11 @@ export class SolicitudEstudianteComponent implements OnInit {
   }
 
   clickAddTodo(){
-    
+    console.log(this.solicitud.get('nit').value);
+    this.peticiones.get('/empresas/company/find_by_nit/'+this.solicitud.get('nit').value).subscribe( data => {
+      this.solicitud.get('nombreEmpresa').setValue(data.body.business_name);
+      console.log(data.body);
+    });
   }
 
   get f() { return this.solicitud.controls; }

@@ -4,6 +4,7 @@
             Solicitud de Estudiante
         </div>
         <div class="card-body p-5">
+
             <form [formGroup]="solicitud" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="form-group col row">
@@ -11,12 +12,11 @@
                             <label for="nit" class="text-right">NIT</label>
                         </div>
                         <div class="col-11">
-                            <input formControlName="nit" type="text" class="form-control" id="nit"
-                                [ngClass]="{ 'is-invalid': submited && f.nit.errors }" placeholder="NIT de la empresa">
+                            <input formControlName="nit" type="text" class="form-control" id="nit" [ngClass]="{ 'is-invalid': submited && f.nit.errors }"
+                                placeholder="NIT de la empresa">
                             <div *ngIf="submited && f.nit.errors" class="invalid-feedback">
                                 <div *ngIf="f.nit.errors.required">Debe ingresar el NIT de la empresa</div>
                             </div>
-                            <button class="btn btn-primary" (click)="clickAddTodo()">Buscar empresa</button>
                         </div>
                     </div>
                     <div class="form-group col row">
@@ -24,14 +24,13 @@
                             <label for="nombre_empresa">Nombre de empresa</label>
                         </div>
                         <div class="col-10">
-                            <input formControlName="nombreEmpresa" type="text" class="form-control"
-                                [ngClass]="{ 'is-invalid': submited && f.nombreEmpresa.errors }"
+                            <input formControlName="nombreEmpresa" type="text" class="form-control" [ngClass]="{ 'is-invalid': submited && f.nombreEmpresa.errors }"
                                 placeholder="Nombre de la empresa">
                             <div *ngIf="submited && f.nombreEmpresa.errors" class="invalid-feedback">
                                 <div *ngIf="f.nombreEmpresa.errors.required">Debe ingresar el nombre de la empresa</div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col row">
@@ -40,8 +39,8 @@
                         </div>
                         <div class="col align-items-start">
                             <div class="radio" *ngFor="let sector of sectores">
-                                <label><input type="radio" value="{{sector.id}}"
-                                        formControlName="sector">{{sector.name}}</label>
+                                <label>
+                                    <input type="radio" value="{{sector.id}}" formControlName="sector">{{sector.name}}</label>
                             </div>
                         </div>
                     </div>
@@ -51,8 +50,8 @@
                         </div>
                         <div class="col align-items-start align-self-center">
                             <div class="radio" *ngFor="let tipoPersona of tiposPersona">
-                                <label><input type="radio" formControlName="tipoPersona"
-                                        value="{{tipoPersona.id}}">{{tipoPersona.name}}</label>
+                                <label>
+                                    <input type="radio" formControlName="tipoPersona" value="{{tipoPersona.id}}">{{tipoPersona.name}}</label>
                             </div>
                         </div>
                     </div>
@@ -64,8 +63,8 @@
                         </div>
                         <div class="col align-items-start">
                             <div class="radio" *ngFor="let sociedad of tiposSociedad">
-                                <label><input type="radio" formControlName="tipoSociedad"
-                                        value="{{sociedad.id}}">{{sociedad.name}}</label>
+                                <label>
+                                    <input type="radio" formControlName="tipoSociedad" value="{{sociedad.id}}">{{sociedad.name}}</label>
                             </div>
                         </div>
                     </div>
@@ -75,9 +74,7 @@
                                 <label for="nombre_empresa">Sociedad en comandita</label>
                             </div>
                             <div class="col-8">
-                                <input type="text" class="form-control" formControlName="sociedadComandita"
-                                    placeholder="Sociedad en comandita"
-                                    [ngClass]="{ 'is-invalid': submited && f.sociedadComandita.errors }">
+                                <input type="text" class="form-control" formControlName="sociedadComandita" placeholder="Sociedad en comandita" [ngClass]="{ 'is-invalid': submited && f.sociedadComandita.errors }">
                                 <div *ngIf="submited && f.sociedadComandita.errors" class="invalid-feedback">
                                     <div *ngIf="f.sociedadComandita.errors.required">Debe ingresar sociedad en comandita
                                     </div>
@@ -92,11 +89,9 @@
                             <label>Fecha de registro con camara de comercio</label>
                         </div>
                         <div class="col-3">
-                            <input class="form-control" formControlName="fechaRegCamaraComercio" type="date"
-                                [ngClass]="{ 'is-invalid': submited && f.fechaRegCamaraComercio.errors }">
+                            <input class="form-control" formControlName="fechaRegCamaraComercio" type="date" [ngClass]="{ 'is-invalid': submited && f.fechaRegCamaraComercio.errors }">
                             <div *ngIf="submited && f.fechaRegCamaraComercio.errors" class="invalid-feedback">
-                                <div *ngIf="f.fechaRegCamaraComercio.errors.required">Debe ingresar la fecha de registro
-                                    con camara de comercio</div>
+                                <div *ngIf="f.fechaRegCamaraComercio.errors.required">Debe ingresar la fecha de registro con camara de comercio</div>
                             </div>
                         </div>
                     </div>
@@ -108,12 +103,10 @@
                             <p class="text-right">Nombre y apellido del representante legal</p>
                         </div>
                         <div class="col">
-                            <input class="form-control" formControlName="nombreRepLegal" type="text"
-                                [ngClass]="{ 'is-invalid': submited && f.nombreRepLegal.errors }"
+                            <input class="form-control" formControlName="nombreRepLegal" type="text" [ngClass]="{ 'is-invalid': submited && f.nombreRepLegal.errors }"
                                 placeholder="Nombre y apellido del representante legal">
                             <div *ngIf="submited && f.nombreRepLegal.errors" class="invalid-feedback">
-                                <div *ngIf="f.nombreRepLegal.errors.required">Debe ingresar el nombre y el apellido del
-                                    representante legal</div>
+                                <div *ngIf="f.nombreRepLegal.errors.required">Debe ingresar el nombre y el apellido del representante legal</div>
                             </div>
                         </div>
                     </div>
@@ -124,8 +117,7 @@
                             <p class="text-right">Dirección de la empresa</p>
                         </div>
                         <div class="col">
-                            <input class="form-control" formControlName="direccionEmpresa" type="text"
-                                [ngClass]="{ 'is-invalid': submited && f.direccionEmpresa.errors }"
+                            <input class="form-control" formControlName="direccionEmpresa" type="text" [ngClass]="{ 'is-invalid': submited && f.direccionEmpresa.errors }"
                                 placeholder="Dirección de la empresa">
                             <div *ngIf="submited && f.direccionEmpresa.errors" class="invalid-feedback">
                                 <div *ngIf="f.direccionEmpresa.errors.required">Debe ingresar la dirección de la empresa
@@ -140,8 +132,7 @@
                             <p class="text-right">Telefono fijo</p>
                         </div>
                         <div class="col">
-                            <input class="form-control" formControlName="telefonoFijo" type="tel"
-                                [ngClass]="{ 'is-invalid': submited && f.telefonoFijo.errors }"
+                            <input class="form-control" formControlName="telefonoFijo" type="tel" [ngClass]="{ 'is-invalid': submited && f.telefonoFijo.errors }"
                                 placeholder="Telefono fijo">
                             <div *ngIf="submited && f.telefonoFijo.errors" class="invalid-feedback">
                                 <div *ngIf="f.telefonoFijo.errors.required">Debe ingresar el telefono fijo
@@ -156,8 +147,7 @@
                             <p class="text-right">Celular</p>
                         </div>
                         <div class="col">
-                            <input class="form-control" formControlName="celular" type="tel"
-                                [ngClass]="{ 'is-invalid': submited && f.celular.errors }"
+                            <input class="form-control" formControlName="celular" type="tel" [ngClass]="{ 'is-invalid': submited && f.celular.errors }"
                                 placeholder="Telefono celular">
                             <div *ngIf="submited && f.celular.errors" class="invalid-feedback">
                                 <div *ngIf="f.celular.errors.required">Debe ingresar el telefono celular
@@ -172,16 +162,13 @@
                             <p class="text-right">Departamento</p>
                         </div>
                         <div class="col">
-                            <select class="form-control" formControlName="departamento" (change)="cambiarCiudades()"
-                                [ngClass]="{ 'is-invalid': (submited && f.departamento.errors) || (sumited && f.departamento.value === '') }">
+                            <select class="form-control" formControlName="departamento" (change)="cambiarCiudades()" [ngClass]="{ 'is-invalid': (submited && f.departamento.errors) || (sumited && f.departamento.value === '') }">
                                 <option value="">Seleccione un departamento</option>
                                 <option *ngFor="let departamento of departamentos" value="{{departamento.id}}">
                                     {{departamento.name}}</option>
                             </select>
-                            <div *ngIf="(submited && f.departamento.errors) || (sumited && f.departamento.value === '')"
-                                class="invalid-feedback">
-                                <div *ngIf="f.departamento.errors.required">Debe seleccionar el departamento donde se
-                                    localiza la empresa
+                            <div *ngIf="(submited && f.departamento.errors) || (sumited && f.departamento.value === '')" class="invalid-feedback">
+                                <div *ngIf="f.departamento.errors.required">Debe seleccionar el departamento donde se localiza la empresa
                                 </div>
                             </div>
                         </div>
@@ -193,16 +180,13 @@
                             <p class="text-right">Ciudad</p>
                         </div>
                         <div class="col">
-                            <select class="form-control" formControlName="ciudad"
-                                [ngClass]="{ 'is-invalid': (submited && f.ciudad.errors) || (sumited && f.ciudad.value === '') }">
+                            <select class="form-control" formControlName="ciudad" [ngClass]="{ 'is-invalid': (submited && f.ciudad.errors) || (sumited && f.ciudad.value === '') }">
                                 <option value="">Seleccione una ciudad</option>
                                 <option *ngFor="let ciudad of ciudades" value="{{ciudad.id}}">
                                     {{ciudad.name}}</option>
                             </select>
-                            <div *ngIf="(submited && f.ciudad.errors) || (sumited && f.ciudad.value === '')"
-                                class="invalid-feedback">
-                                <div *ngIf="f.ciudad.errors.required">Debe seleccionar la ciudad donde se localiza la
-                                    empresa
+                            <div *ngIf="(submited && f.ciudad.errors) || (sumited && f.ciudad.value === '')" class="invalid-feedback">
+                                <div *ngIf="f.ciudad.errors.required">Debe seleccionar la ciudad donde se localiza la empresa
                                 </div>
                             </div>
                         </div>
@@ -214,8 +198,8 @@
                             <p class="text-right">Correo</p>
                         </div>
                         <div class="col">
-                            <input class="form-control" formControlName="correo" type="email"
-                                [ngClass]="{ 'is-invalid': submited && f.correo.errors }" placeholder="Correo">
+                            <input class="form-control" formControlName="correo" type="email" [ngClass]="{ 'is-invalid': submited && f.correo.errors }"
+                                placeholder="Correo">
                             <div *ngIf="submited && f.correo.errors" class="invalid-feedback">
                                 <div *ngIf="f.correo.errors.required">Debe ingresar el correo
                                 </div>
@@ -229,8 +213,7 @@
                             <p class="text-right">Descripción del negocio</p>
                         </div>
                         <div class="col">
-                            <textarea formControlName="descripcionNegocio" class="form-control"
-                                [ngClass]="{ 'is-invalid': submited && f.descripcionNegocio.errors }"
+                            <textarea formControlName="descripcionNegocio" class="form-control" [ngClass]="{ 'is-invalid': submited && f.descripcionNegocio.errors }"
                                 placeholder="Descripción del negocio"></textarea>
                             <div *ngIf="submited && f.descripcionNegocio.errors" class="invalid-feedback">
                                 <div *ngIf="f.descripcionNegocio.errors.required">Debe ingresar la descripción del negocio
@@ -245,8 +228,7 @@
                             <p class="text-right">¿Como conocio la empresa?</p>
                         </div>
                         <div class="col">
-                            <textarea formControlName="comoConocioEmpresa" class="form-control"
-                            [ngClass]="{ 'is-invalid': submited && f.comoConocioEmpresa.errors }"
+                            <textarea formControlName="comoConocioEmpresa" class="form-control" [ngClass]="{ 'is-invalid': submited && f.comoConocioEmpresa.errors }"
                                 placeholder="¿Como conocio la empresa?"></textarea>
                             <div *ngIf="submited && f.comoConocioEmpresa.errors" class="invalid-feedback">
                                 <div *ngIf="f.comoConocioEmpresa.errors.required">Debe ingresar como conocio a la empresa
@@ -262,8 +244,8 @@
                         </div>
                         <div class="col align-items-start">
                             <div class="radio" *ngFor="let practica of tiposPractica">
-                                <label><input type="radio" formControlName="tipoPractica"
-                                        value="{{practica.id}}">{{practica.name}}</label>
+                                <label>
+                                    <input type="radio" formControlName="tipoPractica" value="{{practica.id}}">{{practica.name}}</label>
                             </div>
                         </div>
                     </div>
@@ -274,6 +256,8 @@
                     </div>
                 </div>
             </form>
+            <button class="btn btn-primary" (click)="clickAddTodo()">Buscar empresa</button>
+
         </div>
     </div>
 </div>
