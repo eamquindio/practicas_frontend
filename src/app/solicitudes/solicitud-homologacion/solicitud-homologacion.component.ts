@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
 import { Ciclo } from 'src/app/convocatorias/entity/ciclo';
 import { Programa } from 'src/app/convocatorias/entity/programa';
+import { PeticionesService } from 'src/app/services/peticiones.service';
 
 @Component({
   selector: 'app-solicitud-homologacion',
@@ -13,19 +14,20 @@ export class SolicitudHomologacionComponent implements OnInit {
   solicitudHomo: FormGroup;
   submited = false;
 
-  ciclo: Ciclo[];
-  programas: Programa[];
-  tipoIdentificacion: any[];
-  departamentos: any[];
-  ciudades: any[];
-  tipoId: any[];
+  cycle: Ciclo[];
+  programs: Programa[];
+  departments: any[];
+  cities: any[];
+  typeId: any[];
 
-  constructor(private formBuilder: FormBuilder) {
-    this.departamentos = [
+  constructor(private formBuilder: FormBuilder, private peticion: PeticionesService) {
+
+
+    this.departments = [
       {
         id: 0,
         name: 'Quindio',
-        ciudades: [
+        cities: [
           {
             id: 0,
             name: 'Armenia'
@@ -39,7 +41,7 @@ export class SolicitudHomologacionComponent implements OnInit {
       {
         id: 1,
         name: 'Huila',
-        ciudades: [
+        cities: [
           {
             id: 0,
             name: 'Neiva'
@@ -51,46 +53,61 @@ export class SolicitudHomologacionComponent implements OnInit {
         ]
       }
     ];
+    this.solicitudHomo = this.createFormGroup();
+  }
+
+  createFormGroup() {
+    return new FormGroup({
+      id: new FormControl(''),
+      date: new FormControl('', Validators.required),
+      cycle: new FormControl('', Validators.required),
+      programer_id: new FormControl('', Validators.required),
+      type_id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
+      student_name: new FormControl('', Validators.required),
+      number_id: new FormControl(),
+      code: new FormControl(),
+      email: new FormControl(),
+      phone: new FormControl(),
+      function_company: new FormControl(),
+      company: new FormControl(),
+      address: new FormControl(),
+      department: new FormControl(),
+      city: new FormControl(),
+      company_phone: new FormControl(),
+      boss_company: new FormControl(),
+      email_company: new FormControl(),
+      position: new FormControl(),
+      phone_contact: new FormControl(),
+    });
   }
 
   ngOnInit() {
     this.cargar();
 
-    this.solicitudHomo = this.formBuilder.group({
-      fecha: ['', Validators.required],
-      ciclo: ['', Validators.required],
-      programa: ['', Validators.required],
-      tipo: ['', Validators.required],
-      nombreEstudiante: ['', Validators.required],
-      numero: ['', Validators.required],
-      codigo: ['', Validators.required],
-      email: ['', Validators.required],
-      telefono: ['', Validators.required],
-      funciones: ['', Validators.required],
-      empresa: ['', Validators.required],
-      direccion: ['', Validators.required],
-      departamento: ['', Validators.required],
-      ciudad: ['', Validators.required],
-      telempresa: ['', Validators.required],
-      jefe: ['', Validators.required],
-      emailempresa: ['', Validators.required],
-      cargo: ['', Validators.required],
-      telcontacto: ['', Validators.required]
-    });
   }
+
+  registerHomologation(formNew: NgForm) {
+    this.solicitudHomo.get('id').setValue('14');
+    console.log(this.solicitudHomo.value);
+    this.peticion.post('/homologation',
+      this.solicitudHomo.value).subscribe(data => {
+        console.log(data);
+      });
+  }
+
   cargar(): void {
 
-    this.ciclo = [
+    this.cycle = [
       {id: 1, nombre: 'Tecnico'},
       {id: 2, nombre: 'Tecnologo'}
     ];
 
-    this.tipoId = [
+    this.typeId = [
       {id: 1, nombre: 'C.C'},
       {id: 2, nombre: 'T.I'}
     ];
 
-    this.programas = [
+    this.programs = [
       {id: 1, nombre: 'Ingenieria de software'},
       {id: 2, nombre: 'Ingenieria industrial'},
       {id: 3, nombre: 'Ingenieria mecatronica'},
@@ -118,14 +135,14 @@ export class SolicitudHomologacionComponent implements OnInit {
   get f() { return this.solicitudHomo.controls; }
 
   cambiarCiudades() {
-    if (this.solicitudHomo.get('departamento').value.length !== 0) {
-      this.departamentos.forEach(element => {
-        if ((element.id + '') === this.solicitudHomo.get('departamento').value) {
-          this.ciudades = element.ciudades;
+    if (this.solicitudHomo.get('department').value.length !== 0) {
+      this.departments.forEach(element => {
+        if ((element.id + '') === this.solicitudHomo.get('department').value) {
+          this.cities = element.cities;
         }
       });
     } else {
-      this.ciudades = [];
+      this.cities = [];
     }
   }
 }
