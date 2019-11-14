@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 export class ModificarCitaComponent implements OnInit {
 
   appointment: any = {
-    idCita: 1,
+    idCita: '',
     fechaHora: '',
     psicologoCedula: '',
     estudianteId: '',
@@ -19,10 +19,10 @@ export class ModificarCitaComponent implements OnInit {
     descripcion: '',
 
   };
-  constructor(private peticiones: PeticionesService) {}
+  constructor(private peticiones: PeticionesService) { }
 
   cargarObjeto(): void {
-    this.appointment.idCita = 1;
+    this.appointment.idCita = '';
     this.appointment.fechaHora = '';
     this.appointment.psicologoCedula = '';
     this.appointment.estudianteId = '';
@@ -34,17 +34,38 @@ export class ModificarCitaComponent implements OnInit {
 
   }
 
+  getAppointment() {
+    console.log('/appointment/' + this.appointment.idCita);
+    this.peticiones.get('/appointment/' + this.appointment.idCita).subscribe(data => {
+
+      this.appointment.fechaHora = data.body.fechaHora;
+      this.appointment.psicologoCedula = data.body.psicologoCedula;
+      this.appointment.estudianteId = data.body.estudianteId;
+      this.appointment.estado = data.body.estado;
+      this.appointment.titulo = data.body.titulo;
+
+
+      this.appointment.descripcion = data.body.descripcion;
+
+
+      console.log(data.body);
+    })
+
+
+
+  }
+
 
 
 
   updateAppointment(formNew: NgForm) {
     console.log(JSON.stringify(this.appointment));
-    this.peticiones.put('/appointment/',
-    this.appointment).subscribe(data => {
-      console.log(data);
-      this.cargarObjeto();
+    this.peticiones.put('/appointment',
+      this.appointment).subscribe(data => {
+        console.log(data);
+        this.cargarObjeto();
 
-    });
+      });
   }
 
 }

@@ -33,13 +33,21 @@
       </div>
     </div>
   </nav>
-  <div class="container p-3">
-  
+
+
+   
+
+    <div class="container">
+       
+        <div class="row">   
+   
     <form (ngSubmit)="updateAppointment(formNew)" #formNew="ngForm">
-        <div class="row">
+        
             <div class="col-md-12 text-center p-4">
               <span>Modificar Cita</span>
             </div>
+
+            
             <div class="col-md-6">
               <div class="from-group row">
                   <label for="" class="col-md-4 col-form-label">Fecha</label>
@@ -51,6 +59,7 @@
               <div class="col-md-8 mb-4">
                 <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="appointment.idCita" type="number" name="" id="" min="0" required>
               </div>
+              
 
               <label for="" class="col-md-4 col-form-label">Codigo psicologo</label>
               <div class="col-md-8 mb-4">
@@ -82,6 +91,21 @@
             <button type="submit" class="btn btn-success ml-4">Guardar</button>
             <button type="reset" class="btn btn-danger ml-4 form-inline">Cancelar</button>
           </div>
-        </div>
+        
     </form>
+
+    <div>
+        <button type="submit" (click)="getAppointment()" id="boton1" class="btn btn-success ml-4">Buscar cita </button>
+      </div>
+  </div>
+   
+
+  
+
+  
+
+        
+  </div>
+
+
     
