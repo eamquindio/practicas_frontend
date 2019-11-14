@@ -18,7 +18,7 @@ export class SolicitudEstudianteComponent implements OnInit {
   departamentos: any[];
   ciudades: any[];
   tiposPractica: any[];
-  
+
   constructor(private formBuilder: FormBuilder, private peticiones: PeticionesService) {
     this.sectores = [
       {
@@ -140,8 +140,8 @@ export class SolicitudEstudianteComponent implements OnInit {
 
     console.log(this.solicitud);
 
-    let empresas : any= {};
-    let solicitud1 : any= {};
+    const empresas: any= {}; 
+    const solicitud1: any= {}; 
     console.log(this.solicitud.value);
     empresas.id = 4;
     empresas.business_name = this.solicitud.get('nombreEmpresa').value;
@@ -163,7 +163,7 @@ export class SolicitudEstudianteComponent implements OnInit {
     solicitud1.NIT = this.solicitud.get('nit').value;
     solicitud1.how_meet_company = this.solicitud.get('comoConocioEmpresa').value;
     solicitud1.practice_type_id = this.solicitud.get('tipoPractica').value;
-        
+
     this.peticiones.post('/empresas/company',
       empresas).subscribe(data => {
         this.peticiones.post('/solicitudes/request_student',
@@ -171,13 +171,11 @@ export class SolicitudEstudianteComponent implements OnInit {
         alert('Empresa creada');
       });
       });
-    
-  
   }
 
-  clickAddTodo(){
+  clickAddTodo() {
     console.log(this.solicitud.get('nit').value);
-    this.peticiones.get('/empresas/company/find_by_nit/'+this.solicitud.get('nit').value).subscribe( data => {
+    this.peticiones.get('/empresas/company/find_by_nit/' + this.solicitud.get('nit').value).subscribe( data => {
       console.log(JSON.stringify(data.body[0].society_type));
       console.log(typeof(data.body[0].society_type));
       this.solicitud.get('nombreEmpresa').setValue(data.body[0].business_name);
@@ -193,7 +191,6 @@ export class SolicitudEstudianteComponent implements OnInit {
       this.solicitud.get('departamento').setValue(data.body[0].department_id);
       this.solicitud.get('correo').setValue(data.body[0].mail);
       this.solicitud.get('descripcionNegocio').setValue(data.body[0].business_description);
-      
     });
   }
 
