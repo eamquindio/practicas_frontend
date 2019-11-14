@@ -23,7 +23,7 @@ import { SeguimientosComponent } from './practicas/seguimientos/seguimientos.com
 import { CrearSeguimientoComponent } from './practicas/seguimientos/crear-seguimiento/crear-seguimiento.component';
 import { ListarSeguimientoComponent } from './practicas/listar-seguimiento/listar-seguimiento.component';
 import { ModificarCitaComponent } from './psicologia/modificar-cita/modificar-cita/modificar-cita.component';
-
+import { PracticaEstudianteComponent } from './practicas/practica-estudiante/practica-estudiante.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'convocatoria/:id/inscripcion', component: ConvocatoriasInscripcionComponent },
@@ -51,7 +51,8 @@ const routes: Routes = [
   { path: 'crear-seguimiento', component: CrearSeguimientoComponent },
   { path: 'listar/seguimiento', component: ListarSeguimientoComponent },
   { path: 'psicologia/asignar', component: AsignarCitaComponent},
-  { path: 'psicologia/modificar', component: ModificarCitaComponent}
+  { path: 'psicologia/modificar', component: ModificarCitaComponent},
+  { path: 'practice-estudent', component: PracticaEstudianteComponent}
 
 
 ];

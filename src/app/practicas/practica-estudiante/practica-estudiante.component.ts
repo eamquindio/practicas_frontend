@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeticionesService } from 'src/app/services/peticiones.service';
 
 @Component({
   selector: 'app-practica-estudiante',
@@ -7,50 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PracticaEstudianteComponent implements OnInit {
 
-  carrera: any;
+  estudiantes: any = [];
   ciclo: any;
 
 
-  practices: any[] = [
-    {
-      id: 1,
-      fecha_inicio: '',
-      practica_id: '3',
-      estado_id: 'activo',
-      estudiante_id: 'cinisterra'
-    },
-    {
-      id: 2,
-      fecha_inicio: '',
-      practica_id: '1',
-      estado_id: 'activo',
-      estudiante_id: 'quirmaa'
-    },
-    {
-      id: 3,
-      fecha_inicio: '',
-      practica_id: '2',
-      estado_id: 'activo',
-      estudiante_id: 'alvaro'
-    }
-  ];
+  practices: any[] = [];
 
-  constructor() {
+  constructor(private peticion: PeticionesService) {
 
   }
 
   ngOnInit() {
-    this.cargar();
+    this.llenarDatos();
   }
 
-  cargar(): void {
+  llenarDatos() {
+    this.peticion.get('/students/practices').subscribe( data => {
+      this.practices = data.body;
+    });
+  }
 
-    this.carrera = [
-      { id: 1, nombre: ' alvaro ' },
-      { id: 2, nombre: ' quirmaa ' },
-      { id: 3, nombre: ' cinisterra ' },
-    ];
-
+  llenarEstudiantes() {
+    this.peticion.get('/students').subscribe( data => {
+      this.estudiantes = data.body;
+    });
   }
 
 }
