@@ -49,7 +49,7 @@ export class ModificarCitaComponent implements OnInit {
 
 
       console.log(data.body);
-    })
+    });
 
 
 
