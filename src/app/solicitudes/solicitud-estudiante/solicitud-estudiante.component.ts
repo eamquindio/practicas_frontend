@@ -172,14 +172,28 @@ export class SolicitudEstudianteComponent implements OnInit {
       });
       });
     
-      
+  
   }
 
   clickAddTodo(){
     console.log(this.solicitud.get('nit').value);
     this.peticiones.get('/empresas/company/find_by_nit/'+this.solicitud.get('nit').value).subscribe( data => {
-      this.solicitud.get('nombreEmpresa').setValue(data.body.business_name);
-      console.log(data.body);
+      console.log(JSON.stringify(data.body[0].society_type));
+      console.log(typeof(data.body[0].society_type));
+      this.solicitud.get('nombreEmpresa').setValue(data.body[0].business_name);
+      this.solicitud.get('sector').setValue(data.body[0].sector);
+      this.solicitud.get('tipoPersona').setValue(data.body[0].person_type);
+      this.solicitud.get('tipoSociedad').setValue(data.body[0].society_type);
+      this.solicitud.get('sociedadComandita').setValue(data.body[0].limited_partnership);
+      this.solicitud.get('fechaRegCamaraComercio').setValue(data.body[0].registration_date_commerce_chamber);
+      this.solicitud.get('nombreRepLegal').setValue(data.body[0].representative);
+      this.solicitud.get('direccionEmpresa').setValue(data.body[0].address);
+      this.solicitud.get('telefonoFijo').setValue(data.body[0].phone);
+      this.solicitud.get('celular').setValue(data.body[0].cell_phone);
+      this.solicitud.get('departamento').setValue(data.body[0].department_id);
+      this.solicitud.get('correo').setValue(data.body[0].mail);
+      this.solicitud.get('descripcionNegocio').setValue(data.body[0].business_description);
+      
     });
   }
 
