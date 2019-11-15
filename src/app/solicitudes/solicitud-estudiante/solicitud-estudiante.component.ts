@@ -140,10 +140,10 @@ export class SolicitudEstudianteComponent implements OnInit {
 
     console.log(this.solicitud);
 
-    let empresas: any;
-    let solicitud1: any;
+    const empresas: any = {};
+    const solicitud1: any = {};
     console.log(this.solicitud.value);
-    empresas.id = 7;
+    empresas.id = 14;
     empresas.business_name = this.solicitud.get('nombreEmpresa').value;
     empresas.sector = this.solicitud.get('sector').value;
     empresas.NIT = this.solicitud.get('nit').value;
@@ -159,16 +159,18 @@ export class SolicitudEstudianteComponent implements OnInit {
     empresas.city_id = this.solicitud.get('ciudad').value;
     empresas.mail = this.solicitud.get('correo').value;
     empresas.business_description = this.solicitud.get('descripcionNegocio').value;
-    solicitud1.id = 7;
+    solicitud1.id = 14;
     solicitud1.NIT = this.solicitud.get('nit').value;
     solicitud1.how_meet_company = this.solicitud.get('comoConocioEmpresa').value;
     solicitud1.practice_type_id = this.solicitud.get('tipoPractica').value;
 
     this.peticiones.post('/empresas/company',
       empresas).subscribe(data => {
+        alert('empresas creada' + JSON.stringify(empresas));
+
         this.peticiones.post('/solicitudes/request_student',
-          solicitud1).subscribe(data => {
-            alert('Solicitud creada');
+          solicitud1).subscribe(dataReq => {
+            alert('Solicitud creada' + JSON.stringify(solicitud1));
           });
       });
   }
