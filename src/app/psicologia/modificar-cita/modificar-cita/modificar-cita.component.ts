@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeticionesService } from 'src/app/services/peticiones.service';
 import { NgForm } from '@angular/forms';
+import { GestionUsuariosService } from 'src/app/services/gestion.usuarios.service';
 
 @Component({
   selector: 'app-modificar-cita',
@@ -12,26 +13,26 @@ export class ModificarCitaComponent implements OnInit {
   appointment: any = {
     idCita: '',
     fechaHora: '',
-    psicologoCedula: '',
+    psicologoCedula: this.user.getuser().idUser,
     estudianteId: '',
     estado: '',
     titulo: '',
     descripcion: '',
 
   };
-  constructor(private peticiones: PeticionesService) {}
+  constructor(private peticiones: PeticionesService, private user: GestionUsuariosService) {}
 
   cargarObjeto(): void {
     this.appointment.idCita = '';
     this.appointment.fechaHora = '';
-    this.appointment.psicologoCedula = '';
+    this.appointment.psicologoCedula = this.user.getuser().idUser;
     this.appointment.estudianteId = '';
     this.appointment.estado = '';
     this.appointment.titulo = '';
 
   }
   ngOnInit() {
-
+    this.appointment.psicologoCedula = this.user.getuser().idUser;
   }
 
 
