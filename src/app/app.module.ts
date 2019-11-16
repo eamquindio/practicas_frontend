@@ -15,12 +15,13 @@ import { PsicologiaModule } from './psicologia/psicologia.module';
 import { PaginasErrorModule } from './paginas-error/paginaserror.module';
 import { LoginModule } from './login/login.module';
 import { StaticPageModule } from './static-page/static-page.module';
-
 import { HttpClientModule} from '@angular/common/http';
+import { PracticaEstudianteComponent } from './practicas/practica-estudiante/practica-estudiante.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PracticaEstudianteComponent,
   ],
   imports: [
     BrowserModule,
