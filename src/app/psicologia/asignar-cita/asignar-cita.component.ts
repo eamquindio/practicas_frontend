@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeticionesService } from './../../services/peticiones.service';
 import { NgForm } from '@angular/forms';
-import { HttpHeaders } from '@angular/common/http';
+import { GestionUsuariosService } from 'src/app/services/gestion.usuarios.service';
 
 @Component({
   selector: 'app-asignar-cita',
@@ -11,21 +11,21 @@ import { HttpHeaders } from '@angular/common/http';
 export class AsignarCitaComponent implements OnInit {
 
   appointment: any = {
-    idCita: '4',
+    idCita: '11',
     fechaHora: '',
-    psicologoCedula: '',
+    psicologoCedula: this.user.getuser().idUser,
     estudianteId: '',
     estado: '',
     titulo: '',
     descripcion: ''
   };
-  data: any;
-  constructor(private peticion: PeticionesService) { }
+
+  constructor(private peticion: PeticionesService, private user: GestionUsuariosService) { }
 
   limpiar() {
-    this.appointment.this.idCita = '4';
+    this.appointment.this.idCita = '11';
     this.appointment.this.fechaHora = '';
-    this.appointment.this.psicologoCedula = '';
+    this.appointment.this.psicologoCedula = this.user.getuser().idUser;
     this.appointment.this.estudianteId = '';
     this.appointment.this.estado = '';
     this.appointment.this.titulo = '';
@@ -34,6 +34,8 @@ export class AsignarCitaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.appointment.psicologoCedula = this.user.getuser().idUser;
+
 
   }
 
