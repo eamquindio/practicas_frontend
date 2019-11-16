@@ -10,23 +10,21 @@ import { PeticionesService } from '../../services/peticiones.service';
 export class SolicitudEmpRegistrarComponent implements OnInit {
 
   solicitudEmpresa: any = {
-    id: 8, // id
-    c_name: '' ,  // nombre empresa
-    Nit:  '' , // nit
-    sector: ''  ,  // sector
-    r_legal: '' ,  // Nombre y Apellido REP. LEGAL
-    partnership:  '', // tipo sociedad
+    id: 10, // id
+    c_name: '' ,
+    Nit:  '' ,
+    sector: ''  ,
+    r_legal: '' ,
+    partnership:  '',
     charge_request:  '', // cargo
-    c_address: '' ,  // direccion empresa
-    c_phone:   '',  // telefono - celular?
+    c_address: '' ,
+    c_phone:   '',
     date:  '',
-    c_mail:  '', // correo
-     // descripcion:  ['', Validators.required],
-    name_who_req: '',  // persona solicitud
-    prac_ty_id:   0,  // tipo practica
-    agreement_u:  '',  // conv
-    programer_id:  0, // programa academico
-    city:  '',   // ciudad
+    c_mail:  '',
+    name_who_req: '',
+    agreement_u:  '',
+    programer_id:  0,
+    city:  '',
     person_type:  '',
     movil:  '',
     description: '',
@@ -92,58 +90,54 @@ export class SolicitudEmpRegistrarComponent implements OnInit {
         name: 'Tecnólogo'
       }
     ];
-    this.tiposPractica = [
-      {
-        id: 0,
-        name: 'Por objetivos'
-      },
-      {
-        id: 1,
-        name: 'Por horas (240)'
-      },
-      {
-      id: 2,
-      name: 'Contrato de aprendizaje'
-    }
-    ];
-    this.programas = [
-      {
-        id: 0,
-        name: 'Ingeniería de software'
-      },
-      {
-        id: 1,
-        name: 'Ingeniería mecatrónica'
-      },
-      {
-        id: 2,
-        name: 'Ingeniería Industrial'
-      },
-      {
-        id: 3,
-        name: 'Diseño viual digital'
-      },
-      {
-        id: 4,
-        name: 'Publicidad'
-      },
-      {
-        id: 5,
-        name: 'Administrador de empresas'
-      },
-      {
-        id: 6,
-        name: 'Administrador de negocios'
-      },
-      {
-        id: 7,
-        name: 'Contaduría pública'
-      }
-    ];
+    
+
+    this.peticionesService.get('/programs/').subscribe(body => {
+      this.programas = body.body;
+      console.log('aqui' + JSON.stringify(body.body));
+    });
+
+    this.peticionesService.get('/practica/practiceType/all/').subscribe(body => {
+      this.tiposPractica = body.body;
+      console.log('aqui' + JSON.stringify(body.body));
+    });
    }
 
   ngOnInit() {
   }
+
+findNit(nit) {
+  this.peticionesService.get('/empresas/company/find_by_nit/:NIT(\\w+)').subscribe(data => {
+console.log('aquí' + data);
+if (data === true) {
+  this.solicitudEmpresa.this.id =  9,
+  this.solicitudEmpresa.this.c_name = '' ,
+  this.solicitudEmpresa.this.Nit =  '' ,
+  this.solicitudEmpresa.this.sector = ''  ,
+  this.solicitudEmpresa.this.r_legal = '' ,
+  this.solicitudEmpresa.this.partnership =  '',
+  this.solicitudEmpresa.this.charge_request =  '',
+  this.solicitudEmpresa.this.c_address = '' ,
+  this.solicitudEmpresa.this.c_phone =  '',
+  this.solicitudEmpresa.this.date =  '',
+  this.solicitudEmpresa.this.c_mail =  '',
+  this.solicitudEmpresa.this.name_who_req = '',
+  this.solicitudEmpresa.this.agreement_u =  '',
+  this.solicitudEmpresa.this.city =  '',
+  this.solicitudEmpresa.this.person_type =  '',
+  this.solicitudEmpresa.this.movil = '',
+  this.solicitudEmpresa.this.level =  '',
+  this.solicitudEmpresa.this.head_area = '',
+  this.solicitudEmpresa.this.chief_charge = '',
+  this.solicitudEmpresa.this.society_ty_id = 0,
+  this.solicitudEmpresa.this.city_id = 0,
+  this.solicitudEmpresa.this.req_sta_id = 0;
+
+} else {
+
+}
+  });
+}
 
   registerRequest(formNew: NgForm) {
 console.log(JSON.stringify(this.solicitudEmpresa));
@@ -161,6 +155,37 @@ console.log(JSON.stringify(this.solicitudEmpresa));
 this.peticionesService.post('/solicitudes/request_company',
       this.solicitudEmpresa).subscribe(data => {
         console.log(data);
+        this.clear();
       });
+  }
+
+  clear() {
+  this.solicitudEmpresa.this.id =  11,
+  this.solicitudEmpresa.this.c_name = '' ,
+  this.solicitudEmpresa.this.Nit =  '' ,
+  this.solicitudEmpresa.this.sector = ''  ,
+  this.solicitudEmpresa.this.r_legal = '' ,
+  this.solicitudEmpresa.this.partnership =  '',
+  this.solicitudEmpresa.this.charge_request =  '',
+  this.solicitudEmpresa.this.c_address = '' ,
+  this.solicitudEmpresa.this.c_phone =  '',
+  this.solicitudEmpresa.this.date =  '',
+  this.solicitudEmpresa.this.c_mail =  '',
+  this.solicitudEmpresa.this.name_who_req = '',
+  this.solicitudEmpresa.this.prac_ty_id =   0,
+  this.solicitudEmpresa.this.agreement_u =  '',
+  this.solicitudEmpresa.this.programer_id =  0,
+  this.solicitudEmpresa.this.city =  '',
+  this.solicitudEmpresa.this.person_type =  '',
+  this.solicitudEmpresa.this.movil = '',
+  this.solicitudEmpresa.this.description = '',
+  this.solicitudEmpresa.this.requirements =  '',
+  this.solicitudEmpresa.this.observations =  '',
+  this.solicitudEmpresa.this.level =  '',
+  this.solicitudEmpresa.this.head_area = '',
+  this.solicitudEmpresa.this.chief_charge = '',
+  this.solicitudEmpresa.this.society_ty_id = 0,
+  this.solicitudEmpresa.this.city_id = 0,
+  this.solicitudEmpresa.this.req_sta_id = 0;
   }
 }
