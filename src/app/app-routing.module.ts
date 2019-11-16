@@ -24,35 +24,42 @@ import { ListarSeguimientoComponent } from './practicas/listar-seguimiento/lista
 import { LoginComponent } from './login/login/login.component';
 import { ModificarCitaComponent } from './psicologia/modificar-cita/modificar-cita/modificar-cita.component';
 import { PracticaEstudianteComponent } from './practicas/practica-estudiante/practica-estudiante.component';
+
+/*Guard*/
+import { PsicologoGuard } from './guard/psicologo.guard';
+import { CoordinadorGuard } from './guard/coordinador.guard';
+import { EstudianteGuard } from './guard/estudiante.guard';
+import { EmpresaGuard } from './guard/empresa.guard';
+
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
-  { path: 'convocatoria/:id/inscripcion', component: ConvocatoriasInscripcionComponent },
-  { path: 'solicitud/estudiante', component: SolicitudEstudianteComponent },
-  { path: 'modificar', component: ConvocatoriasModificarComponent },
-  { path: 'practica/inicio', component: InicioPracticaComponent },
-  { path: 'convocatorias', component: ConvocatoriasListarComponent },
-  { path: 'convocatoria/cierre', component: CerrarConvocatoriaComponent },
-  { path: 'convocatoria', component: ConvocatoriasRegistrarComponent },
-  { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent},
-  { path: 'reporte-censo', component: ReporteCensoComponent },
-  { path: 'psicologia/citas/asignar', component: AsignarCitaComponent},
+  { path: 'convocatoria/:id/inscripcion', component: ConvocatoriasInscripcionComponent, canActivate: [EstudianteGuard] },
+  { path: 'solicitud/estudiante', component: SolicitudEstudianteComponent, canActivate: [EstudianteGuard]},
+  { path: 'modificar', component: ConvocatoriasModificarComponent, canActivate: [CoordinadorGuard]},
+  { path: 'practica/inicio', component: InicioPracticaComponent, canActivate: [CoordinadorGuard]},
+  { path: 'convocatorias', component: ConvocatoriasListarComponent, canActivate: [CoordinadorGuard]},
+  { path: 'convocatoria/cierre', component: CerrarConvocatoriaComponent, canActivate: [CoordinadorGuard]},
+  { path: 'convocatoria', component: ConvocatoriasRegistrarComponent, canActivate: [CoordinadorGuard]},
+  { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent, canActivate: [EmpresaGuard]},
+  { path: 'reporte-censo', component: ReporteCensoComponent, canActivate: [CoordinadorGuard]},
+  { path: 'psicologia/citas/asignar', component: AsignarCitaComponent, canActivate: [PsicologoGuard]},
   { path: 'forbidden', component: Error403ForbiddenComponent},
-  { path: 'not_found', component: Error404NotFoundComponent},
   { path: 'internal_server', component: Error500InternalServerComponent},
-  { path: 'solicitud/homologacion', component: SolicitudHomologacionComponent},
+  { path: 'solicitud/homologacion', component: SolicitudHomologacionComponent, canActivate: [EstudianteGuard]},
   { path: 'internal_server', component: Error500InternalServerComponent},
-  { path: 'listar-citas', component: ListarCitaComponent },
-  { path: 'solicitud/empresa', component: SolicitudEmpRegistrarComponent },
-  { path: 'reporte-censo', component: ReporteCensoComponent },
+  { path: 'listar-citas', component: ListarCitaComponent, canActivate: [PsicologoGuard]},
+  { path: 'reporte-censo', component: ReporteCensoComponent, canActivate: [CoordinadorGuard]},
   { path: 'restablecer-contrasenia', component: RestablecerContraseniaComponent },
-  { path: 'autoevaluacion', component: AutoevaluacionComponent},
-  { path: 'evaluacion', component: EvaluacionComponent},
-  { path: 'seguimiento', component: SeguimientosComponent },
-  { path: 'crear-seguimiento', component: CrearSeguimientoComponent },
-  { path: 'listar/seguimiento', component: ListarSeguimientoComponent },
-  { path: 'psicologia/asignar', component: AsignarCitaComponent},
-  { path: 'psicologia/modificar', component: ModificarCitaComponent},
-  { path: 'practice-estudent', component: PracticaEstudianteComponent}
+  { path: 'autoevaluacion', component: AutoevaluacionComponent, canActivate: [EstudianteGuard]},
+  { path: 'evaluacion', component: EvaluacionComponent, canActivate: [EmpresaGuard]},
+  { path: 'seguimiento', component: SeguimientosComponent, canActivate: [CoordinadorGuard]},
+  { path: 'crear-seguimiento', component: CrearSeguimientoComponent, canActivate: [CoordinadorGuard]},
+  { path: 'listar/seguimiento', component: ListarSeguimientoComponent, canActivate: [CoordinadorGuard]},
+  { path: 'psicologia/asignar', component: AsignarCitaComponent, canActivate: [PsicologoGuard]},
+  { path: 'psicologia/modificar', component: ModificarCitaComponent, canActivate: [PsicologoGuard]},
+  { path: 'practice-estudent', component: PracticaEstudianteComponent, canActivate: [EstudianteGuard]},
+  { path: '**', component: Error404NotFoundComponent}
 
 
 ];
