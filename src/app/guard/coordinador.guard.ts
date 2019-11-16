@@ -19,5 +19,5 @@ export class CoordinadorGuard implements CanActivate {
     }
     return validacion;
   }
-x
+
 }
