@@ -90,7 +90,6 @@ export class SolicitudEmpRegistrarComponent implements OnInit {
         name: 'Tecnólogo'
       }
     ];
-    
 
     this.peticionesService.get('/programs/').subscribe(body => {
       this.programas = body.body;
