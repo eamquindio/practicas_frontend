@@ -29,6 +29,11 @@ export class LoginComponent implements OnInit {
     this.imgProfile = './../../../assets/imgs/studentLogin.jpg';
     this.imgBody = './../../../assets/imgs/wallpaperSchool.jpg';
     this.login = this.createFormGroup();
+    localStorage.clear();
+    localStorage.setItem('jwt', '');
+    localStorage.setItem('id', '');
+    localStorage.setItem('mail', '');
+    localStorage.setItem('rol', '');
   }
 
   ngOnInit() {
@@ -40,13 +45,16 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('jwt', elemento.body.id);
           localStorage.setItem('id', elemento.body.userId);
           localStorage.setItem('mail', this.login.value.email);
-          localStorage.setItem('rol', '');
           Swal.fire({
             icon: 'success',
             title: '!Bienvenido¡',
             text: 'Credenciales Validas'
           });
-          this.router.navigate(['']);
+          this.http.get(environment.SECURITY_URL + '/usuarios/getIdRol?id='+elemento.body.userId, { observe: 'response' }).subscribe(
+            (rol: any) => {
+              localStorage.setItem('rol',rol.body[0].roleid);
+            }
+          );
           },
         error => {
         localStorage.setItem('jwt', '');
