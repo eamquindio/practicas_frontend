@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PeticionesService } from '../../services/peticiones.service';
 
 @Component({
   selector: 'app-solicitud-estudiante',
@@ -18,7 +19,7 @@ export class SolicitudEstudianteComponent implements OnInit {
   ciudades: any[];
   tiposPractica: any[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private peticiones: PeticionesService) {
     this.sectores = [
       {
         id: 0,
@@ -117,8 +118,6 @@ export class SolicitudEstudianteComponent implements OnInit {
       sociedadComandita: ['', Validators.required],
       fechaRegCamaraComercio: ['', Validators.required],
       nombreRepLegal: ['', Validators.required],
-      personaEncargadaEstudiante: ['', Validators.required],
-      cargoPersonaEncargadaEstudiante: ['', Validators.required],
       direccionEmpresa: ['', Validators.required],
       telefonoFijo: ['', Validators.required],
       celular: ['', Validators.required],
@@ -139,15 +138,70 @@ export class SolicitudEstudianteComponent implements OnInit {
       return;
     }
 
-    alert('Solicitud creada');
+    console.log(this.solicitud);
 
+    const empresas: any = {};
+    const solicitud1: any = {};
     console.log(this.solicitud.value);
+    empresas.id = 14;
+    empresas.business_name = this.solicitud.get('nombreEmpresa').value;
+    empresas.sector = this.solicitud.get('sector').value;
+    empresas.NIT = this.solicitud.get('nit').value;
+    empresas.person_type = this.solicitud.get('tipoPersona').value;
+    empresas.society_type = this.solicitud.get('tipoSociedad').value;
+    empresas.limited_partnership = this.solicitud.get('sociedadComandita').value;
+    empresas.registration_date_commerce_chamber = this.solicitud.get('fechaRegCamaraComercio').value;
+    empresas.representative = this.solicitud.get('nombreRepLegal').value;
+    empresas.address = this.solicitud.get('direccionEmpresa').value;
+    empresas.phone = this.solicitud.get('telefonoFijo').value;
+    empresas.cell_phone = this.solicitud.get('celular').value;
+    empresas.department_id = this.solicitud.get('departamento').value;
+    empresas.city_id = this.solicitud.get('ciudad').value;
+    empresas.mail = this.solicitud.get('correo').value;
+    empresas.business_description = this.solicitud.get('descripcionNegocio').value;
+    solicitud1.id = 14;
+    solicitud1.NIT = this.solicitud.get('nit').value;
+    solicitud1.how_meet_company = this.solicitud.get('comoConocioEmpresa').value;
+    solicitud1.practice_type_id = this.solicitud.get('tipoPractica').value;
+
+    this.peticiones.post('/empresas/company',
+      empresas).subscribe(data => {
+        alert('empresas creada' + JSON.stringify(empresas));
+
+        this.peticiones.post('/solicitudes/request_student',
+          solicitud1).subscribe(dataReq => {
+            alert('Solicitud creada' + JSON.stringify(solicitud1));
+          });
+      });
+  }
+
+  clickAddTodo() {
+    console.log(this.solicitud.get('nit').value);
+    this.peticiones.get('/empresas/company/find_by_nit/' + this.solicitud.get('nit').value).subscribe(data => {
+      console.log(JSON.stringify(data.body[0].city_id));
+      console.log(typeof (data.body[0].city_id));
+      this.solicitud.get('nombreEmpresa').setValue(data.body[0].business_name);
+      this.solicitud.get('sector').setValue(data.body[0].sector);
+      this.solicitud.get('tipoPersona').setValue(data.body[0].person_type);
+      this.solicitud.get('tipoSociedad').setValue(String(data.body[0].society_type));
+      this.solicitud.get('sociedadComandita').setValue(data.body[0].limited_partnership);
+      this.solicitud.get('fechaRegCamaraComercio').setValue(data.body[0].registration_date_commerce_chamber);
+      this.solicitud.get('nombreRepLegal').setValue(data.body[0].representative);
+      this.solicitud.get('direccionEmpresa').setValue(data.body[0].address);
+      this.solicitud.get('telefonoFijo').setValue(data.body[0].phone);
+      this.solicitud.get('celular').setValue(data.body[0].cell_phone);
+      this.solicitud.get('departamento').setValue(data.body[0].department_id);
+      this.cambiarCiudadesId(Number(data.body[0].department_id));
+      this.solicitud.get('ciudad').setValue(String(data.body[0].city_id));
+      this.solicitud.get('correo').setValue(data.body[0].mail);
+      this.solicitud.get('descripcionNegocio').setValue(data.body[0].business_description);
+    });
   }
 
   get f() { return this.solicitud.controls; }
 
   cambiarCiudades() {
-    if (this.solicitud.get('departamento').value.length !== 0) {
+    if (this.departamentos.length !== 0) {
       this.departamentos.forEach(element => {
         if ((element.id + '') === this.solicitud.get('departamento').value) {
           this.ciudades = element.ciudades;
@@ -158,4 +212,7 @@ export class SolicitudEstudianteComponent implements OnInit {
     }
   }
 
+  cambiarCiudadesId(id) {
+    this.ciudades = this.departamentos[id].ciudades;
+  }
 }
