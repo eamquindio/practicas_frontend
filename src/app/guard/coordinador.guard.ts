@@ -5,23 +5,19 @@ import { CanActivate, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class CoordinadorGuard implements CanActivate {
-  
+
   constructor(private router: Router) { }
 
   canActivate(): boolean {
-    var validacion = true;
-    var idrol = localStorage.getItem('rol');
-    if(idrol === ''){
-      validacion = false;
-      this.router.navigate(['forbidden']);
-    }
-    if(idrol === '7' || idrol === '10'){
+    let validacion = true;
+    const idrol = localStorage.getItem('rol');
+    if (idrol === '7' || idrol === '10') {
       validacion = true;
-    }else{
+    } else {
       validacion = false;
       this.router.navigate(['forbidden']);
     }
     return validacion;
   }
-  
+x
 }

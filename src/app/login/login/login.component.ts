@@ -50,9 +50,9 @@ export class LoginComponent implements OnInit {
             title: '!Bienvenido¡',
             text: 'Credenciales Validas'
           });
-          this.http.get(environment.SECURITY_URL + '/usuarios/getIdRol?id='+elemento.body.userId, { observe: 'response' }).subscribe(
+          this.http.get(environment.SECURITY_URL + '/usuarios/getIdRol?id=' + elemento.body.userId, { observe: 'response' }).subscribe(
             (rol: any) => {
-              localStorage.setItem('rol',rol.body[0].roleid);
+              localStorage.setItem('rol', rol.body[0].roleid);
             }
           );
           },
