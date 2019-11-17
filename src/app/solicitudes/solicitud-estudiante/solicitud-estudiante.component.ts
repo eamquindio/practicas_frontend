@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PeticionesService } from '../../services/peticiones.service';
+import { GestionUsuariosService } from 'src/app/services/gestion.usuarios.service';
 
 @Component({
   selector: 'app-solicitud-estudiante',
@@ -19,7 +20,7 @@ export class SolicitudEstudianteComponent implements OnInit {
   ciudades: any[];
   tiposPractica: any[];
 
-  constructor(private formBuilder: FormBuilder, private peticiones: PeticionesService) {
+  constructor(private formBuilder: FormBuilder, private peticiones: PeticionesService, private user: GestionUsuariosService) {
     this.sectores = [
       {
         id: 0,
@@ -110,6 +111,7 @@ export class SolicitudEstudianteComponent implements OnInit {
 
   ngOnInit() {
     this.solicitud = this.formBuilder.group({
+      id_estudiante:  this.user.getuser().idUser,
       nombreEmpresa: ['', Validators.required],
       sector: ['', Validators.required],
       nit: ['', Validators.required],
@@ -133,10 +135,10 @@ export class SolicitudEstudianteComponent implements OnInit {
   onSubmit() {
     this.submited = true;
 
-    if (this.solicitud.invalid) {
+    /*if (this.solicitud.invalid) {
       alert('Debe diligenciar debidamente el formulario');
       return;
-    }
+    }*/
 
     console.log(this.solicitud);
 
@@ -163,14 +165,15 @@ export class SolicitudEstudianteComponent implements OnInit {
     solicitud1.NIT = this.solicitud.get('nit').value;
     solicitud1.how_meet_company = this.solicitud.get('comoConocioEmpresa').value;
     solicitud1.practice_type_id = this.solicitud.get('tipoPractica').value;
+    solicitud1.id_estudiante = this.user.getuser().idUser;
 
     this.peticiones.post('/empresas/company',
       empresas).subscribe(data => {
-        alert('empresas creada' + JSON.stringify(empresas));
+        alert('empresa creada');
 
         this.peticiones.post('/solicitudes/request_student',
           solicitud1).subscribe(dataReq => {
-            alert('Solicitud creada' + JSON.stringify(solicitud1));
+            alert('Solicitud creada');
           });
       });
   }
