@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeticionesService } from 'src/app/services/peticiones.service';
 
+
 @Component({
   selector: 'app-practica-estudiante',
   templateUrl: './practica-estudiante.component.html',
@@ -13,13 +14,14 @@ export class PracticaEstudianteComponent implements OnInit {
 
 
   practices: any[] = [];
-
+//agregar al contructor el gestion de usuario
   constructor(private peticion: PeticionesService) {
 
   }
 
   ngOnInit() {
     this.llenarDatos();
+    this.llenarEstudiantes();
   }
 
   llenarDatos() {
@@ -30,6 +32,7 @@ export class PracticaEstudianteComponent implements OnInit {
 
   llenarEstudiantes() {
     this.peticion.get('/students').subscribe( data => {
+      console.log(data.body);
       this.estudiantes = data.body;
     });
   }
