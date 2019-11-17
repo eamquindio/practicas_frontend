@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PeticionesService } from '../../services/peticiones.service';
+import { GestionUsuariosService } from 'src/app/services/gestion.usuarios.service';
 
 @Component({
   selector: 'app-solicitud-estudiante',
@@ -19,7 +20,7 @@ export class SolicitudEstudianteComponent implements OnInit {
   ciudades: any[];
   tiposPractica: any[];
 
-  constructor(private formBuilder: FormBuilder, private peticiones: PeticionesService) {
+  constructor(private formBuilder: FormBuilder, private peticiones: PeticionesService, private user: GestionUsuariosService) {
     this.sectores = [
       {
         id: 0,
@@ -126,24 +127,25 @@ export class SolicitudEstudianteComponent implements OnInit {
       correo: ['', Validators.required],
       descripcionNegocio: ['', Validators.required],
       comoConocioEmpresa: ['', Validators.required],
-      tipoPractica: ['', Validators.required]
+      tipoPractica: ['', Validators.required],
+      id_estudiante: this.user.getuser().idUser
     });
   }
 
   onSubmit() {
     this.submited = true;
 
-    if (this.solicitud.invalid) {
+    /*if (this.solicitud.invalid) {
       alert('Debe diligenciar debidamente el formulario');
       return;
-    }
+    }*/
 
     console.log(this.solicitud);
 
     const empresas: any = {};
     const solicitud1: any = {};
     console.log(this.solicitud.value);
-    empresas.id = 14;
+    empresas.id = 26;
     empresas.business_name = this.solicitud.get('nombreEmpresa').value;
     empresas.sector = this.solicitud.get('sector').value;
     empresas.NIT = this.solicitud.get('nit').value;
@@ -159,18 +161,19 @@ export class SolicitudEstudianteComponent implements OnInit {
     empresas.city_id = this.solicitud.get('ciudad').value;
     empresas.mail = this.solicitud.get('correo').value;
     empresas.business_description = this.solicitud.get('descripcionNegocio').value;
-    solicitud1.id = 14;
+    solicitud1.id = 23;
     solicitud1.NIT = this.solicitud.get('nit').value;
     solicitud1.how_meet_company = this.solicitud.get('comoConocioEmpresa').value;
     solicitud1.practice_type_id = this.solicitud.get('tipoPractica').value;
+    solicitud1.student_id = this.solicitud.get('id_estudiante').value;
 
     this.peticiones.post('/empresas/company',
       empresas).subscribe(data => {
-        alert('empresas creada' + JSON.stringify(empresas));
+        alert('empresa creada');
 
         this.peticiones.post('/solicitudes/request_student',
           solicitud1).subscribe(dataReq => {
-            alert('Solicitud creada' + JSON.stringify(solicitud1));
+            alert('Solicitud creada');
           });
       });
   }
