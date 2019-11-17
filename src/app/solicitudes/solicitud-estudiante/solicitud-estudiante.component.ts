@@ -111,7 +111,6 @@ export class SolicitudEstudianteComponent implements OnInit {
 
   ngOnInit() {
     this.solicitud = this.formBuilder.group({
-      id_estudiante:  this.user.getuser().idUser,
       nombreEmpresa: ['', Validators.required],
       sector: ['', Validators.required],
       nit: ['', Validators.required],
@@ -128,7 +127,8 @@ export class SolicitudEstudianteComponent implements OnInit {
       correo: ['', Validators.required],
       descripcionNegocio: ['', Validators.required],
       comoConocioEmpresa: ['', Validators.required],
-      tipoPractica: ['', Validators.required]
+      tipoPractica: ['', Validators.required],
+      id_estudiante: this.user.getuser().idUser
     });
   }
 
@@ -145,7 +145,7 @@ export class SolicitudEstudianteComponent implements OnInit {
     const empresas: any = {};
     const solicitud1: any = {};
     console.log(this.solicitud.value);
-    empresas.id = 14;
+    empresas.id = 26;
     empresas.business_name = this.solicitud.get('nombreEmpresa').value;
     empresas.sector = this.solicitud.get('sector').value;
     empresas.NIT = this.solicitud.get('nit').value;
@@ -161,11 +161,11 @@ export class SolicitudEstudianteComponent implements OnInit {
     empresas.city_id = this.solicitud.get('ciudad').value;
     empresas.mail = this.solicitud.get('correo').value;
     empresas.business_description = this.solicitud.get('descripcionNegocio').value;
-    solicitud1.id = 14;
+    solicitud1.id = 23;
     solicitud1.NIT = this.solicitud.get('nit').value;
     solicitud1.how_meet_company = this.solicitud.get('comoConocioEmpresa').value;
     solicitud1.practice_type_id = this.solicitud.get('tipoPractica').value;
-    solicitud1.id_estudiante = this.user.getuser().idUser;
+    solicitud1.student_id = this.solicitud.get('id_estudiante').value;
 
     this.peticiones.post('/empresas/company',
       empresas).subscribe(data => {
