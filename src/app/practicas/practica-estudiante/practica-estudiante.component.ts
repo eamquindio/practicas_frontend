@@ -14,7 +14,7 @@ export class PracticaEstudianteComponent implements OnInit {
 
 
   practices: any[] = [];
-//agregar al contructor el gestion de usuario
+
   constructor(private peticion: PeticionesService) {
 
   }
