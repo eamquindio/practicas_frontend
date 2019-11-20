@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { PeticionesService } from './../../../services/peticiones.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-no-practica',
@@ -50,13 +52,20 @@ export class NoPracticaComponent implements OnInit {
     estudent: ''
   };
 
-  constructor() { }
+  constructor(private peticion: PeticionesService) { }
 
   ngOnInit() {
   }
 
-  registerPractice(form: NgForm) {
-    console.log(this.practice);
+  registerPractice(formNew: NgForm) {
+    this.peticion.post('/practices/start_practices'+ this.students,
+    this.students).subscribe(data => {
+      console.log(this.practice);
+      
+
+
+   
+    });
   }
 
 
